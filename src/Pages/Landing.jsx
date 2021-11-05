@@ -9,6 +9,8 @@ import HumenSvg from "../Images/SVG/Humen.svg"
 import CalendarWhiteSvg from "../Images/SVG/CalendarWhite.svg"
 import EmtyZImg from "../Images/Other/emtyZ.png"
 import EmailSvg from "../Images/SVG/email.svg"
+import ArrowBad from "../Images/SVG/ArrowBad.svg"
+import ArrowRight from "../Images/SVG/ArrowRight.svg"
 import clsx from "clsx";
 import {Link} from "react-router-dom";
 import ButtonMain from "../Components/Buttons/ButtonMain/ButtonMain";
@@ -142,6 +144,23 @@ const Landing = () => {
 						</div>
 					</div>
 				</section>
+				<section className={classes.testimonial}>
+					<div className={clsx(classes.container, classes.testimonialInner)}>
+						<div className={classes.testimonialContent}>
+							<div className={classes.testimonialTitle}>Lucky Business - это</div>
+							<div className={classes.testimonialText}>Единственная обучающая платформа, цель которой: дать тебе все необходимые знания для ведения собственного бизнеса, и позволить приумножить свой капитал прямо здесь и сейчас</div>
+							<div className={classes.testimonialCards}>
+								<div className={classes.testimonialCard}>
+									<div className={classes.testimonialCardTitle}>Дмитрий Вахрушев</div>
+									<div className={classes.testimonialCardText}>Ceo  Lucky Business</div>
+								</div>
+								<img src={ArrowRight} alt="arrow" className={classes.arrowNext}/>
+								<img src={ArrowRight} alt="arrow" className={classes.arrowBack}/>
+							</div>
+						</div>
+						<img src={EmtyImg} alt="testimonial" className={classes.testimonialImg}/>
+					</div>
+				</section>
 				<section className={classes.features}>
 					<div className={clsx(classes.container, classes.featuresInner)}>
 						<div className={classes.featuresCol1}>
@@ -185,7 +204,31 @@ const Landing = () => {
 						/>
 					</div>
 				</section>
+				<section className={classes.callToAction}>
+					<div className={clsx(classes.container, classes.callToActionInner)}>
+						<div className={classes.callToActionContent}>
+							<div className={classes.callToActionTitle}>Думаешь это всё?</div>
+							<div className={classes.callToActionCol}>
+								<div className={classes.callToActionText}>Ты сможешь вернуть стоимость самого дорогого информационного пакета уже в первую неделю своего обучения </div>
+								<ButtonMain
+									onClick={()=>{}}
+									label={"Зарегистрироваться"}
+									type={"white"}
+									borderWidth={2}
+									fontSize={28}
+									borderRadius={8}
+									width={474}
+									height={63}
+								/>
+							</div>
+							<img src={ArrowBad} alt="ArrowBad" className={classes.callToActionArrow}/>
+						</div>
+					</div>
+				</section>
 			</main>
+			<footer className={classes.footer}>
+
+			</footer>
 		</>
 	);
 };
