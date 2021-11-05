@@ -1,3 +1,33 @@
 .App{
 
 }
+
+@font-face {
+    font-family: 'Open_Sans_Bold';
+    src: local('Open_Sans_Bold'), url(./Fonts/OpenSans-Bold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Open_Sans_ExtraBold';
+    src: local('Open_Sans_ExtraBold'), url(./Fonts/OpenSans-ExtraBold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Open_Sans_Light';
+    src: local('Open_Sans_Light'), url(./Fonts/OpenSans-Light.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Open_Sans_Medium';
+    src: local('Open_Sans_Medium'), url(./Fonts/OpenSans-Medium.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Open_Sans_Regular';
+    src: local('Open_Sans_Regular'), url(./Fonts/OpenSans-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Open_Sans_SemiBold';
+    src: local('Open_Sans_SemiBold'), url(./Fonts/OpenSans-SemiBold.ttf) format('truetype');
+}

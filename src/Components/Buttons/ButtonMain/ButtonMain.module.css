@@ -1,0 +1,52 @@
+.inner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.text{
+    font-family: Open_Sans_Regular, sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.innerBlack{
+    border-color: #FFFFFF;
+    background-color: black;
+}
+
+.textBlack{
+    color: #FFFFFF
+}
+
+.innerBlack:hover{
+    border-color: #FFFFFF;
+    background-color: #FFFFFF;
+}
+
+.innerBlack:hover div{
+    color: #000000
+}
+
+.innerWhite{
+    border-color: #FFFFFF;
+    background-color: #FFFFFF;
+}
+
+.textWhite{
+    color: #000000
+}
+
+.innerWhite:hover{
+    border-color: #FFFFFF;
+    background-color: black;
+}
+
+.innerWhite:hover div{
+    color: #FFFFFF
+}
