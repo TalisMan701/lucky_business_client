@@ -8,6 +8,7 @@ import EyeWhiteSvg from "../Images/SVG/eyeWhite.svg"
 import HumenSvg from "../Images/SVG/Humen.svg"
 import CalendarWhiteSvg from "../Images/SVG/CalendarWhite.svg"
 import EmtyZImg from "../Images/Other/emtyZ.png"
+import EmailSvg from "../Images/SVG/email.svg"
 import clsx from "clsx";
 import {Link} from "react-router-dom";
 import ButtonMain from "../Components/Buttons/ButtonMain/ButtonMain";
@@ -139,6 +140,49 @@ const Landing = () => {
 								<div style={{width: 426, paddingLeft: 55}} className={classes.targetCard}>Готов узнавать новое и зарабатывать уже сейчас</div>
 							</div>
 						</div>
+					</div>
+				</section>
+				<section className={classes.features}>
+					<div className={clsx(classes.container, classes.featuresInner)}>
+						<div className={classes.featuresCol1}>
+						 	<div className={classes.featuresTitle}>В Lucky Business ты получишь:</div>
+							<div className={classes.featuresCard}>
+								<img src={EmailSvg} alt="email" className={classes.featuresCardImg}/>
+								<div className={classes.featuresCardText}>Все необходимые курсы для погружения в мир бизнеса</div>
+							</div>
+							<div className={classes.featuresCard}>
+								<img src={EmailSvg} alt="email" className={classes.featuresCardImg}/>
+								<div className={classes.featuresCardText}>Четкую систему для выхода на доход от 50 тыс. рублей уже в первый месяц</div>
+							</div>
+							<div className={classes.featuresCard}>
+								<img src={EmailSvg} alt="email" className={classes.featuresCardImg}/>
+								<div className={classes.featuresCardText}>Начнешь свой бизнес со стартовым капиталом - 990 рублей</div>
+							</div>
+						</div>
+						<div className={classes.featuresCol2}>
+							<div className={classes.featuresCard}>
+								<img src={EmailSvg} alt="email" className={classes.featuresCardImg}/>
+								<div className={classes.featuresCardText}>Базу знаний от экспертов в сфере интернет-маркетинга, MLM маркетинга и организации бизнес-процессов</div>
+							</div>
+							<div className={classes.featuresCard}>
+								<img src={EmailSvg} alt="email" className={classes.featuresCardImg}/>
+								<div className={classes.featuresCardText}>Ты будешь в команде единомышленников, которые помогут в развитии твоего бизнеса</div>
+							</div>
+							<div className={classes.featuresCard}>
+								<img src={EmailSvg} alt="email" className={classes.featuresCardImg}/>
+								<div className={classes.featuresCardText}>У тебя будет возможность повысить свой уровень знаний из любой точки мира и начать зарабатывать на этом прямо сейчас! </div>
+							</div>
+						</div>
+						<ButtonMain
+							onClick={()=>{}}
+							label={"Зарегистрироваться"}
+							type={"white"}
+							borderWidth={2}
+							fontSize={36}
+							borderRadius={8}
+							width={534}
+							height={84}
+						/>
 					</div>
 				</section>
 			</main>

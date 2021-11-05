@@ -292,3 +292,62 @@
     font-size: 24px;
     line-height: 32px;
 }
+
+.features{
+    background: url("../Images/Other/BackgroundMain2.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 0 0 40px 0;
+    color: #FFFFFF;
+}
+
+.featuresInner{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.featuresCol1, .featuresCol2{
+    margin-bottom: 40px;
+}
+
+.featuresCol1{
+    padding-top: 80px;
+    margin-right: 75px;
+}
+
+.featuresCol2{
+    padding-top: 200px;
+}
+
+.featuresTitle{
+    font-family: Open_Sans_Bold, sans-serif;
+    font-style: normal;
+    font-size: 48px;
+    line-height: 65px;
+    max-width: 387px;
+    margin-bottom: 80px;
+}
+
+.featuresCard{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: start;
+    margin-bottom: 32px;
+}
+
+.featuresCardImg{
+    margin-right: 14px;
+
+}
+
+.featuresCardText{
+    font-family: Open_Sans_Bold, sans-serif;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 32px;
+    max-width: 430px;
+}
+
+
