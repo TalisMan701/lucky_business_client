@@ -4,6 +4,10 @@ import LogoSvg from "../Images/SVG/Logo.svg"
 import EmtyImg from "../Images/Other/emtyGray.jpg"
 import CalendarSvg from "../Images/SVG/Calendar.svg"
 import EyeSvg from "../Images/SVG/Eye.svg"
+import EyeWhiteSvg from "../Images/SVG/eyeWhite.svg"
+import HumenSvg from "../Images/SVG/Humen.svg"
+import CalendarWhiteSvg from "../Images/SVG/CalendarWhite.svg"
+import EmtyZImg from "../Images/Other/emtyZ.png"
 import clsx from "clsx";
 import {Link} from "react-router-dom";
 import ButtonMain from "../Components/Buttons/ButtonMain/ButtonMain";
@@ -96,6 +100,43 @@ const Landing = () => {
 									width={66}
 									height={46}
 								/>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section className={classes.second}>
+					<div className={clsx(classes.container, classes.secondInner)}>
+						<div className={classes.secondRow}>
+							<div className={classes.secondRowTitle}>Ты хочешь открыть своё дело, но:</div>
+							<div className={classes.secondRowCard}>
+								<img src={EyeWhiteSvg} alt="EyeWhiteSvg" className={classes.secondRowCardImg}/>
+								<div className={classes.secondRowCardText}>У тебя мало финансов для старта</div>
+							</div>
+							<div className={classes.secondRowCard}>
+								<img src={HumenSvg} alt="HumenSvg" className={classes.secondRowCardImg}/>
+								<div className={classes.secondRowCardText}>Ты не понимаешь, как заработать первые деньги</div>
+							</div>
+							<div className={classes.secondRowCard}>
+								<img src={CalendarWhiteSvg} alt="CalendarWhiteSvg" className={classes.secondRowCardImg}/>
+								<div className={classes.secondRowCardText}>При поисковых запросах в интернете, слишком много противоречащей друг другу информации</div>
+							</div>
+						</div>
+						<div className={classes.secondTitle}>Наш проект - это именно то, что ты давно искал!</div>
+						<div className={classes.secondDesc}>скорее проходи регистрацию и присоединяйся к нам</div>
+					</div>
+				</section>
+				<section className={classes.target}>
+					<div className={clsx(classes.container, classes.targetInner)}>
+						<img src={EmtyZImg} alt="target" className={classes.targetImg}/>
+						<div className={classes.targetContent}>
+							<div className={classes.targetTitle}>Тебе точно это нужно, если ты:</div>
+							<div className={classes.targetCards}>
+								<div style={{width: 272, paddingLeft: 24}} className={classes.targetCard}>Интернет-предприниматель</div>
+								<div style={{width: 168}} className={classes.targetCard}>Студент</div>
+								<div style={{width: 168}} className={classes.targetCard}>Стартапер</div>
+								<div style={{width: 272, paddingLeft: 69}} className={classes.targetCard}>Будущий франчайзи</div>
+								<div style={{width: 286, paddingLeft: 24}} className={classes.targetCard}>MLM предприниматель</div>
+								<div style={{width: 426, paddingLeft: 55}} className={classes.targetCard}>Готов узнавать новое и зарабатывать уже сейчас</div>
 							</div>
 						</div>
 					</div>
