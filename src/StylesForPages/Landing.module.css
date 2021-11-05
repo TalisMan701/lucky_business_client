@@ -77,3 +77,93 @@
     justify-content: center;
     align-items: center;
 }
+
+.intro{
+    padding: 82px 0 16px 0;
+    background: url("../Images/Other/BackgroundMain.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.introInner{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+}
+
+.introCol1{
+    padding-top: 32px;
+    margin-right: 66px;
+}
+
+.introCol2{
+    position: relative;
+
+}
+
+.introTitle{
+    max-width: 500px;
+    font-family: Open_Sans_ExtraBold, sans-serif;
+    font-style: normal;
+    font-size: 72px;
+    line-height: 100px;
+    letter-spacing: 0.5px;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+}
+
+.introDesc{
+    font-style: normal;
+    font-size: 18px;
+    line-height: 33px;
+    color: #A39F9F;
+    max-width: 440px;
+    margin-bottom: 48px;
+}
+
+.introImg{
+    border-radius: 50px;
+    width: 578px;
+    height: 603px;
+}
+
+.introCard{
+    background-color: #FCFCFC;
+    border-radius: 8px;
+    box-shadow: 10px 20px 24px rgba(63, 88, 221, 0.1);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 315px;
+    height: 90px;
+    padding: 0 10px 0 22px;
+}
+
+.introCardImg{
+    margin-right: 16px;
+}
+
+.introCardText{
+    font-family: Open_Sans_Bold, sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 0.5px;
+    color: #404040;
+}
+
+.introCard1, .introCard2{
+    position: absolute;
+}
+
+.introCard1{
+    top: 138px ;
+    left: -124px;
+}
+
+.introCard2{
+    bottom: 74px;
+    right: -56px;
+}

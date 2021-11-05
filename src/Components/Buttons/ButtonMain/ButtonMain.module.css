@@ -50,3 +50,39 @@
 .innerWhite:hover div{
     color: #FFFFFF
 }
+
+.innerGray{
+    border-color: #404040;
+    background-color: #404040;
+}
+
+.textGray{
+    color: #FFFFFF
+}
+
+.innerGray:hover{
+    border-color: #404040;
+    background-color: #FFFFFF;
+}
+
+.innerGray:hover div{
+    color: #404040
+}
+
+.innerRed{
+    border-color: #AB0000;
+    background-color: #AB0000;
+}
+
+.textRed{
+    color: #FFFFFF
+}
+
+.innerRed:hover{
+    border-color: #FFFFFF;
+    background-color: #FFFFFF;
+}
+
+.innerRed:hover div{
+    color: #AB0000
+}
