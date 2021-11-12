@@ -38,44 +38,41 @@ const AdminPanel = () => {
 				})
 		}
 	},[activeIndex])
+
+	const avatarBodyTemplate = (rowData) => {
+		return(
+			<Avatar image={rowData.pathAvatar} size="normal"  shape="circle"/>
+		)
+	}
+
+	const formatCurrency = (value) => {
+		return value.toLocaleString('en-US', {style: 'currency', currency: 'RUS'});
+	}
+
+	const priceBodyTemplate = (rowData) => {
+		return formatCurrency(rowData.balance);
+	}
+
 	return (
 		<>
 			<MainTitle>Админ панель</MainTitle>
 			<div className={classes.card}>
 				<TabView activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)}>
 					<TabPanel header="Пользователи">
-						Все пользователи:
 						<div>
-							{fetchGetUsers ?
-								<i className={`pi pi-spin pi-spinner ${classes.fetch}`}/>:
-								<>
-									{/*{users.map(user=>{
-										return(
-											<div className={classes.user}>
-												<Avatar image={user.pathAvatar} shape="circle"/>
-												<div className={classes.userContent}>
-													<div className={classes.userName}>
-														{user.name}<span> </span>
-														{user.surname}
-													</div>
-													<div className={classes.userEmail}>
-														{user.email}
-													</div>
-													<div className={classes.userBalance}>
-														{user.balance}₽
-													</div>
-												</div>
-											</div>
-										)
-									})}*/}
-									<DataTable value={users} responsiveLayout="scroll">
-										<Column field="name" header="Имя"/>
-										<Column field="surname" header="Фамилия"/>
-										<Column field="email" header="Email"/>
-										<Column field="balance" header="Баланс"/>
-									</DataTable>
-								</>
-							}
+							<DataTable
+								header={"Все пользователи:"}
+								value={users}
+								responsiveLayout="scroll"
+								loading={fetchGetUsers}
+								removableSort
+							>
+								<Column header="Аватар" body={avatarBodyTemplate}/>
+								<Column field="name" header="Имя" sortable/>
+								<Column field="surname" header="Фамилия" sortable/>
+								<Column field="email" header="Email" sortable/>
+								<Column field="balance" header="Баланс" body={priceBodyTemplate} sortable/>
+							</DataTable>
 						</div>
 					</TabPanel>
 					<TabPanel header="Продукты">

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import classes from './Settings.module.css'
 import MainTitle from "../../CabinetComponents/MainTitle/MainTitle";
 import {Card} from "primereact/card";
@@ -11,11 +11,17 @@ import {Message} from "primereact/message";
 import {InputText} from "primereact/inputtext";
 import {connect} from "react-redux";
 import {settingsAPI} from "../../../Api/api";
+import {Toast} from "primereact/toast";
 const Settings = (props) => {
 	const [password, setPassword] = useState('')
 	const [confirmPassword, setConfirmPassword] = useState('')
 	const [newPassword, setNewPassword] = useState('')
 	const [email, setEmail] = useState(props.user.email)
+	const [fetchSendImg, setFetchSendImg] = useState(false)
+	const [fetchResetPassword, setFetchResetPassword] = useState(false)
+
+	const uploadRef = useRef(null)
+	const toast = useRef(null)
 
 	const uploadInvoice = async (file) => {
 		console.log(file)
@@ -23,20 +29,39 @@ const Settings = (props) => {
 		formData.append('file', file);
 		settingsAPI.sendImage(formData)
 			.then(response => {
-
+				if(response.status === 200){
+					uploadRef.current.clear()
+					toast.current.show({severity: 'success', summary: 'Загрузка фотографии', detail: 'Прошла успешно!'})
+				}
+				setFetchSendImg(false)
 			})
 			.catch(error => {
-
+				toast.current.show({severity: 'error', summary: 'Загрузка фотографии', detail: 'Произошла ошибка, попробуйте снова'})
+				setFetchSendImg(false)
 			})
 	};
 
 	const uploadHandler = ({files}) => {
 		const [file] = files;
 		const fileReader = new FileReader()
+		setFetchSendImg(true)
 		fileReader.onload = (e) => {
 			uploadInvoice(file);
 		};
 		fileReader.readAsDataURL(file);
+	}
+
+	const resetPassword = () => {
+		setFetchResetPassword(true)
+		settingsAPI.resetPassword(password, newPassword)
+			.then(response => {
+				toast.current.show({severity: 'success', summary: 'Смена пароля', detail: 'Прошла успешно!'})
+				setFetchResetPassword(false)
+			})
+			.catch(error => {
+				toast.current.show({severity: 'error', summary: 'Смена пароля', detail: 'Произошла ошибка, попробуйте снова'})
+				setFetchResetPassword(false)
+			})
 	}
 
 	return (
@@ -45,11 +70,15 @@ const Settings = (props) => {
 			<Card title="Изменить фотографию" className={classes.card}>
 				<Avatar image={props.user.pathAvatar} size="large"  shape="circle"/>
 				<FileUpload
+					ref={uploadRef}
 					name="demo"
 					url={'http://192.168.3.4:8080/api/v1/users/settings/uploadAvatar'}
 					accept="image/*"
 					customUpload={true}
 					uploadHandler={uploadHandler}
+					chooseLabel={"Выбрать"}
+					uploadLabel={fetchSendImg ? <i className={`pi pi-spin pi-spinner`}/>:<span>Загрузить</span>}
+					cancelLabel={"Отменить"}
 				/>
 			</Card>
 			<Card title="Подтвердить почту" className={classes.card}>
@@ -118,6 +147,7 @@ const Settings = (props) => {
 				</div>
 
 			</Card>
+			<Toast ref={toast} position="bottom-right"/>
 		</>
 	);
 };

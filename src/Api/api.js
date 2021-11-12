@@ -10,7 +10,7 @@ const instanceWithToken = () => axios.create({
 
 const instanceWithTokenFile = () => axios.create({
 	withCredentials: true,
-	baseURL: `https://luckly-bus.herokuapp.com/api/v1/`,
+	baseURL: `http://192.168.3.4:8080/api/v1/`,
 	headers: {
 		"Authorization": "Bearer " + localStorage.getItem("token"),
 		'Content-Type': 'multipart/form-data'
@@ -55,6 +55,9 @@ export const registrationAPI = {
 export const settingsAPI = {
 	sendImage(file){
 		return instanceWithTokenFile().post(`users/settings/uploadAvatar`, file)
+	},
+	resetPassword(olDpassword, neWpassword){
+		return instanceWithToken().post(`users/settings/changePassword`,{olDpassword, neWpassword})
 	}
 }
 
