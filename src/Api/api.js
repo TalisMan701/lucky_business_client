@@ -57,3 +57,18 @@ export const settingsAPI = {
 		return instanceWithTokenFile().post(`users/settings/uploadAvatar`, file)
 	}
 }
+
+export const productsAPI = {
+	getAllProducts(){
+		return instanceWithToken().get(`users/getAllProducts`)
+	}
+}
+
+export const adminAPI = {
+	getAllUsers(){
+		return instanceWithToken().get(`users/root/getAllUsers`)
+	},
+	createProduct(name, description, price){
+		return instanceWithToken().post(`users/root/createProduct`, {name, description, price})
+	}
+}
