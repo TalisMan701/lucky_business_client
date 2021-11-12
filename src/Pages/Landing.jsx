@@ -16,11 +16,13 @@ import {Link} from "react-router-dom";
 import ButtonMain from "../Components/Buttons/ButtonMain/ButtonMain";
 import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
+import {connect} from "react-redux";
+import {login} from "../Store/auth-reducer";
 
-const Landing = () => {
+const Landing = (props) => {
 	return (
 		<>
-			<Header/>
+			<Header isAuth={props.isAuth}/>
 			<main>
 				<section className={classes.intro}>
 					<div className={clsx(classes.container, classes.introInner)}>
@@ -200,5 +202,7 @@ const Landing = () => {
 		</>
 	);
 };
+
+
 
 export default Landing;

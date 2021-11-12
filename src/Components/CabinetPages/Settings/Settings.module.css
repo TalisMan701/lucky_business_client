@@ -1,0 +1,36 @@
+.card{
+    margin-bottom: 24px;
+}
+
+.passwords{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-flow: row wrap;
+}
+
+.inputInner{
+    margin-right: 16px;
+}
+
+.btnContainer{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.resetPasswordBtn{
+    align-self: flex-end;
+}
+
+.emailConfirm{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-self: center;
+    margin-bottom: 24px;
+}
+
+.input{
+}

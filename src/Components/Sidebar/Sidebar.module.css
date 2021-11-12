@@ -1,0 +1,79 @@
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 330px;
+    height: 100vh;
+    background-color: #1e1e1e;
+}
+
+.content{
+    overflow: auto;
+    padding: 24px 24px 0 24px;
+    background-color: #2a2a2a;
+    height: calc(100vh - 70px);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+.logoInner{
+    padding: 0 24px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    height: 70px;
+}
+
+.logoImg{
+    margin-right: 20px;
+}
+
+.logoTitle{
+    font-family: Open_Sans_SemiBold, sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 0.5px;
+    color: #FFFFFF;
+}
+
+.navItem{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 32px;
+}
+
+.navItem i{
+    font-size: 24px;
+    color: #ACACAC;
+    transition: all 0.2s ease;
+}
+
+.navItem span{
+    margin-left: 10px;
+}
+
+.navItem > span{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: 0.5px;
+    color: #ACACAC;
+    transition: all 0.2s ease;
+}
+
+.navItem:hover > span{
+    color: #ffffff;
+}
+
+.navItem:hover i{
+    color: #ffffff;
+}
+
+.activeNav > span, .activeNav i{
+    color: #ffffff;
+}

@@ -1,0 +1,23 @@
+.content{
+    background-color: #121212;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.particles{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 0.3;
+}
+
+.fetch{
+    font-size: 128px;
+    color: #FFFFFF
+}
