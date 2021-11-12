@@ -43,7 +43,7 @@ const Settings = (props) => {
 		<>
 			<MainTitle>Настройки</MainTitle>
 			<Card title="Изменить фотографию" className={classes.card}>
-				<Avatar image="https://shapka-youtube.ru/wp-content/uploads/2021/02/prikolnaya-avatarka-dlya-patsanov.jpg" size="large"  shape="circle"/>
+				<Avatar image={props.user.pathAvatar} size="large"  shape="circle"/>
 				<FileUpload
 					name="demo"
 					url={'http://192.168.3.4:8080/api/v1/users/settings/uploadAvatar'}
@@ -55,10 +55,14 @@ const Settings = (props) => {
 			<Card title="Подтвердить почту" className={classes.card}>
 				<div className={classes.emailConfirm}>
 					<div className="p-col-12 p-md-3" style={{marginRight: 16}}>
-						<Message severity="error" text="Email не подтверждён!" />
+						{props.user?.confirmedEmail ?
+							<Message severity="success" text="Email подтверждён!" />
+							: <Message severity="error" text="Email не подтверждён!" />
+						}
 					</div>
 					<span className={clsx("p-float-label", classes.inputInner)}>
 						<InputText
+							disabled={props.user.confirmedEmail}
 							className={classes.input}
 							id="email" value={email}
 							onChange={(e) => setEmail(e.target.value)}
@@ -68,6 +72,7 @@ const Settings = (props) => {
 				</div>
 				<div className={classes.btnContainer}>
 					<Button
+						disabled={props.user.confirmedEmail}
 						className={classes.resetPasswordBtn}
 						label={"Подтвердить Email"}
 					/>

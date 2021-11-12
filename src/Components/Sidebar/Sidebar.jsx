@@ -70,9 +70,11 @@ const Sidebar = (props) => {
 				>
 					<i className="pi pi-bell"/>
 					<span>Уведомления</span>
-					<div>
-						<Badge value="1" severity="danger"/>
-					</div>
+					{props.user?.countNotif > 0 &&
+						<div>
+							<Badge value={props.user.countNotif} severity="danger"/>
+						</div>
+					}
 
 				</NavLink>
 				<NavLink

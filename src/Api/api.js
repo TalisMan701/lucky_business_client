@@ -2,7 +2,7 @@ import * as axios from "axios";
 
 const instanceWithToken = () => axios.create({
 	withCredentials: true,
-	baseURL: `http://192.168.3.4:8080/api/v1/`,
+	baseURL: `https://luckly-bus.herokuapp.com/api/v1/`,
 	headers: {
 		"Authorization": "Bearer " + localStorage.getItem("token")
 	}
@@ -10,7 +10,7 @@ const instanceWithToken = () => axios.create({
 
 const instanceWithTokenFile = () => axios.create({
 	withCredentials: true,
-	baseURL: `http://192.168.3.4:8080/api/v1/`,
+	baseURL: `https://luckly-bus.herokuapp.com/api/v1/`,
 	headers: {
 		"Authorization": "Bearer " + localStorage.getItem("token"),
 		'Content-Type': 'multipart/form-data'
@@ -19,7 +19,7 @@ const instanceWithTokenFile = () => axios.create({
 
 const instance = () => axios.create({
 	withCredentials: true,
-	baseURL: `http://192.168.3.4:8080/api/v1/`,
+	baseURL: `https://luckly-bus.herokuapp.com/api/v1/`,
 });
 
 export const authAPI = {
