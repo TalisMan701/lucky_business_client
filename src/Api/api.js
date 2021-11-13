@@ -2,7 +2,7 @@ import * as axios from "axios";
 
 const instanceWithToken = () => axios.create({
 	withCredentials: true,
-	baseURL: `https://luckly-bus.herokuapp.com/api/v1/`,
+	baseURL: `http://192.168.3.4:8080/api/v1/`,
 	headers: {
 		"Authorization": "Bearer " + localStorage.getItem("token")
 	}
@@ -10,7 +10,7 @@ const instanceWithToken = () => axios.create({
 
 const instanceWithTokenFile = () => axios.create({
 	withCredentials: true,
-	baseURL: `https://luckly-bus.herokuapp.com/api/v1/`,
+	baseURL: `http://192.168.3.4:8080/api/v1/`,
 	headers: {
 		"Authorization": "Bearer " + localStorage.getItem("token"),
 		'Content-Type': 'multipart/form-data'
@@ -19,7 +19,7 @@ const instanceWithTokenFile = () => axios.create({
 
 const instance = () => axios.create({
 	withCredentials: true,
-	baseURL: `https://luckly-bus.herokuapp.com/api/v1/`,
+	baseURL: `http://192.168.3.4:8080/api/v1/`,
 });
 
 export const authAPI = {
@@ -34,6 +34,12 @@ export const authAPI = {
 	},
 	refresh(){
 		return  instance().post(`oauth/refresh`, {refreshToken: localStorage.getItem("tokenRefresh")});
+	},
+	sendLinkResetPassword(userEmail){
+		return instance().post(`reset/getLink`, {userEmail})
+	},
+	resetPassword(code, password){
+		return instance().post(`reset/password`, {code, password})
 	}
 }
 
@@ -58,6 +64,9 @@ export const settingsAPI = {
 	},
 	resetPassword(olDpassword, neWpassword){
 		return instanceWithToken().post(`users/settings/changePassword`,{olDpassword, neWpassword})
+	},
+	sendLinkConfirmEmail(email){
+		return instanceWithToken().post(`users/settings/getCodeForEmail`, {email})
 	}
 }
 

@@ -19,6 +19,7 @@ const Settings = (props) => {
 	const [email, setEmail] = useState(props.user.email)
 	const [fetchSendImg, setFetchSendImg] = useState(false)
 	const [fetchResetPassword, setFetchResetPassword] = useState(false)
+	const [fetchSendEmail, setFetchSendEmail] = useState(false)
 
 	const uploadRef = useRef(null)
 	const toast = useRef(null)
@@ -55,12 +56,30 @@ const Settings = (props) => {
 		setFetchResetPassword(true)
 		settingsAPI.resetPassword(password, newPassword)
 			.then(response => {
-				toast.current.show({severity: 'success', summary: 'Смена пароля', detail: 'Прошла успешно!'})
+				if(response.status === 200){
+					setPassword('')
+					setConfirmPassword('')
+					setNewPassword('')
+					toast.current.show({severity: 'success', summary: 'Смена пароля', detail: 'Прошла успешно!'})
+				}
 				setFetchResetPassword(false)
 			})
 			.catch(error => {
-				toast.current.show({severity: 'error', summary: 'Смена пароля', detail: 'Произошла ошибка, попробуйте снова'})
+				toast.current.show({severity: 'error', summary: 'Смена пароля', detail: error.response.data.message})
 				setFetchResetPassword(false)
+			})
+	}
+
+	const sendLinkConfirmEmail = () => {
+		setFetchSendEmail(true)
+		settingsAPI.sendLinkConfirmEmail(email)
+			.then(response => {
+				toast.current.show({severity: 'success', summary: 'Отправка письма на Email', detail: 'Прошла успешно!'})
+				setFetchSendEmail(false)
+			})
+			.catch(error => {
+				setFetchSendEmail(false)
+				toast.current.show({severity: 'error', summary: 'Отправка письма на Email', detail: 'Произошла ошибка, попробуйте снова'})
 			})
 	}
 
@@ -103,7 +122,8 @@ const Settings = (props) => {
 					<Button
 						disabled={props.user.confirmedEmail}
 						className={classes.resetPasswordBtn}
-						label={"Подтвердить Email"}
+						label={fetchSendEmail ? <i className={`pi pi-spin pi-spinner`}/>:<span>Подтвердить Email</span>}
+						onClick={sendLinkConfirmEmail}
 					/>
 				</div>
 			</Card>
@@ -141,8 +161,9 @@ const Settings = (props) => {
 				</div>
 				<div className={classes.btnContainer}>
 					<Button
+						onClick={resetPassword}
 						className={classes.resetPasswordBtn}
-						label={"Сменить пароль"}
+						label={fetchResetPassword ? <i className={`pi pi-spin pi-spinner`}/>:<span>Сменить пароль</span>}
 					/>
 				</div>
 

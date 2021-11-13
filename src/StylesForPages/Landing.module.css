@@ -397,12 +397,18 @@
     right: 0;
 }
 
-.arrowBack{
+.arrowBack {
     cursor: pointer;
     position: absolute;
     bottom: 6px;
     right: 58px;
     transform: rotate(180deg);
+}
+
+@media (max-width: 450px) {
+    .container{
+        padding: 0 16px
+    }
 }
 
 

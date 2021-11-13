@@ -12,10 +12,12 @@ const Header = (props) => {
 					<img src={LogoSvg} alt="logo" className={classes.logoImg}/>
 					<span className={classes.logoTitle}>Lucky Business</span>
 				</div>
+				{!props.isMobile &&
 				<div className={classes.nav}>
 					<Link to={'/'} className={classes.navLink}>Главная</Link>
 					<Link to={'/'} className={classes.navLink}>Тарифы</Link>
 				</div>
+				}
 				<div className={classes.lkInner}>
 					{!props.isAuth ?
 						<>

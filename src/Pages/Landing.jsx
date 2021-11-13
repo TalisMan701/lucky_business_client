@@ -22,7 +22,7 @@ import {login} from "../Store/auth-reducer";
 const Landing = (props) => {
 	return (
 		<>
-			<Header isAuth={props.isAuth}/>
+			<Header isAuth={props.isAuth} isMobile={props.isMobile} isTablet={props.isTablet}/>
 			<main>
 				<section className={classes.intro}>
 					<div className={clsx(classes.container, classes.introInner)}>
