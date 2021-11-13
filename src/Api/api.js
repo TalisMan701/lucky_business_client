@@ -10,7 +10,7 @@ const instanceWithToken = () => axios.create({
 
 const instanceWithTokenFile = () => axios.create({
 	withCredentials: true,
-	baseURL: `http://192.168.3.4:8080/api/v1/`,
+	baseURL: `https://luckly-bus.herokuapp.com/api/v1/`,
 	headers: {
 		"Authorization": "Bearer " + localStorage.getItem("token"),
 		'Content-Type': 'multipart/form-data'
@@ -73,6 +73,9 @@ export const settingsAPI = {
 export const productsAPI = {
 	getAllProducts(){
 		return instanceWithToken().get(`users/getAllProducts`)
+	},
+	buy(idProduct){
+		return instanceWithToken().post(`users/buyProduct`,{productId: idProduct})
 	}
 }
 
@@ -82,5 +85,23 @@ export const adminAPI = {
 	},
 	createProduct(formData){
 		return instanceWithTokenFile().post(`users/root/createProduct`, formData)
+	}
+}
+
+export const arenaLeadersAPI = {
+	getLeaders(){
+		return instanceWithToken().get(`users/getRating`)
+	}
+}
+
+export const partnerProgramAPI = {
+	getReferals(){
+		return instanceWithToken().get(`users/getAllReferal`)
+	}
+}
+
+export const myProductsAPI = {
+	getMyProducts(){
+		return instanceWithToken().get(`users/getHistoryBuy`)
 	}
 }

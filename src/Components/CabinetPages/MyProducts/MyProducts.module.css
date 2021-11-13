@@ -1,0 +1,10 @@
+.products{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.fetch{
+    color: #FFFFFF;
+    font-size: 54px;
+}

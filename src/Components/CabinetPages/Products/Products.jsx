@@ -4,7 +4,7 @@ import MainTitle from "../../CabinetComponents/MainTitle/MainTitle";
 import {productsAPI} from "../../../Api/api";
 import Product from "../../Products/Product/Product";
 import ProductBuy from "../../Products/ProductBuy/ProductBuy";
-const Products = () => {
+const Products = (props) => {
 	const [products, setProducts] = useState([])
 	const [fetchGetAllProducts, setFetchGetAllProducts] = useState(true)
 	useEffect(()=>{
@@ -31,7 +31,7 @@ const Products = () => {
 						<div className={classes.products}>
 							{products.map(product => {
 								return(
-									<ProductBuy data={product}/>
+									<ProductBuy data={product} toast={props.toast}/>
 								)
 							})}
 						</div>
