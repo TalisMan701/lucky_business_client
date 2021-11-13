@@ -50,30 +50,30 @@ const Landing = (props) => {
 								<img src={CalendarSvg} alt="introCard" className={classes.introCardImg}/>
 								<div className={classes.introCardText}>Доход от 50 тыс. рублей в первый месяц</div>
 								<ButtonMain
-									style={{minWidth: 66}}
+									style={{minWidth: props.isMobile ? 42 : 66, minHeight: props.isMobile ? 30 : 46}}
 									onClick={()=>{}}
 									label={"Try"}
 									type={"gray"}
-									fontSize={14}
+									fontSize={props.isMobile ? 12 : 14}
 									borderWidth={2}
 									borderRadius={8}
-									width={66}
-									height={46}
+									width={props.isMobile ? 42 : 66}
+									height={props.isMobile ? 30 : 46}
 								/>
 							</div>
 							<div className={clsx(classes.introCard, classes.introCard2)}>
 								<img src={EyeSvg} alt="introCard" className={classes.introCardImg}/>
 								<div className={classes.introCardText}>Стартовый капитал - 990 рублей</div>
 								<ButtonMain
-									style={{minWidth: 66}}
+									style={{minWidth: props.isMobile ? 42 : 66, minHeight: props.isMobile ? 30 : 46}}
 									onClick={()=>{}}
 									label={"Try"}
 									type={"gray"}
-									fontSize={14}
+									fontSize={props.isMobile ? 12 : 14}
 									borderWidth={2}
 									borderRadius={8}
-									width={66}
-									height={46}
+									width={props.isMobile ? 42 : 66}
+									height={props.isMobile ? 30 : 46}
 								/>
 							</div>
 						</div>
@@ -96,8 +96,13 @@ const Landing = (props) => {
 								<div className={classes.secondRowCardText}>При поисковых запросах в интернете, слишком много противоречащей друг другу информации</div>
 							</div>
 						</div>
-						<div className={classes.secondTitle}>Наш проект - это именно то, что ты давно искал!</div>
-						<div className={classes.secondDesc}>скорее проходи регистрацию и присоединяйся к нам</div>
+						{!props.isMobile &&
+							<>
+								<div className={classes.secondTitle}>Наш проект - это именно то, что ты давно искал!</div>
+								<div className={classes.secondDesc}>скорее проходи регистрацию и присоединяйся к нам</div>
+							</>
+						}
+
 					</div>
 				</section>
 				<section className={classes.target}>

@@ -93,7 +93,6 @@ const Settings = (props) => {
 				<FileUpload
 					ref={uploadRef}
 					name="demo"
-					url={'http://192.168.3.4:8080/api/v1/users/settings/uploadAvatar'}
 					accept="image/*"
 					customUpload={true}
 					uploadHandler={uploadHandler}

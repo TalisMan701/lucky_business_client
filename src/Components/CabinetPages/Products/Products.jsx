@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import classes from './Products.module.css'
 import MainTitle from "../../CabinetComponents/MainTitle/MainTitle";
 import {productsAPI} from "../../../Api/api";
+import Product from "../../Products/Product/Product";
+import ProductBuy from "../../Products/ProductBuy/ProductBuy";
 const Products = () => {
 	const [products, setProducts] = useState([])
 	const [fetchGetAllProducts, setFetchGetAllProducts] = useState(true)
@@ -21,15 +23,21 @@ const Products = () => {
 	return (
 		<>
 			<MainTitle>Продукты компании</MainTitle>
-			{products.map(product => {
-				return(
-					<div>
-						{product.name}
-						<div>{product.description}</div>
-						<div>{product.price}</div>
-					</div>
-				)
-			})}
+			{fetchGetAllProducts ?
+				<i className={`pi pi-spin pi-spinner ${classes.fetch}`}/>:
+				<>
+					{products.length === 0 ?
+						<div>Нет продуктов</div>:
+						<div className={classes.products}>
+							{products.map(product => {
+								return(
+									<ProductBuy data={product}/>
+								)
+							})}
+						</div>
+					}
+				</>
+			}
 		</>
 	);
 };

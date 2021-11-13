@@ -442,6 +442,53 @@
         width: 100%;
         height: auto;
     }
+
+    .introCard{
+        max-width: 241px;
+        padding: 0 6px;
+        height: 70px;
+        box-shadow: 10px 20px 24px rgba(63, 88, 221, 0.1);
+    }
+
+    .introCardText{
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .introCardImg{
+        margin-right: 6px;
+    }
+
+    .introCard1{
+        top: 158px;
+        left: -4px;
+    }
+
+    .introCard2{
+        bottom: -3px;
+        right: 0;
+    }
+
+    .second{
+        padding: 38px 0 100px 0;
+    }
+
+    .secondRow{
+        flex-flow: column nowrap;
+        align-items: center;
+    }
+
+    .secondRowTitle{
+        margin-right: 0;
+        text-align: center;
+        font-size: 48px;
+        line-height: 65px;
+    }
+
+    .secondRowCard{
+        margin-right: 0;
+        margin-top: 38px;
+    }
 }
 
 

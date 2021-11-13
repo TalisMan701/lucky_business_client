@@ -5,3 +5,27 @@
     border-radius: 4px;
     padding: 16px;
 }
+
+.inputInner{
+    margin-bottom: 32px;
+}
+
+.input{
+    width: 100%;
+}
+
+.dropDown{
+    margin-bottom: 32px;
+    width: 100%;
+}
+
+.btn{
+    margin-top: 32px;
+    width: 100%;
+}
+
+.products{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}

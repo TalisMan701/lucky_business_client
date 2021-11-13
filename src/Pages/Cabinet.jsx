@@ -121,7 +121,7 @@ const Cabinet = (props) => {
 						<Route path='/cabinet/settings' render={()=><Settings/>}/>
 						<Route path='/cabinet/chat' render={()=><Chat/>}/>
 						{props.user.role === "admin" &&
-							<Route path='/cabinet/admin' render={()=><AdminPanel/>}/>
+							<Route path='/cabinet/admin' render={()=><AdminPanel toast={props.toast}/>}/>
 						}
 						<Redirect to={'/cabinet'}/>
 					</Switch>
