@@ -409,6 +409,39 @@
     .container{
         padding: 0 16px
     }
+
+    .introInner{
+        flex-flow: column wrap;
+    }
+
+    .introTitle{
+        font-size: 48px;
+        line-height: 70px;
+        margin-bottom: 20px;
+    }
+
+    .intro{
+        padding: 0;
+    }
+
+    .introDesc{
+        margin-bottom: 30px;
+    }
+
+    .introCol1{
+        margin: 0;
+        margin-bottom: 50px;
+        width: 100%;
+    }
+
+    .introCol2{
+        margin-bottom: 60px;
+    }
+
+    .introImg{
+        width: 100%;
+        height: auto;
+    }
 }
 
 

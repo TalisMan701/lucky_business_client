@@ -20,6 +20,7 @@ const Settings = (props) => {
 	const [fetchSendImg, setFetchSendImg] = useState(false)
 	const [fetchResetPassword, setFetchResetPassword] = useState(false)
 	const [fetchSendEmail, setFetchSendEmail] = useState(false)
+	const [pathAvatar, setPathAvatar] = useState(props.user.pathAvatar)
 
 	const uploadRef = useRef(null)
 	const toast = useRef(null)
@@ -31,6 +32,7 @@ const Settings = (props) => {
 		settingsAPI.sendImage(formData)
 			.then(response => {
 				if(response.status === 200){
+					setPathAvatar(response.data?.pathAvatar)
 					uploadRef.current.clear()
 					toast.current.show({severity: 'success', summary: 'Загрузка фотографии', detail: 'Прошла успешно!'})
 				}
@@ -87,7 +89,7 @@ const Settings = (props) => {
 		<>
 			<MainTitle>Настройки</MainTitle>
 			<Card title="Изменить фотографию" className={classes.card}>
-				<Avatar image={props.user.pathAvatar} size="large"  shape="circle"/>
+				<Avatar image={pathAvatar} size="large"  shape="circle"/>
 				<FileUpload
 					ref={uploadRef}
 					name="demo"

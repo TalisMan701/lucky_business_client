@@ -82,4 +82,23 @@
     .container{
         padding: 0 16px;
     }
+
+    .logoImg{
+        margin-right: 10px;
+    }
+
+    .lkInnerMobile{
+        text-decoration: none;
+        color: #ACACAC;
+    }
+
+    .lkInnerMobile a{
+        text-decoration: none;
+        color: #ACACAC;
+        transition: all 0.2s ease;
+    }
+
+    .lkInnerMobile a:hover{
+        color: #FFFFFF;
+    }
 }
