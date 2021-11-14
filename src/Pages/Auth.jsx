@@ -10,7 +10,7 @@ import {Button} from "primereact/button";
 import {authAPI} from "../Api/api";
 import {connect} from "react-redux";
 import {login} from "../Store/auth-reducer";
-import {Redirect} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {Toast} from "primereact/toast";
 
 const Auth = (props) => {
@@ -46,7 +46,9 @@ const Auth = (props) => {
 	if(sendLink){
 		return (
 			<>
-				<Header isAuth={props.isAuth}/>
+				{!props.isMobile &&
+					<Header isAuth={props.isAuth}  isMobile={props.isMobile} isTablet={props.isTablet}/>
+				}
 				<main className={classes.auth}>
 					<Card className={classes.card}>
 						<div className={classes.title}>Смена пароля</div>
@@ -73,9 +75,16 @@ const Auth = (props) => {
 								onClick={()=>{setSendLink(false)}}
 							/>
 						</div>
+						{props.isMobile &&
+							<Link to={'/'} className={classes.linkBack}>
+								<i className={`pi pi-times ${classes.linkBackIcon}`}/>
+							</Link>
+						}
 					</Card>
 				</main>
-				<Footer/>
+				{!props.isMobile &&
+					<Footer/>
+				}
 				<Toast ref={toast} position="bottom-right"/>
 			</>
 		)
@@ -83,7 +92,9 @@ const Auth = (props) => {
 
 	return (
 		<>
-			<Header isAuth={props.isAuth}/>
+			{!props.isMobile &&
+				<Header isAuth={props.isAuth} isMobile={props.isMobile} isTablet={props.isTablet}/>
+			}
 			<main className={classes.auth}>
 				<Card className={classes.card}>
 					<div className={classes.title}>Вход</div>
@@ -120,9 +131,22 @@ const Auth = (props) => {
 							onClick={()=>{setSendLink(true)}}
 						/>
 					</div>
+					{props.isMobile &&
+						<Link to={'/'} className={classes.linkBack}>
+							<i className={`pi pi-times ${classes.linkBackIcon}`}/>
+						</Link>
+					}
+					{props.isMobile &&
+						<div className={classes.goTo}>
+							Нет аккаунта?
+							<Link to={"/signup"}>Зарегистрироваться</Link>
+						</div>
+					}
 				</Card>
 			</main>
-			<Footer/>
+			{!props.isMobile &&
+				<Footer/>
+			}
 		</>
 	);
 };

@@ -489,6 +489,91 @@
         margin-right: 0;
         margin-top: 38px;
     }
+
+    .targetInner{
+        flex-flow: column nowrap;
+    }
+
+    .targetImg{
+        margin-top: 32px;
+        width: 100%;
+        height: auto;
+    }
+
+    .targetContent{
+        margin-top: 60px;
+        margin-bottom: 0;
+    }
+
+    .targetCard:last-child{
+        height: auto;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        text-align: center;
+        margin-bottom: 22px;
+    }
+
+    .targetTitle{
+        margin-bottom: 32px;
+    }
+
+    .testimonial{
+        padding: 60px 0 84px 0;
+    }
+
+    .testimonialInner{
+        flex-flow: column nowrap;
+    }
+
+    .testimonialImg{
+        order: -1;
+        width: 100%;
+        height: auto;
+    }
+
+    .testimonialContent{
+        margin: 40px 0 0 0;
+    }
+
+    .testimonialTitle{
+        max-width: 250px;
+        margin-bottom: 20px;
+    }
+
+    .testimonialText{
+        margin-bottom: 42px;
+    }
+
+    .featuresCol1{
+        padding: 0;
+        margin: 48px 0 0 0;
+    }
+
+    .featuresCol2{
+        padding-top: 0;
+    }
+
+    .features{
+        padding: 0;
+    }
+
+    .callToAction{
+        background-color: #404040;
+    }
+
+    .callToActionContent{
+        flex-flow: column wrap;
+    }
+
+    .callToActionCol{
+        width: 100%;
+        margin: 0;
+    }
+
+    .callToActionText{
+        margin-top: 16px;
+        width: 100%;
+    }
 }
 
 

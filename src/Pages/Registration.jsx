@@ -9,7 +9,7 @@ import {Button} from "primereact/button";
 import Footer from "../Components/Footer/Footer";
 import {Checkbox} from "primereact/checkbox";
 import {registrationAPI} from "../Api/api";
-import {Redirect} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {login} from "../Store/auth-reducer";
 const Registration = (props) => {
@@ -48,7 +48,9 @@ const Registration = (props) => {
 
 	return (
 		<>
-			<Header isAuth={props.isAuth}/>
+			{!props.isMobile &&
+				<Header isAuth={props.isAuth} isMobile={props.isMobile} isTablet={props.isTablet}/>
+			}
 			<main className={classes.auth}>
 				<Card className={classes.card}>
 					<div className={classes.title}>Создание аккаунта</div>
@@ -117,9 +119,22 @@ const Registration = (props) => {
 					{error &&
 						<div style={{color: "red"}}>{error}</div>
 					}
+					{props.isMobile &&
+						<Link to={'/'} className={classes.linkBack}>
+							<i className={`pi pi-times ${classes.linkBackIcon}`}/>
+						</Link>
+					}
+					{props.isMobile &&
+						<div className={classes.goTo}>
+							Есть аккаунт?
+							<Link to={"/auth"}>Войти</Link>
+						</div>
+					}
 				</Card>
 			</main>
-			<Footer/>
+			{!props.isMobile &&
+				<Footer/>
+			}
 		</>
 	);
 };

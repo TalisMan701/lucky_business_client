@@ -10,6 +10,7 @@ import CalendarWhiteSvg from "../Images/SVG/CalendarWhite.svg"
 import EmtyZImg from "../Images/Other/emtyZ.png"
 import EmailSvg from "../Images/SVG/email.svg"
 import ArrowBad from "../Images/SVG/ArrowBad.svg"
+import ArrowBadDown from "../Images/SVG/arrowDownBad.svg"
 import ArrowRight from "../Images/SVG/ArrowRight.svg"
 import clsx from "clsx";
 import {Link} from "react-router-dom";
@@ -131,8 +132,8 @@ const Landing = (props) => {
 									<div className={classes.testimonialCardTitle}>Дмитрий Вахрушев</div>
 									<div className={classes.testimonialCardText}>Ceo  Lucky Business</div>
 								</div>
-								<img src={ArrowRight} alt="arrow" className={classes.arrowNext}/>
-								<img src={ArrowRight} alt="arrow" className={classes.arrowBack}/>
+								{/*<img src={ArrowRight} alt="arrow" className={classes.arrowNext}/>
+								<img src={ArrowRight} alt="arrow" className={classes.arrowBack}/>*/}
 							</div>
 						</div>
 						<img src={EmtyImg} alt="testimonial" className={classes.testimonialImg}/>
@@ -169,22 +170,27 @@ const Landing = (props) => {
 								<div className={classes.featuresCardText}>У тебя будет возможность повысить свой уровень знаний из любой точки мира и начать зарабатывать на этом прямо сейчас! </div>
 							</div>
 						</div>
-						<ButtonMain
-							onClick={()=>{}}
-							label={"Зарегистрироваться"}
-							type={"white"}
-							borderWidth={2}
-							fontSize={36}
-							borderRadius={8}
-							width={534}
-							height={84}
-						/>
+						{!props.isMobile &&
+							<ButtonMain
+								onClick={()=>{}}
+								label={"Зарегистрироваться"}
+								type={"white"}
+								borderWidth={2}
+								fontSize={36}
+								borderRadius={8}
+								width={534}
+								height={84}
+							/>
+						}
 					</div>
 				</section>
 				<section className={classes.callToAction}>
 					<div className={clsx(classes.container, classes.callToActionInner)}>
 						<div className={classes.callToActionContent}>
-							<div className={classes.callToActionTitle}>Думаешь это всё?</div>
+							{props.isMobile ?
+								<img src={ArrowBadDown} alt="ArrowBad" className={classes.callToActionArrowMobile}/>:
+								<div className={classes.callToActionTitle}>Думаешь это всё?</div>
+							}
 							<div className={classes.callToActionCol}>
 								<div className={classes.callToActionText}>Ты сможешь вернуть стоимость самого дорогого информационного пакета уже в первую неделю своего обучения </div>
 								<ButtonMain
@@ -194,11 +200,13 @@ const Landing = (props) => {
 									borderWidth={2}
 									fontSize={28}
 									borderRadius={8}
-									width={474}
+									width={props.isMobile ? 330 :474}
 									height={63}
 								/>
 							</div>
-							<img src={ArrowBad} alt="ArrowBad" className={classes.callToActionArrow}/>
+							{!props.isMobile &&
+								<img src={ArrowBad} alt="ArrowBad" className={classes.callToActionArrow}/>
+							}
 						</div>
 					</div>
 				</section>
