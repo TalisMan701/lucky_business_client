@@ -29,7 +29,7 @@ function App(props) {
 	}
 
     useEffect(()=>{
-        props.getAuthUserData()
+		props.getAuthUserData()
 		window.addEventListener("resize", resetHeight);
 		resetHeight();
 		return () => {

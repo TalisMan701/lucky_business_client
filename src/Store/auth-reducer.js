@@ -63,7 +63,7 @@ const setFetchGetAuthUserData = (fetchGetAuthUserData) => ({type: SET_FETCH_GET_
 const setFetchLogin = (fetchLogin) => ({type: SET_FETCH_LOGIN, fetchLogin})
 const setGoLogin = (goLogin) => ({type: SET_GO_LOGIN, goLogin})
 const setErrors = (errors) => ({type: SET_ERRORS, errors})
-const logoutAction = () => ({type: LOGOUT})
+export const logoutAction = () => ({type: LOGOUT})
 
 export const getAuthUserData = () => dispatch =>{
 	dispatch(setFetchGetAuthUserData(true))
@@ -73,19 +73,7 @@ export const getAuthUserData = () => dispatch =>{
 				dispatch(setUser(response.data))
 			}
 		}).catch(error => {
-		if(error?.response?.status === 401){
-			authAPI.refresh()
-				.then(response => {
-					localStorage.setItem("token", response.data.accessToken);
-					localStorage.setItem("tokenRefresh", response.data.refreshToken);
-					dispatch(getAuthUserData())
-				}).catch(error => {
-					dispatch(setGoLogin(true))
-			})
-		}else{
 			dispatch(setFetchGetAuthUserData(false))
-		}
-		console.log(error.response)
 	})
 }
 

@@ -1,5 +1,5 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
-import thunkMiddleware from "redux-thunk";
+/*import {applyMiddleware, combineReducers, createStore} from "redux";
+import thunk from "redux-thunk";
 import authReducer from "./auth-reducer";
 
 
@@ -7,8 +7,10 @@ let reducers = combineReducers({
 	auth: authReducer
 })
 
-let store = createStore(reducers, applyMiddleware(thunkMiddleware))
+
+
+const store = createStore(reducers, applyMiddleware(thunk))
 
 window.store = store
 
-export default store
+export default store*/
