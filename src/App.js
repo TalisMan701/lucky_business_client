@@ -8,7 +8,7 @@ import {Route, Switch} from "react-router-dom";
 import Auth from "./Pages/Auth";
 import Registration from "./Pages/Registration";
 import {connect} from "react-redux";
-import {getAuthUserData} from "./Store/auth-reducer";
+import {addNotif, getAuthUserData, setNotifications, updateUser} from "./Store/auth-reducer";
 import React, {useEffect, useRef, useState} from "react";
 import Cabinet from "./Pages/Cabinet";
 import RefMiddleware from "./Components/RefMiddleware/RefMiddleware";
@@ -29,11 +29,17 @@ function App(props) {
 		document.documentElement.style.setProperty('--vh', `${vh}px`);
 	}
 
+	const gg = () => {
+		props.setNotifications()
+	}
+
     useEffect(()=>{
-    	socket.on("notification", (arg) => {
+    	socket.on("newNotification", (arg) => {
     		console.log(arg)
+			gg()
 			toast.current.show({severity: 'success', summary: 'Уведомления', detail: 'Произошло уведомление!'})
 		});
+		/*addNotif(toast)*/
 		props.getAuthUserData()
 		window.addEventListener("resize", resetHeight);
 		resetHeight();
@@ -50,7 +56,7 @@ function App(props) {
 
 	return (
 		<>
-			{/*<div style={{color: "black", marginLeft: 500}} onClick={()=>{socket.emit("hello", "Piska")}}>Send message</div>*/}
+			{/*<div style={{color: "black", marginLeft: 500}} onClick={()=>{socket.disconnect().connect()}}>Send message</div>*/}
 			<Route exact path={'/'} render= {() => <Landing isMobile={isMobile} isTablet={isTablet} isAuth={props.isAuth}/>}/>
 			<Route path={'/auth'}  render= {() => <Auth isMobile={isMobile} isTablet={isTablet}/>}/>
 			<Route path={'/reset_password'}  render= {() => <ResetPassword isMobile={isMobile} isTablet={isTablet} toast={toast}/>}/>
@@ -64,8 +70,9 @@ function App(props) {
 
 const mapStateToProps = state => ({
     isAuth: state.auth.isAuth,
+	user: state.auth.user,
 	fetchGetAuthUserData: state.auth.fetchGetAuthUserData,
 	goLogin: state.auth.goLogin
 })
 
-export default connect(mapStateToProps, {getAuthUserData})(App);
+export default connect(mapStateToProps, {getAuthUserData, updateUser, setNotifications})(App);

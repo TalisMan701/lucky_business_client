@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import classes from './ResetPassword.module.css'
-import {Redirect, withRouter} from "react-router-dom";
+import {Link, Redirect, withRouter} from "react-router-dom";
 import Header from "../../Components/Header/Header";
 import {Card} from "primereact/card";
 import clsx from "clsx";
@@ -46,7 +46,9 @@ const ResetPassword = (props) => {
 
 	return (
 		<>
-			<Header isAuth={props.isAuth}/>
+			{!props.isMobile &&
+				<Header isAuth={props.isAuth} isMobile={props.isMobile} isTablet={props.isTablet}/>
+			}
 			<main className={classes.auth}>
 				<Card className={classes.card}>
 					<div className={classes.title}>Смена пароля</div>
@@ -79,9 +81,16 @@ const ResetPassword = (props) => {
 							onClick={resetPassword}
 						/>
 					</div>
+					{props.isMobile &&
+						<Link to={'/'} className={classes.linkBack}>
+							<i className={`pi pi-times ${classes.linkBackIcon}`}/>
+						</Link>
+					}
 				</Card>
 			</main>
-			<Footer/>
+			{!props.isMobile &&
+				<Footer/>
+			}
 		</>
 	);
 };

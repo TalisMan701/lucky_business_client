@@ -6,9 +6,17 @@ import {Badge} from "primereact/badge";
 import {connect} from "react-redux";
 import {logout} from "../../Store/auth-reducer";
 
-const Sidebar = (props) => {
+const SidebarMy = (props) => {
 	return (
 		<div className={classes.sidebar}>
+			{props.isMobile &&
+				<div
+					className={classes.burgerInner}
+					onClick={()=>{props.setVisible(false)}}
+				>
+					<i className={`pi pi-times ${classes.burger}`}/>
+				</div>
+			}
 			<Link to={"/"} className={classes.logoInner}>
 				<img src={LogoSvg} alt="logo" className={classes.logoImg}/>
 				<span className={classes.logoTitle}>Lucky Business</span>
@@ -16,6 +24,7 @@ const Sidebar = (props) => {
 			<div className={classes.content}>
 				<NavLink
 					exact
+					onClick={()=>{props.setVisible(false)}}
 					activeClassName={classes.activeNav}
 					to={'/cabinet'}
 					className={classes.navItem}
@@ -24,6 +33,7 @@ const Sidebar = (props) => {
 					<span>Мой кабинет</span>
 				</NavLink>
 				<NavLink
+					onClick={()=>{props.setVisible(false)}}
 					activeClassName={classes.activeNav}
 					to={"/cabinet/products"}
 					className={classes.navItem}
@@ -32,6 +42,7 @@ const Sidebar = (props) => {
 					<span>Продукты компании</span>
 				</NavLink>
 				<NavLink
+					onClick={()=>{props.setVisible(false)}}
 					activeClassName={classes.activeNav}
 					to={'/cabinet/my_products'}
 					className={classes.navItem}
@@ -40,6 +51,7 @@ const Sidebar = (props) => {
 					<span>Мои покупки</span>
 				</NavLink>
 				<NavLink
+					onClick={()=>{props.setVisible(false)}}
 					activeClassName={classes.activeNav}
 					to={'/cabinet/partner_program'}
 					className={classes.navItem}
@@ -48,6 +60,7 @@ const Sidebar = (props) => {
 					<span>Партнерская программа</span>
 				</NavLink>
 				<NavLink
+					onClick={()=>{props.setVisible(false)}}
 					activeClassName={classes.activeNav}
 					to={'/cabinet/leaders'}
 					className={classes.navItem}
@@ -56,6 +69,7 @@ const Sidebar = (props) => {
 					<span>Арена лидеров</span>
 				</NavLink>
 				<NavLink
+					onClick={()=>{props.setVisible(false)}}
 					activeClassName={classes.activeNav}
 					to={'/cabinet/wallet'}
 					className={classes.navItem}
@@ -64,6 +78,7 @@ const Sidebar = (props) => {
 					<span>Колешёк</span>
 				</NavLink>
 				<NavLink
+					onClick={()=>{props.setVisible(false)}}
 					activeClassName={classes.activeNav}
 					to={'/cabinet/notification'}
 					className={classes.navItem}
@@ -78,6 +93,7 @@ const Sidebar = (props) => {
 
 				</NavLink>
 				<NavLink
+					onClick={()=>{props.setVisible(false)}}
 					activeClassName={classes.activeNav}
 					to={'/cabinet/materials'}
 					className={classes.navItem}
@@ -86,6 +102,7 @@ const Sidebar = (props) => {
 					<span>Полезные материалы</span>
 				</NavLink>
 				<NavLink
+					onClick={()=>{props.setVisible(false)}}
 					activeClassName={classes.activeNav}
 					to={'/cabinet/settings'}
 					className={classes.navItem}
@@ -94,6 +111,7 @@ const Sidebar = (props) => {
 					<span>Настройки</span>
 				</NavLink>
 				<NavLink
+					onClick={()=>{props.setVisible(false)}}
 					activeClassName={classes.activeNav}
 					to={'/cabinet/chat'}
 					className={classes.navItem}
@@ -103,6 +121,7 @@ const Sidebar = (props) => {
 				</NavLink>
 				{props.user.role === "admin" &&
 					<NavLink
+						onClick={()=>{props.setVisible(false)}}
 						activeClassName={classes.activeNav}
 						to={'/cabinet/admin'}
 						className={classes.navItem}
@@ -129,4 +148,4 @@ const mapStateToProps = state =>({
 	user: state.auth.user
 })
 
-export default connect(mapStateToProps, {logout})(Sidebar);
+export default connect(mapStateToProps, {logout})(SidebarMy);

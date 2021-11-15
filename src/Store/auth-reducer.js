@@ -1,4 +1,5 @@
 import {authAPI} from "../Api/api";
+import socket from "../Socket/socket";
 
 const SET_USER_DATA = "SET_USER_DATA";
 const UPDATE_USER_DATA = "UPDATE_USER_DATA";
@@ -6,6 +7,7 @@ const SET_FETCH_GET_AUTH_USER_DATA = "SET_FETCH_GET_AUTH_USER_DATA";
 const SET_GO_LOGIN = "SET_GO_LOGIN";
 const SET_ERRORS = "SET_ERRORS";
 const LOGOUT = "LOGOUT";
+const SET_NOTIFICATIONS = "SET_NOTIFICATIONS";
 const SET_FETCH_LOGIN = "SET_FETCH_LOGIN"
 
 let initialState = {
@@ -32,6 +34,15 @@ const authReducer = (state = initialState, action) =>{
 				...state,
 				user: action.user
 			}
+		case SET_NOTIFICATIONS:{
+			return {
+				...state,
+				user: {
+					...state.user,
+					countNotif: state.user.countNotif + 1
+				}
+			}
+		}
 		case SET_FETCH_GET_AUTH_USER_DATA:
 			return {
 				...state,
@@ -72,6 +83,20 @@ const setGoLogin = (goLogin) => ({type: SET_GO_LOGIN, goLogin})
 const setErrors = (errors) => ({type: SET_ERRORS, errors})
 export const logoutAction = () => ({type: LOGOUT})
 
+export const setNotifications = () => ({type: SET_NOTIFICATIONS})
+
+export const addNotif = (toast) => dispatch => {
+	socket.on("newNotification", (arg) => {
+		console.log(arg)
+		dispatch(setNotifications())
+		/*props.updateUser({
+			...props.user,
+			countNotif: props.user?     .countNotif + 1
+		})*/
+		toast.current.show({severity: 'success', summary: 'Уведомления', detail: 'Произошло уведомление!'})
+	});
+}
+
 export const getAuthUserData = () => dispatch =>{
 	dispatch(setFetchGetAuthUserData(true))
 	authAPI.me()
@@ -92,6 +117,10 @@ export const login = (email, password) => (dispatch) =>{
 			if(response.status === 200){
 				localStorage.setItem("token", response.data.accessToken);
 				localStorage.setItem("tokenRefresh", response.data.refreshToken);
+				socket.io.opts.query = {
+					token: response.data.accessToken
+				}
+				socket.disconnect().connect()
 				dispatch(setGoLogin(false))
 				dispatch(getAuthUserData())
 			}else{
@@ -102,7 +131,7 @@ export const login = (email, password) => (dispatch) =>{
 		if(error?.response?.status === 401){
 			dispatch(setErrors("Неправильный логин или пароль!"))
 		}else{
-			dispatch(setErrors(error.response.data?.message))
+			dispatch(setErrors(error?.response?.data?.message))
 		}
 		dispatch(setFetchLogin(false))
 	})
@@ -114,6 +143,10 @@ export const logout = () => (dispatch) =>{
 			if(response.status === 200){
 				localStorage.removeItem("token");
 				localStorage.removeItem("tokenRefresh");
+				socket.io.opts.query = {
+					token: null
+				}
+				socket.disconnect().connect()
 				dispatch(logoutAction())
 			}
 		})

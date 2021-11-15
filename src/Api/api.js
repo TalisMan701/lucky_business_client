@@ -1,6 +1,7 @@
 import axios from "axios";
 import {store} from '../index'
 import {logoutAction} from "../Store/auth-reducer";
+import socket from "../Socket/socket";
 
 
 const instanceWithToken = axios.create({
@@ -39,11 +40,19 @@ instanceWithToken.interceptors.response.use(
 				const response = await authAPI.refresh()
 				localStorage.setItem('token', response.data.accessToken)
 				localStorage.setItem('tokenRefresh', response.data.refreshToken)
+				socket.io.opts.query = {
+					token: response.data.accessToken
+				}
+				socket.disconnect().connect()
 				return instanceWithToken.request(originalRequest)
 			}
 			catch (e){
 				localStorage.removeItem('token')
 				localStorage.removeItem('tokenRefresh')
+				socket.io.opts.query = {
+					token: null
+				}
+				socket.disconnect().connect()
 				store.dispatch(logoutAction())
 			}
 		}

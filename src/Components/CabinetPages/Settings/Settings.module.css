@@ -33,4 +33,46 @@
 }
 
 .input{
+
+}
+
+@media (max-width: 450px) {
+    .fileUploadHeader > button{
+        margin-top: 16px;
+        width: 100%;
+    }
+
+    .fileUploadHeader > span{
+        width: 100%;
+    }
+
+    .messageEmail{
+        margin-bottom: 24px;
+        width: 100%;
+    }
+
+    .inputInnerPassword{
+        margin-bottom: 16px;
+    }
+
+    .inputInnerPassword:last-child{
+        margin-bottom: 0;
+    }
+
+    .inputInnerPassword > div{
+        width: 100%;
+    }
+
+    .inputInnerPassword > div > input{
+        width: 100%;
+    }
+
+    .inputInner{
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .input{
+        width: 100%;
+    }
 }

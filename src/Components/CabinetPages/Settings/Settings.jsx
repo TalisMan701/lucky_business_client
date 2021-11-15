@@ -91,6 +91,7 @@ const Settings = (props) => {
 			<Card title="Изменить фотографию" className={classes.card}>
 				<Avatar image={pathAvatar} size="large"  shape="circle"/>
 				<FileUpload
+					headerClassName={classes.fileUploadHeader}
 					ref={uploadRef}
 					name="demo"
 					accept="image/*"
@@ -103,10 +104,10 @@ const Settings = (props) => {
 			</Card>
 			<Card title="Подтвердить почту" className={classes.card}>
 				<div className={classes.emailConfirm}>
-					<div className="p-col-12 p-md-3" style={{marginRight: 16}}>
+					<div className="p-col-12 p-md-3" style={{marginRight: props.isMobile ? 0 : 16, width: props.isMobile ? "100%" : "auto"}}>
 						{props.user?.confirmedEmail ?
-							<Message severity="success" text="Email подтверждён!" />
-							: <Message severity="error" text="Email не подтверждён!" />
+							<Message severity="success" text="Email подтверждён!" className={classes.messageEmail}/>
+							: <Message severity="error" text="Email не подтверждён!" className={classes.messageEmail}/>
 						}
 					</div>
 					<span className={clsx("p-float-label", classes.inputInner)}>
@@ -130,7 +131,7 @@ const Settings = (props) => {
 			</Card>
 			<Card title="Сменить пароль" className={classes.card}>
 				<div className={classes.passwords}>
-					<span className={clsx("p-float-label", classes.inputInner)}>
+					<span className={clsx("p-float-label", classes.inputInner, classes.inputInnerPassword)}>
 						<Password
 							className={classes.inputPassword}
 							inputId="password"
@@ -140,7 +141,7 @@ const Settings = (props) => {
 						/>
 						<label htmlFor="password" className={classes.label}>Старый пароль</label>
 					</span>
-					<span className={clsx("p-float-label", classes.inputInner)}>
+					<span className={clsx("p-float-label", classes.inputInner, classes.inputInnerPassword)}>
 						<Password
 							className={classes.inputPassword}
 							inputId="newPassword"
@@ -150,7 +151,7 @@ const Settings = (props) => {
 						/>
 						<label htmlFor="password" className={classes.label}>Новый пароль</label>
 					</span>
-					<span className={clsx("p-float-label", classes.inputInner)}>
+					<span className={clsx("p-float-label", classes.inputInner, classes.inputInnerPassword)}>
 						<Password
 							className={classes.inputPassword}
 							inputId="confirmPassword"

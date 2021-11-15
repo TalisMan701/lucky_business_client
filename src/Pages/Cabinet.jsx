@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from "../StylesForPages/Cabinet.module.css";
 import {connect} from "react-redux";
 import {Redirect, Route, Switch} from "react-router-dom";
 import {logout} from "../Store/auth-reducer";
-import Sidebar from "../Components/Sidebar/Sidebar";
 import Particles from "react-particles-js";
 import Main from "../Components/CabinetPages/Main/Main";
 import Products from "../Components/CabinetPages/Products/Products";
@@ -16,16 +15,35 @@ import Materials from "../Components/CabinetPages/Materials/Materials";
 import Settings from "../Components/CabinetPages/Settings/Settings";
 import Chat from "../Components/CabinetPages/Chat/Chat";
 import AdminPanel from "./AdminPanel/AdminPanel";
+import SidebarMy from "../Components/Sidebar/Sidebar";
+import {Sidebar} from "primereact/sidebar";
 
 const Cabinet = (props) => {
+
+	const [visible, setVisible] = useState(false)
 
 	if(!props.isAuth){
 		return <Redirect to={"/"}/>
 	}
 	return (
 		<div>
-			<Sidebar/>
+			{props.isMobile ?
+				<Sidebar visible={visible} position="left" onHide={() => setVisible(false)}>
+					<SidebarMy isMobile={props.isMobile} isTablet={props.isTablet} setVisible={setVisible}/>
+				</Sidebar>:
+				<SidebarMy isMobile={props.isMobile} isTablet={props.isTablet} setVisible={setVisible}/>
+			}
+
 			<div className={classes.content}>
+				{props.isMobile &&
+					<div
+						className={classes.burgerInner}
+						onClick={()=>{setVisible(true)}}
+					>
+						<i className={`pi pi-bars ${classes.burger}`}/>
+					</div>
+
+				}
 				<Particles
 					params={{
 						particles: {
@@ -118,7 +136,7 @@ const Cabinet = (props) => {
 						<Route path='/cabinet/wallet' render={()=><Wallet/>}/>
 						<Route path='/cabinet/notification' render={()=><Notification/>}/>
 						<Route path='/cabinet/materials' render={()=><Materials/>}/>
-						<Route path='/cabinet/settings' render={()=><Settings/>}/>
+						<Route path='/cabinet/settings' render={()=><Settings isMobile={props.isMobile} isTablet={props.isTablet}/>}/>
 						<Route path='/cabinet/chat' render={()=><Chat/>}/>
 						{props.user.role === "admin" &&
 							<Route path='/cabinet/admin' render={()=><AdminPanel toast={props.toast}/>}/>
