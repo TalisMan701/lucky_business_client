@@ -13,7 +13,6 @@ const instanceWithTokenFile = axios.create({
 	withCredentials: true,
 	baseURL: `https://luckly-bus.herokuapp.com/api/v1/`,
 	headers: {
-		"Authorization": "Bearer " + localStorage.getItem("token"),
 		'Content-Type': 'multipart/form-data'
 	}
 });
@@ -24,6 +23,11 @@ const instance = axios.create({
 });
 
 instanceWithToken.interceptors.request.use(config => {
+	config.headers.Authorization = "Bearer " + localStorage.getItem("token")
+	return config
+})
+
+instanceWithTokenFile.interceptors.request.use(config => {
 	config.headers.Authorization = "Bearer " + localStorage.getItem("token")
 	return config
 })
@@ -45,6 +49,38 @@ instanceWithToken.interceptors.response.use(
 				}
 				socket.disconnect().connect()
 				return instanceWithToken.request(originalRequest)
+			}
+			catch (e){
+				localStorage.removeItem('token')
+				localStorage.removeItem('tokenRefresh')
+				socket.io.opts.query = {
+					token: null
+				}
+				socket.disconnect().connect()
+				store.dispatch(logoutAction())
+			}
+		}
+		throw error
+	}
+)
+
+instanceWithTokenFile.interceptors.response.use(
+	config => {
+		return config
+	},
+	async error => {
+		const originalRequest = error.config
+		if(error.response.status === 401 && error.config && !error._isRetry){
+			originalRequest._isRetry = true
+			try {
+				const response = await authAPI.refresh()
+				localStorage.setItem('token', response.data.accessToken)
+				localStorage.setItem('tokenRefresh', response.data.refreshToken)
+				socket.io.opts.query = {
+					token: response.data.accessToken
+				}
+				socket.disconnect().connect()
+				return instanceWithTokenFile.request(originalRequest)
 			}
 			catch (e){
 				localStorage.removeItem('token')
