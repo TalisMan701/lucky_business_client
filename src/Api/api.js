@@ -134,3 +134,12 @@ export const myProductsAPI = {
 		return instanceWithToken.get(`users/getHistoryBuy`)
 	}
 }
+
+export const notificationsAPI = {
+	getMyNotifications(){
+		return instanceWithToken.get(`users/getAllNotifications`)
+	},
+	readAllNotifications(){
+		return instanceWithToken.get(`users/setStatusRead`)
+	}
+}

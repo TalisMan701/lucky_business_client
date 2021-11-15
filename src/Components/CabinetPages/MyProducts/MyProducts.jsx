@@ -32,7 +32,7 @@ const MyProducts = (props) => {
 				<i className={`pi pi-spin pi-spinner ${classes.fetch}`}/>:
 				<>
 					{myProducts.length === 0 ?
-						<div>Нет продуктов</div>:
+						<div className={classes.noProducts}>Нет продуктов</div>:
 						<div className={classes.products}>
 							{myProducts.map(product => {
 								return(

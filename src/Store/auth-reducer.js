@@ -1,6 +1,7 @@
 import {authAPI} from "../Api/api";
 
 const SET_USER_DATA = "SET_USER_DATA";
+const UPDATE_USER_DATA = "UPDATE_USER_DATA";
 const SET_FETCH_GET_AUTH_USER_DATA = "SET_FETCH_GET_AUTH_USER_DATA";
 const SET_GO_LOGIN = "SET_GO_LOGIN";
 const SET_ERRORS = "SET_ERRORS";
@@ -25,6 +26,11 @@ const authReducer = (state = initialState, action) =>{
 				user: action.user,
 				fetchGetAuthUserData: false,
 				isAuth: true
+			}
+		case UPDATE_USER_DATA:
+			return {
+				...state,
+				user: action.user
 			}
 		case SET_FETCH_GET_AUTH_USER_DATA:
 			return {
@@ -59,6 +65,7 @@ const authReducer = (state = initialState, action) =>{
 }
 
 const setUser = (user) => ({type: SET_USER_DATA, user})
+export const updateUser = (user) => ({type: UPDATE_USER_DATA, user})
 const setFetchGetAuthUserData = (fetchGetAuthUserData) => ({type: SET_FETCH_GET_AUTH_USER_DATA, fetchGetAuthUserData})
 const setFetchLogin = (fetchLogin) => ({type: SET_FETCH_LOGIN, fetchLogin})
 const setGoLogin = (goLogin) => ({type: SET_GO_LOGIN, goLogin})

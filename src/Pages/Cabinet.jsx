@@ -113,7 +113,7 @@ const Cabinet = (props) => {
 						<Route exact path='/cabinet' render={()=><Main/>}/>
 						<Route path='/cabinet/products' render={()=><Products toast={props.toast}/>}/>
 						<Route path='/cabinet/my_products' render={()=><MyProducts/>}/>
-						<Route path='/cabinet/partner_program' render={()=><PartnerProgram/>}/>
+						<Route path='/cabinet/partner_program' render={()=><PartnerProgram toast={props.toast}/>}/>
 						<Route path='/cabinet/leaders' render={()=><Leaders/>}/>
 						<Route path='/cabinet/wallet' render={()=><Wallet/>}/>
 						<Route path='/cabinet/notification' render={()=><Notification/>}/>

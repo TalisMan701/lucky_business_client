@@ -13,7 +13,7 @@ const ProductBuy = (props) => {
 				setFetchBuyProduct(false)
 			})
 			.catch(error => {
-				if(error.response.status === 400){
+				if(error.response.status === 400 || error.response.status === 402){
 					props.toast.current.show({severity: 'error', summary: 'Покупка продукта', detail: error.response.data.message})
 				}else{
 					props.toast.current.show({severity: 'error', summary: 'Покупка продукта', detail: `Продукт ${props.data.name} не был куплен, попробуйте снова!`})

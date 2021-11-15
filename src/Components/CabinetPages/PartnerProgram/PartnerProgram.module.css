@@ -1,0 +1,31 @@
+.card{
+    background: #1e1e1e;
+    color: rgba(255, 255, 255, 0.87);
+    box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+    border-radius: 4px;
+    padding: 16px;
+}
+
+.ref{
+    margin-bottom: 4px;
+}
+
+.row{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.inputRef{
+    width: 100%;
+    margin-bottom: 16px;
+    margin-top: 8px;
+}
+
+.copyIcon{
+    cursor: pointer;
+    color: #9FA8DA;
+    font-size: 32px;
+    margin: 0 16px;
+    padding-bottom: 8px;
+}

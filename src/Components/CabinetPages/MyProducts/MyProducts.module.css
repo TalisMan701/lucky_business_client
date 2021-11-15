@@ -4,7 +4,22 @@
     justify-content: space-around;
 }
 
+.products::after {
+    content: "";
+    width: 350px;
+}
+
+.products::before {
+    content: "";
+    width: 350px;
+    order: 2;
+}
+
 .fetch{
     color: #FFFFFF;
     font-size: 54px;
+}
+
+.noProducts{
+    color: #FFFFFF;
 }

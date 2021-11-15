@@ -15,6 +15,7 @@ import RefMiddleware from "./Components/RefMiddleware/RefMiddleware";
 import Loading from "./Pages/Loading";
 import ResetPassword from "./Pages/ResetPassword/ResetPassword";
 import {Toast} from "primereact/toast";
+import socket from "./Socket/socket";
 
 function App(props) {
 	const toast = useRef(null)
@@ -29,6 +30,10 @@ function App(props) {
 	}
 
     useEffect(()=>{
+    	socket.on("notification", (arg) => {
+    		console.log(arg)
+			toast.current.show({severity: 'success', summary: 'Уведомления', detail: 'Произошло уведомление!'})
+		});
 		props.getAuthUserData()
 		window.addEventListener("resize", resetHeight);
 		resetHeight();
@@ -45,6 +50,7 @@ function App(props) {
 
 	return (
 		<>
+			{/*<div style={{color: "black", marginLeft: 500}} onClick={()=>{socket.emit("hello", "Piska")}}>Send message</div>*/}
 			<Route exact path={'/'} render= {() => <Landing isMobile={isMobile} isTablet={isTablet} isAuth={props.isAuth}/>}/>
 			<Route path={'/auth'}  render= {() => <Auth isMobile={isMobile} isTablet={isTablet}/>}/>
 			<Route path={'/reset_password'}  render= {() => <ResetPassword isMobile={isMobile} isTablet={isTablet} toast={toast}/>}/>
