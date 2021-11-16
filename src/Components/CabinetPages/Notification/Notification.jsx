@@ -5,6 +5,8 @@ import {notificationsAPI} from "../../../Api/api";
 import clsx from "clsx";
 import {connect} from "react-redux";
 import {updateUser} from "../../../Store/auth-reducer";
+import moment from "moment";
+import 'moment/locale/ru';
 const Notification = (props) => {
 	const [notifications, setNotifications] = useState([])
 	const [fetchGetNotifications, setFetchGetNotifications] = useState(true)
@@ -42,9 +44,11 @@ const Notification = (props) => {
 						return(
 							<div className={clsx(classes.notif, notif.read && classes.notifRead)}>
 								{/*<i className="pi pi-bell"/>*/}
-								<span>{notif.description}</span>
-								<span>+{notif.getMoney?.toLocaleString()} RUB</span>
-								<span>{notif.date}</span>
+								<div className={classes.notifDesc}>{notif.description}</div>
+								{notif.type === "newRefBuy" &&
+									<div className={classes.notifPrice}>+{notif.getMoney?.toLocaleString()} RUB</div>
+								}
+								<div className={classes.notifDate}>{moment(notif.date).locale("ru").format("LLL")}</div>
 							</div>
 						)
 					})}

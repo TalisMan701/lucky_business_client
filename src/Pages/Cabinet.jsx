@@ -82,7 +82,7 @@ const Cabinet = (props) => {
 								}
 							},
 							number: {
-								value: 100,
+								value: props.isMobile? 30 :100,
 							},
 							color: {
 								value: "rgba(255,255,255,0.56)"

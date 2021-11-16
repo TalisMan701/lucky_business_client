@@ -37,9 +37,8 @@ function App(props) {
     	socket.on("newNotification", (arg) => {
     		console.log(arg)
 			gg()
-			toast.current.show({severity: 'success', summary: 'Уведомления', detail: 'Произошло уведомление!'})
+			toast.current.show({severity: 'info', summary: 'Уведомления', detail: 'Произошло уведомление!'})
 		});
-		/*addNotif(toast)*/
 		props.getAuthUserData()
 		window.addEventListener("resize", resetHeight);
 		resetHeight();
@@ -56,14 +55,16 @@ function App(props) {
 
 	return (
 		<>
-			{/*<div style={{color: "black", marginLeft: 500}} onClick={()=>{socket.disconnect().connect()}}>Send message</div>*/}
+			{/*<div style={{color: "black", marginLeft: 0}}
+				 onClick={()=>{toast.current.show({severity: 'info', summary: 'Уведомления', detail: 'Произошло уведомление!', life: 300000})}}
+			>Send message</div>*/}
 			<Route exact path={'/'} render= {() => <Landing isMobile={isMobile} isTablet={isTablet} isAuth={props.isAuth}/>}/>
 			<Route path={'/auth'}  render= {() => <Auth isMobile={isMobile} isTablet={isTablet}/>}/>
 			<Route path={'/reset_password'}  render= {() => <ResetPassword isMobile={isMobile} isTablet={isTablet} toast={toast}/>}/>
 			<Route path={'/signup'}  render= {() => <Registration isMobile={isMobile} isTablet={isTablet}/>}/>
 			<Route path={'/cabinet'}  render= {() => <Cabinet isMobile={isMobile} isTablet={isTablet} toast={toast}/>}/>
 			<Route path={'/ref'}  render= {() => <RefMiddleware/> }/>
-			<Toast ref={toast} position="bottom-right"/>
+			<Toast ref={toast} position="bottom-right" className={classes.toast}/>
 		</>
 	);
 }

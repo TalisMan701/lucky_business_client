@@ -31,3 +31,10 @@
     font-family: 'Open_Sans_SemiBold';
     src: local('Open_Sans_SemiBold'), url(./Fonts/OpenSans-SemiBold.ttf) format('truetype');
 }
+
+@media (max-width: 450px) {
+    .toast{
+        width: calc(100% - 40px);
+        bottom: 10px;
+    }
+}

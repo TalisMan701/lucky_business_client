@@ -12,3 +12,24 @@
 .notifRead{
     background: #1e1e1e;
 }
+
+@media (max-width: 450px) {
+    .notif{
+        flex-flow: column nowrap;
+    }
+
+    .notifDesc{
+        margin-bottom: 4px;
+    }
+
+    .notifPrice{
+        align-self: flex-end;
+        font-weight: bold;
+    }
+
+    .notifDate{
+        order: -1;
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+}

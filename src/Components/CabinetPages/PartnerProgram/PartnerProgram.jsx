@@ -1,22 +1,57 @@
 import React, {useEffect, useState} from 'react';
 import classes from './PartnerProgram.module.css'
 import MainTitle from "../../CabinetComponents/MainTitle/MainTitle";
-import {partnerProgramAPI} from "../../../Api/api";
+import {partnerProgramAPI, productsAPI} from "../../../Api/api";
 import {TabPanel, TabView} from "primereact/tabview";
 import {Accordion, AccordionTab} from "primereact/accordion";
 import {InputText} from "primereact/inputtext";
 import {connect} from "react-redux";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import {Button} from "primereact/button";
+import getProfit from "../../../utils/calculator";
+import {Dropdown} from "primereact/dropdown";
+import clsx from "clsx";
 const PartnerProgram = (props) => {
 	const [referals, setReferals] = useState([])
 	const [activeIndex, setActiveIndex] = useState(0)
+	const [profit, setProfit] = useState(0)
+	const [selectRefProduct, setSelectRefProduct] = useState(null)
+	const [selectMyProduct, setSelectMyProduct] = useState(null)
+	const [products, setProducts] = useState([])
+	const [countPeople, setCountPeople] = useState(0)
 
 	const [fetchGetReferals, setFetchGetReferals] = useState(true)
+	const [fetchGetAllProducts, setFetchGetAllProducts] = useState(true)
 
 
 	useEffect(()=> {
-		getReferals()
-	},[])
+		if(activeIndex === 0){
+			getReferals()
+		}
+		if(activeIndex === 1){
+			getProducts()
+		}
+	},[activeIndex])
+
+	const getProducts = () => {
+		setFetchGetAllProducts(true)
+		productsAPI.getAllProducts()
+			.then(response => {
+				let tempDataProducts = []
+				response.data.forEach((product, index) => {
+					tempDataProducts.push({
+						index: index,
+						price: product.price,
+						name: product.name
+					})
+				})
+				setProducts(tempDataProducts)
+				setFetchGetAllProducts(false)
+			})
+			.catch(error => {
+				setFetchGetAllProducts(false)
+			})
+	}
 
 	const getReferals = () => {
 		setFetchGetReferals(true)
@@ -127,7 +162,47 @@ const PartnerProgram = (props) => {
 						}
 					</TabPanel>
 					<TabPanel header="Калькулятор доходности">
-						Калькулятор:
+						{fetchGetAllProducts ?
+							<div>
+								<i className={`pi pi-spin pi-spinner ${classes.fetch}`}/>
+							</div> :
+							<>
+								<Dropdown
+									optionLabel="name"
+									value={selectMyProduct}
+									options={products}
+									onChange={(e) => setSelectMyProduct(e.value)}
+									placeholder="Выберете свой пакет"
+									showClear
+									className={classes.dropDown}
+								/>
+								<Dropdown
+									optionLabel="name"
+									value={selectRefProduct}
+									options={products}
+									onChange={(e) => setSelectRefProduct(e.value)}
+									placeholder="Минимальный пакет рефералов"
+									showClear
+									className={classes.dropDown}
+								/>
+								<span className={clsx("p-float-label", classes.inputInner)}>
+									<InputText
+										className={classes.input}
+										id="countPeople" value={countPeople}
+										onChange={(e) => setCountPeople(e.target.value)}
+									/>
+									<label htmlFor="nameProduct" className={classes.label}>Количество приглашённых каждым</label>
+								</span>
+								<Button
+									onClick={()=>{setProfit(getProfit(selectMyProduct.index, selectRefProduct.price, countPeople))}}
+									label={"Рассчитать прибыль"}
+								/>
+								<div>
+									Ваша примерная прибыль: {profit.toLocaleString()} RUB
+								</div>
+							</>
+						}
+
 					</TabPanel>
 				</TabView>
 			</div>
