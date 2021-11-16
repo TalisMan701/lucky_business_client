@@ -129,7 +129,7 @@ const Cabinet = (props) => {
 				<div className={classes.main}>
 					<Switch>
 						<Route exact path='/cabinet' render={()=><Main/>}/>
-						<Route path='/cabinet/products' render={()=><Products toast={props.toast}/>}/>
+						<Route path='/cabinet/products' render={()=><Products toast={props.toast} user={props.user}/>}/>
 						<Route path='/cabinet/my_products' render={()=><MyProducts/>}/>
 						<Route path='/cabinet/partner_program' render={()=><PartnerProgram toast={props.toast}/>}/>
 						<Route path='/cabinet/leaders' render={()=><Leaders/>}/>

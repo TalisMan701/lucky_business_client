@@ -9,6 +9,7 @@ const SET_ERRORS = "SET_ERRORS";
 const LOGOUT = "LOGOUT";
 const SET_NOTIFICATIONS = "SET_NOTIFICATIONS";
 const SET_FETCH_LOGIN = "SET_FETCH_LOGIN"
+const UPDATE_PRICE_USER = "UPDATE_PRICE_USER"
 
 let initialState = {
 	isAuth: false,
@@ -40,6 +41,15 @@ const authReducer = (state = initialState, action) =>{
 				user: {
 					...state.user,
 					countNotif: state.user.countNotif + 1
+				}
+			}
+		}
+		case UPDATE_PRICE_USER:{
+			return {
+				...state,
+				user: {
+					...state.user,
+					balance: state.user.balance - action.buyPrice
 				}
 			}
 		}
@@ -83,19 +93,20 @@ const setGoLogin = (goLogin) => ({type: SET_GO_LOGIN, goLogin})
 const setErrors = (errors) => ({type: SET_ERRORS, errors})
 export const logoutAction = () => ({type: LOGOUT})
 
+export const updatePriceUser = (buyPrice) => ({type: UPDATE_PRICE_USER, buyPrice})
 export const setNotifications = () => ({type: SET_NOTIFICATIONS})
 
-export const addNotif = (toast) => dispatch => {
+/*export const addNotif = (toast) => dispatch => {
 	socket.on("newNotification", (arg) => {
 		console.log(arg)
 		dispatch(setNotifications())
-		/*props.updateUser({
+		/!*props.updateUser({
 			...props.user,
 			countNotif: props.user?     .countNotif + 1
-		})*/
+		})*!/
 		toast.current.show({severity: 'success', summary: 'Уведомления', detail: 'Произошло уведомление!'})
 	});
-}
+}*/
 
 export const getAuthUserData = () => dispatch =>{
 	dispatch(setFetchGetAuthUserData(true))

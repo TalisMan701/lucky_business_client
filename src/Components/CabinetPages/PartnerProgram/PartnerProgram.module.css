@@ -29,3 +29,34 @@
     margin: 0 16px;
     padding-bottom: 8px;
 }
+
+.calc{
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+
+.calcInner{
+    max-width: 450px;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.dropDown{
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.inputInner{
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.input{
+    width: 100%;
+}
+
+.text{
+    margin-top: 24px;
+}

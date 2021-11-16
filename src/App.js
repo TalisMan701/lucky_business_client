@@ -37,7 +37,7 @@ function App(props) {
     	socket.on("newNotification", (arg) => {
     		console.log(arg)
 			gg()
-			toast.current.show({severity: 'info', summary: 'Уведомления', detail: 'Произошло уведомление!'})
+			toast.current.show({severity: 'info', summary: 'Уведомления', detail: "Произошло уведомление"})
 		});
 		props.getAuthUserData()
 		window.addEventListener("resize", resetHeight);

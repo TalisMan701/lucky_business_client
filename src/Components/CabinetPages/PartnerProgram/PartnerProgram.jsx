@@ -101,7 +101,7 @@ const PartnerProgram = (props) => {
 								</div>
 								<Accordion multiple>
 									<AccordionTab header={`Линия 1: ${referals.line1?.length}чел.`}>
-										{referals.line1?.length !== 0 ?
+										{referals?.line1?.length !== 0 ?
 											<>
 												{referals.line1?.map(ref => {
 													return(
@@ -112,7 +112,7 @@ const PartnerProgram = (props) => {
 											<div>Нет рефералов!</div>
 										}
 									</AccordionTab>
-									{referals.line2.length !== 0 &&
+									{referals?.line2?.length !== 0 &&
 									<AccordionTab header={`Линия 2: ${referals.line2?.length}чел.`}>
 										{referals.line2?.map(ref => {
 											return(
@@ -121,7 +121,7 @@ const PartnerProgram = (props) => {
 										})}
 									</AccordionTab>
 									}
-									{referals.line3.length !== 0 &&
+									{referals?.line3?.length !== 0 &&
 									<AccordionTab header={`Линия 3: ${referals.line3?.length}чел.`}>
 										{referals.line3?.map(ref => {
 											return(
@@ -130,7 +130,7 @@ const PartnerProgram = (props) => {
 										})}
 									</AccordionTab>
 									}
-									{referals.line4.length !== 0 &&
+									{referals?.line4?.length !== 0 &&
 									<AccordionTab header={`Линия 4: ${referals.line4?.length}чел.`}>
 										{referals.line4?.map(ref => {
 											return(
@@ -139,7 +139,7 @@ const PartnerProgram = (props) => {
 										})}
 									</AccordionTab>
 									}
-									{referals.line5.length !== 0 &&
+									{referals?.line5?.length !== 0 &&
 									<AccordionTab header={`Линия 5: ${referals.line5?.length}чел.`}>
 										{referals.line5?.map(ref => {
 											return(
@@ -148,7 +148,7 @@ const PartnerProgram = (props) => {
 										})}
 									</AccordionTab>
 									}
-									{referals.line6.length !== 0 &&
+									{referals?.line6?.length !== 0 &&
 									<AccordionTab header={`Линия 6: ${referals.line6?.length}чел.`}>
 										{referals.line6?.map(ref => {
 											return(
@@ -166,26 +166,27 @@ const PartnerProgram = (props) => {
 							<div>
 								<i className={`pi pi-spin pi-spinner ${classes.fetch}`}/>
 							</div> :
-							<>
-								<Dropdown
-									optionLabel="name"
-									value={selectMyProduct}
-									options={products}
-									onChange={(e) => setSelectMyProduct(e.value)}
-									placeholder="Выберете свой пакет"
-									showClear
-									className={classes.dropDown}
-								/>
-								<Dropdown
-									optionLabel="name"
-									value={selectRefProduct}
-									options={products}
-									onChange={(e) => setSelectRefProduct(e.value)}
-									placeholder="Минимальный пакет рефералов"
-									showClear
-									className={classes.dropDown}
-								/>
-								<span className={clsx("p-float-label", classes.inputInner)}>
+							<div className={classes.calc}>
+								<div className={classes.calcInner}>
+									<Dropdown
+										optionLabel="name"
+										value={selectMyProduct}
+										options={products}
+										onChange={(e) => setSelectMyProduct(e.value)}
+										placeholder="Выберете свой пакет"
+										showClear
+										className={classes.dropDown}
+									/>
+									<Dropdown
+										optionLabel="name"
+										value={selectRefProduct}
+										options={products}
+										onChange={(e) => setSelectRefProduct(e.value)}
+										placeholder="Минимальный пакет рефералов"
+										showClear
+										className={classes.dropDown}
+									/>
+									<span className={clsx("p-float-label", classes.inputInner)}>
 									<InputText
 										className={classes.input}
 										id="countPeople" value={countPeople}
@@ -193,14 +194,15 @@ const PartnerProgram = (props) => {
 									/>
 									<label htmlFor="nameProduct" className={classes.label}>Количество приглашённых каждым</label>
 								</span>
-								<Button
-									onClick={()=>{setProfit(getProfit(selectMyProduct.index, selectRefProduct.price, countPeople))}}
-									label={"Рассчитать прибыль"}
-								/>
-								<div>
-									Ваша примерная прибыль: {profit.toLocaleString()} RUB
+									<Button
+										onClick={()=>{setProfit(getProfit(selectMyProduct.index, selectRefProduct.price, countPeople))}}
+										label={"Рассчитать прибыль"}
+									/>
+									<div className={classes.text}>
+										Ваша примерная прибыль: {profit.toLocaleString()} RUB
+									</div>
 								</div>
-							</>
+							</div>
 						}
 
 					</TabPanel>
