@@ -42,6 +42,10 @@ const Registration = (props) => {
 
 	}
 
+	if(props.isAuth){
+		return <Redirect to={'/'}/>
+	}
+
 	if(redirectLogin){
 		return <Redirect to={'/auth'}/>
 	}

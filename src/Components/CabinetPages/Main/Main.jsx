@@ -12,13 +12,24 @@ const Main = (props) => {
 					className={classes.cardInfo}
 				>
 					<div className={classes.cardInfoTitle}>Общий доход:</div>
-					<div className={classes.cardInfoCount}>₽ {props.user?.salesAmountReferal.toLocaleString()}</div>
+					{props.fetchRefreshUserData ?
+						<div className={classes.fetch}>
+							<i className={`pi pi-spin pi-spinner`}/>
+						</div>:
+						<div className={classes.cardInfoCount}>₽ {props.user?.salesAmountReferal.toLocaleString()}</div>
+					}
+
 				</Card>
 				<Card
 					className={classes.cardInfo}
 				>
 					<div className={classes.cardInfoTitle}>Квалификация:</div>
-					<div className={classes.cardInfoCount}>{props.user?.level}</div>
+					{props.fetchRefreshUserData ?
+						<div className={classes.fetch}>
+							<i className={`pi pi-spin pi-spinner`}/>
+						</div>:
+						<div className={classes.cardInfoCount}>{props.user?.level}</div>
+					}
 				</Card>
 			</div>
 			<Card
@@ -35,7 +46,8 @@ const Main = (props) => {
 };
 
 const mapStateToProps = state => ({
-	user: state.auth.user
+	user: state.auth.user,
+	fetchRefreshUserData: state.auth.fetchRefreshUserData
 })
 
 

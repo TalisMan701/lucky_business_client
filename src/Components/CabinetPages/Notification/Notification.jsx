@@ -39,20 +39,25 @@ const Notification = (props) => {
 			<MainTitle>Уведомления</MainTitle>
 			{fetchGetNotifications ?
 				<i className={`pi pi-spin pi-spinner ${classes.fetch}`}/>:
-				<div className={classes.notifications}>
-					{notifications.map(notif => {
-						return(
-							<div className={clsx(classes.notif, notif.read && classes.notifRead)}>
-								{/*<i className="pi pi-bell"/>*/}
-								<div className={classes.notifDesc}>{notif.description}</div>
-								{notif.type === "newRefBuy" &&
-									<div className={classes.notifPrice}>+{notif.getMoney?.toLocaleString()} RUB</div>
-								}
-								<div className={classes.notifDate}>{moment(notif.date).locale("ru").format("LLL")}</div>
-							</div>
-						)
-					})}
-				</div>
+				<>
+					{notifications.length === 0 ?
+						<div style={{color: "white"}}>Нет уведомлений!</div>:
+						<div className={classes.notifications}>
+							{notifications.map(notif => {
+								return(
+									<div className={clsx(classes.notif, notif.read && classes.notifRead)}>
+										{/*<i className="pi pi-bell"/>*/}
+										<div className={classes.notifDesc}>{notif.description}</div>
+										{notif.type === "newRefBuy" &&
+										<div className={classes.notifPrice}>+{notif.getMoney?.toLocaleString()} RUB</div>
+										}
+										<div className={classes.notifDate}>{moment(notif.date).locale("ru").format("LLL")}</div>
+									</div>
+								)
+							})}
+						</div>
+					}
+				</>
 			}
 		</>
 	);

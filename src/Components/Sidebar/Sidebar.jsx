@@ -4,7 +4,7 @@ import LogoSvg from "../../Images/SVG/Logo.svg";
 import {Link, NavLink} from "react-router-dom";
 import {Badge} from "primereact/badge";
 import {connect} from "react-redux";
-import {logout} from "../../Store/auth-reducer";
+import {logout, refreshUserData} from "../../Store/auth-reducer";
 
 const SidebarMy = (props) => {
 	return (
@@ -24,7 +24,10 @@ const SidebarMy = (props) => {
 			<div className={classes.content}>
 				<NavLink
 					exact
-					onClick={()=>{props.setVisible(false)}}
+					onClick={()=>{
+						props.refreshUserData()
+						props.setVisible(false)
+					}}
 					activeClassName={classes.activeNav}
 					to={'/cabinet'}
 					className={classes.navItem}
@@ -148,4 +151,4 @@ const mapStateToProps = state =>({
 	user: state.auth.user
 })
 
-export default connect(mapStateToProps, {logout})(SidebarMy);
+export default connect(mapStateToProps, {logout, refreshUserData})(SidebarMy);

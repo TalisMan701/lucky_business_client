@@ -4,6 +4,7 @@ import socket from "../Socket/socket";
 const SET_USER_DATA = "SET_USER_DATA";
 const UPDATE_USER_DATA = "UPDATE_USER_DATA";
 const SET_FETCH_GET_AUTH_USER_DATA = "SET_FETCH_GET_AUTH_USER_DATA";
+const SET_FETCH_REFRESH_USER_DATA = "SET_FETCH_REFRESH_USER_DATA";
 const SET_GO_LOGIN = "SET_GO_LOGIN";
 const SET_ERRORS = "SET_ERRORS";
 const LOGOUT = "LOGOUT";
@@ -15,6 +16,7 @@ let initialState = {
 	isAuth: false,
 	user: null,
 	fetchGetAuthUserData: true,
+	fetchRefreshUserData: false,
 	fetchConfirmEmail: true,
 	fetchLogin: false,
 	goLogin: false,
@@ -58,6 +60,11 @@ const authReducer = (state = initialState, action) =>{
 				...state,
 				fetchGetAuthUserData: action.fetchGetAuthUserData
 			}
+		case SET_FETCH_REFRESH_USER_DATA:
+			return {
+				...state,
+				fetchRefreshUserData: action.fetchRefreshUserData
+			}
 		case SET_FETCH_LOGIN:
 			return {
 				...state,
@@ -88,6 +95,7 @@ const authReducer = (state = initialState, action) =>{
 const setUser = (user) => ({type: SET_USER_DATA, user})
 export const updateUser = (user) => ({type: UPDATE_USER_DATA, user})
 const setFetchGetAuthUserData = (fetchGetAuthUserData) => ({type: SET_FETCH_GET_AUTH_USER_DATA, fetchGetAuthUserData})
+const setFetchRefreshUserData = (fetchRefreshUserData) => ({type: SET_FETCH_REFRESH_USER_DATA, fetchRefreshUserData})
 const setFetchLogin = (fetchLogin) => ({type: SET_FETCH_LOGIN, fetchLogin})
 const setGoLogin = (goLogin) => ({type: SET_GO_LOGIN, goLogin})
 const setErrors = (errors) => ({type: SET_ERRORS, errors})
@@ -117,6 +125,19 @@ export const getAuthUserData = () => dispatch =>{
 			}
 		}).catch(error => {
 			dispatch(setFetchGetAuthUserData(false))
+	})
+}
+
+export const refreshUserData = () => dispatch => {
+	dispatch(setFetchRefreshUserData(true))
+	authAPI.me()
+		.then(response => {
+			if(response.status === 200){
+				dispatch(setUser(response.data))
+			}
+			dispatch(setFetchRefreshUserData(false))
+		}).catch(error => {
+		dispatch(setFetchRefreshUserData(false))
 	})
 }
 

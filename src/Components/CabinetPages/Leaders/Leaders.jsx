@@ -54,6 +54,7 @@ const Leaders = () => {
 				<Column field="surname" header="Фамилия"/>
 				<Column field="email" header="Email"/>
 				<Column field="salesAmountReferal" header="Заработано" body={priceBodyTemplate}/>
+				<Column field="level" header="Квалификация"/>
 			</DataTable>
 		</>
 	);

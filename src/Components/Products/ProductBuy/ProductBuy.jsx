@@ -4,14 +4,14 @@ import {Card} from "primereact/card";
 import {Button} from "primereact/button";
 import {productsAPI} from "../../../Api/api";
 import {connect} from "react-redux";
-import {updatePriceUser} from "../../../Store/auth-reducer";
+import {refreshUserData, updatePriceUser} from "../../../Store/auth-reducer";
 const ProductBuy = (props) => {
 	const [fetchBuyProduct, setFetchBuyProduct] = useState(false)
 	const buyProduct = () => {
 		setFetchBuyProduct(true)
 		productsAPI.buy(props.data.id)
 			.then(response => {
-				props.updatePriceUser(props.data.price)
+				//props.updatePriceUser(props.data.price)
 				props.toast.current.show({severity: 'success', summary: 'Покупка продукта', detail: `Продукт ${props.data.name} успешно приобретен!`})
 				setFetchBuyProduct(false)
 			})
@@ -43,4 +43,4 @@ const mapStateToProps = state => ({
 
 })
 
-export default connect(mapStateToProps, {updatePriceUser})(ProductBuy);
+export default connect(mapStateToProps, {updatePriceUser, refreshUserData})(ProductBuy);

@@ -12,6 +12,12 @@
     margin-right: 32px;
 }
 
+.fetch{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .cardInfoTitle{
     text-align: center;
     margin-bottom: 4px;

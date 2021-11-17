@@ -12,6 +12,7 @@ import {InputText} from "primereact/inputtext";
 import {connect} from "react-redux";
 import {settingsAPI} from "../../../Api/api";
 import {Toast} from "primereact/toast";
+import {refreshUserData} from "../../../Store/auth-reducer";
 const Settings = (props) => {
 	const [password, setPassword] = useState('')
 	const [confirmPassword, setConfirmPassword] = useState('')
@@ -179,4 +180,4 @@ const mapStateToProps = state =>({
 	user: state.auth.user
 })
 
-export default connect(mapStateToProps,{})(Settings);
+export default connect(mapStateToProps,{refreshUserData})(Settings);

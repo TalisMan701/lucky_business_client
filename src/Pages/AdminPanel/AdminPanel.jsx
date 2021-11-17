@@ -126,6 +126,7 @@ const AdminPanel = (props) => {
 								<Column field="surname" header="Фамилия" sortable/>
 								<Column field="email" header="Email" sortable/>
 								<Column field="balance" header="Баланс" body={priceBodyTemplate} sortable/>
+								<Column field="level" header="Квалификация"/>
 							</DataTable>
 						</div>
 					</TabPanel>

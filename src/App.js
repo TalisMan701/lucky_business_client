@@ -4,11 +4,11 @@ import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
 import classes from "./App.module.css";
 import Landing from "./Pages/Landing";
-import {Route, Switch} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import Auth from "./Pages/Auth";
 import Registration from "./Pages/Registration";
 import {connect} from "react-redux";
-import {addNotif, getAuthUserData, setNotifications, updateUser} from "./Store/auth-reducer";
+import {addNotif, getAuthUserData, refreshUserData, setNotifications, updateUser} from "./Store/auth-reducer";
 import React, {useEffect, useRef, useState} from "react";
 import Cabinet from "./Pages/Cabinet";
 import RefMiddleware from "./Components/RefMiddleware/RefMiddleware";
@@ -31,13 +31,14 @@ function App(props) {
 
 	const gg = () => {
 		props.setNotifications()
+		//props.refreshUserData()
 	}
 
     useEffect(()=>{
     	socket.on("newNotification", (arg) => {
     		console.log(arg)
 			gg()
-			toast.current.show({severity: 'info', summary: 'Уведомления', detail: "Произошло уведомление"})
+			toast.current.show({severity: 'info', summary: 'Уведомления', detail: arg?.description ? arg.description : "Произошло уведомление!"})
 		});
 		props.getAuthUserData()
 		window.addEventListener("resize", resetHeight);
@@ -64,6 +65,7 @@ function App(props) {
 			<Route path={'/signup'}  render= {() => <Registration isMobile={isMobile} isTablet={isTablet}/>}/>
 			<Route path={'/cabinet'}  render= {() => <Cabinet isMobile={isMobile} isTablet={isTablet} toast={toast}/>}/>
 			<Route path={'/ref'}  render= {() => <RefMiddleware/> }/>
+			<Redirect to={'/'}/>
 			<Toast ref={toast} position="bottom-right" className={classes.toast}/>
 		</>
 	);
@@ -76,4 +78,4 @@ const mapStateToProps = state => ({
 	goLogin: state.auth.goLogin
 })
 
-export default connect(mapStateToProps, {getAuthUserData, updateUser, setNotifications})(App);
+export default connect(mapStateToProps, {getAuthUserData, updateUser, setNotifications, refreshUserData})(App);

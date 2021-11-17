@@ -81,7 +81,7 @@ const PartnerProgram = (props) => {
 			<MainTitle>Партнерская программа</MainTitle>
 			<div className={classes.card}>
 				<TabView activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)}>
-					<TabPanel header="Ваши рефералы">
+					<TabPanel header="Мои рефералы">
 						{fetchGetReferals ?
 							<div>
 								<i className={`pi pi-spin pi-spinner ${classes.fetch}`}/>
