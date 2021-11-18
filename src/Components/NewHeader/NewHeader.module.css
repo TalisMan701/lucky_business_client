@@ -1,0 +1,93 @@
+.header{
+    background: rgba(196, 196, 196, 0.1);
+    box-shadow: inset 42.3333px -42.3333px 42.3333px rgba(149, 149, 149, 0.1), inset -42.3333px 42.3333px 42.3333px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(84.6667px);
+    height: 43px;
+}
+
+.container{
+    padding: 0 20px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.headerInner{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logoInner{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoTitle, .navLink{
+    font-family: HelveticaNeueCyr, sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 12px;
+    /* identical to box height */
+
+    text-transform: uppercase;
+
+    color: #E2E2E2;
+    user-select: none;
+}
+
+.navLink{
+    text-transform: none;
+    margin-right: 54px;
+}
+
+.navLink:last-child{
+    margin-right: 0;
+}
+
+.lkInner{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.btnAuth{
+    font-family: HelveticaNeueCyr, sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 12px;
+    height: 28px;
+    width: 100%;
+    max-width: 144px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #E2E2E2;
+    border-radius: 6px;
+    color: #E2E2E2;
+    margin-right: 16px;
+}
+
+.btnSignUp{
+    font-family: HelveticaNeueCyr, sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 12px;
+    height: 28px;
+    width: 100%;
+    max-width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #E2E2E2;
+    background-color: #E2E2E2;
+    border-radius: 6px;
+    color: #000000;
+    margin-right: 16px;
+}

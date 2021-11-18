@@ -1,0 +1,606 @@
+.body{
+    background: #000000;
+    background-image: url("../Images/Other/BackgroundNewLanding.jpg");
+    background-position: center top;
+    background-size: auto;
+    user-select: none;
+}
+
+.container{
+    padding: 0 20px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.hero{
+}
+
+.heroTitleInner{
+    width: 100%;
+    margin-top: 72px;
+    display: flex;
+    flex-direction: column;
+}
+
+.heroTitle{
+    font-family: Druk_Text_Wide_CyBold,sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 88px;
+    line-height: 88px;
+    letter-spacing: -0.08em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 0px 3.24703px 3.24703px rgba(0, 0, 0, 0.25);
+}
+
+.heroTitle:nth-child(2){
+    align-self: center;
+}
+.heroTitle:nth-child(3){
+    align-self: flex-end;
+}
+
+.btnStart{
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: flex-end;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    width: 134px;
+    height: 134px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #FFFFFF;
+    border-radius: 9999px;
+    margin-right: 74px;
+    transition: all 0.2s ease ;
+}
+
+.btnStart:hover{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 35px #FFFFFF;
+    color: #0003FF;
+}
+
+.heroInfoDesc{
+    width: 254px;
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-size: 21px;
+    line-height: 20px;
+    color: #FFFFFF;
+    margin-right: 187px;
+}
+
+.heroInfo{
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 70px;
+}
+
+.heroInfoCardImg{
+    margin-right: 24px;
+}
+
+.heroInfoCardImg:last-child{
+    margin-right: 0;
+}
+
+.line{
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.infoTitle{
+    font-family: Druk_Text_Wide_CyBold, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    width: 650px;
+    margin-bottom: 68px;
+}
+
+.info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 87px 0 108px;
+}
+
+.infoCards{
+    display: flex;
+    position: relative;
+    margin-bottom: 113px;
+}
+
+.infoCard{
+    width: 305px;
+    height: 493px;
+    background: linear-gradient(180deg, rgba(27, 0, 179, 0.5) 0%, rgba(11, 0, 89, 0.5) 100%);
+    backdrop-filter: blur(11.4163px);
+    border-radius: 19.8084px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-right: 22px;
+}
+
+.infoCard:last-child{
+    margin-right: 0;
+}
+
+.infoCardImg{
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.infoCardText{
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 23px;
+    text-align: center;
+    color: #FFFFFF;
+    opacity: 0.8;
+}
+
+.lineAB{
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    top: -23px;
+}
+
+.lineABS{
+    position: absolute;
+    width: calc(100% - 104px);
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    bottom: 48px;
+}
+
+.lineA{
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.5);
+    bottom: -43px;
+}
+
+.InfoDesc{
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 33px;
+    line-height: 42px;
+    /* identical to box height, or 126% */
+
+    text-align: center;
+    letter-spacing: 0.416667px;
+
+    color: #FFFFFF;
+    margin-bottom: 8px;
+}
+
+.InfoDescMini{
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-size: 21px;
+    line-height: 27px;
+    /* identical to box height, or 131% */
+
+    text-align: center;
+
+    color: #FFFFFF;
+
+    opacity: 0.7;
+}
+
+.clientsHeader{
+    padding-top: 68px;
+    padding-bottom: 27px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.clientsHeaderTitle{
+    font-family: Druk_Text_Wide_CyBold, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 48px;
+    text-transform: uppercase;
+    width: 640px;
+    color: #FFFFFF;
+}
+
+.clientsHeaderLogo{
+    font-family: HelveticaNeueCyr, sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 12px;
+    text-transform: uppercase;
+    color: #E2E2E2;
+    user-select: none;
+}
+
+.clients{
+    display: flex;
+    justify-content: center;
+}
+
+.clientsCards{
+    width: 100%;
+    max-width: 960px;
+    padding: 43px 0 51px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 215px 275px 215px;
+    justify-items: stretch;
+    grid-column-gap: 22px;
+    grid-row-gap: 22px;
+}
+
+.clientsCard{
+    position: relative;
+    background-color: #eeeeee;
+    border: 1px solid rgba(255, 255, 255, 0.7);;
+    border-radius: 10px;
+}
+
+.clientsCard1{
+    grid-row-start: 1;
+    grid-row-end: 3;
+    background-color: #9600FF;
+}
+
+.clientsCard2{
+    grid-column-start: 2;
+    grid-column-end: 4;
+    background-image: url("../Images/Other/Clinet2.jpg");
+}
+
+.clientsCard3{
+    background: #0003FF;
+    background-image: url("../Images/Other/Client3.png");
+}
+
+.clientsCard4{
+    background: #00B817;
+}
+
+.clientsCard5{
+    background: #0003FF;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.clientsCard6{
+    background: #EB01FF;
+}
+
+.clientsCardNumber{
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: #FFFFFF;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+}
+
+.clientsCardText{
+    position: absolute;
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-size: 20.6035px;
+    line-height: 105%;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    left: 16px;
+}
+
+.clientsCardNumber1{
+    top: 254px;
+}
+
+.clientsCardImg1{
+    position: absolute;
+    top: 34px;
+    right: 6px;
+}
+
+.clientsCardText1{
+    top: 405px;
+}
+
+.clientsCardText2{
+    top: 56px;
+}
+
+.clientsCardText3{
+    top: 168px;
+    width: 150px;
+}
+
+.clientsCardText4{
+    top: 168px;
+}
+
+.clientsCardImg4{
+    position: absolute;
+    top: 24px;
+    right: 29px;
+}
+
+.clientsCardText5{
+    top: 138px;
+    width: 322px;
+}
+
+.clientsCardImg5{
+    position: absolute;
+    top: 0;
+    right: 19px;
+}
+
+.clientsCardText6{
+    top: 138px;
+    width: 230px;
+}
+
+.clientsCardImg6{
+    position: absolute;
+    top: 15px;
+    right: 27px;
+}
+
+.about{
+    padding: 55px 90px 71px 90px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.aboutContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 83px;
+}
+
+.aboutImg{
+    border-radius: 10px;
+}
+
+.aboutContentTitle{
+    font-family: Druk_Text_Wide_CyBold, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 48px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+}
+
+.aboutContentDesc{
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 21px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 18px;
+    width: 468px;
+}
+
+.aboutContentStatus{
+    font-family: Inter,sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 27px;
+    color: #5F5656;
+    margin-bottom: 2px;
+}
+
+.aboutContentName{
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 27px;
+    color: #FFFFFF;
+    margin-bottom: 18px;
+}
+
+.ContactUs{
+    padding: 82px 0 86px 0 ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ContactUsTitle{
+    font-family: Druk_Text_Wide_CyBold, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+    text-transform: uppercase;
+    opacity: 0.7;
+    color: #FFFFFF;
+    margin-bottom: 37px;
+    width: 637px;
+}
+
+.ContactUsCards{
+    display: grid;
+    grid-template-columns: 466px 466px;
+    grid-template-rows: 192px 192px 192px;
+    justify-items: stretch;
+    grid-column-gap: 24px;
+    grid-row-gap: 22px;
+    margin-bottom: 61px;
+}
+
+.ContactUsCard{
+    padding: 16px 16px 16px 30px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.ContactUsCard1{
+    background: linear-gradient(180deg, #FF00F5 0%, #0103FF 320.83%);
+    border: 1px solid #FFFFFF;
+}
+
+.ContactUsCard2{
+    background: linear-gradient(180deg, #FF00F5 -109.9%, #0103FF 213.02%);
+    border: 1px solid #FFFFFF;
+}
+
+.ContactUsCard3{
+    background: linear-gradient(180deg, #FF00F5 -221.09%, #0103FF 100%);
+    border: 1px solid #FFFFFF;
+}
+
+.ContactUsCardText{
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    margin-top: 30px;
+}
+
+.btnContactUs{
+    background: #FFFFFF;
+    border-radius: 10px;
+    width: 241px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17.4561px;
+    line-height: 21px;
+    text-transform: capitalize;
+    box-shadow: 0px 0px 17px #FFFFFF;
+    color: #3300FE;
+}
+
+.endHeaderText{
+    font-family: Druk_Text_Wide_CyBold, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 88px;
+    line-height: 106px;
+    letter-spacing: -0.08em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 0px 3.24703px 3.24703px rgba(0, 0, 0, 0.25);
+}
+
+.endHeader{
+    padding: 42px 95px 26px 95px;
+}
+
+.endHeaderText:last-child{
+    margin-left: 268px;
+    margin-top: -24px;
+}
+
+.end{
+    display: flex;
+    width: 100%;
+}
+
+.endCol1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 393px;
+    width: 60%;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);;
+}
+
+.endCol2{
+    height: 393px;
+    width: 40%;
+    padding: 45px 0 45px 51px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.btnEndSignUp{
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17.46px;
+    line-height: 21px;
+    display: flex;
+    align-items: flex-end;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    width: 302px;
+    height: 302px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #FFFFFF;
+    border-radius: 9999px;
+    margin-right: 74px;
+    transition: all 0.2s ease ;
+}
+
+.btnEndSignUp:hover{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 35px #FFFFFF;
+    color: #0003FF;
+}
+
+.endText{
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-size: 21px;
+    line-height: 20px;
+    color: #FFFFFF;
+    width: 299px;
+}
+
+.endLogo{
+    font-family: HelveticaNeueCyr, sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 12px;
+    text-transform: uppercase;
+    color: #E2E2E2;
+    user-select: none;
+}
+

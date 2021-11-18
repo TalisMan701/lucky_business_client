@@ -16,6 +16,7 @@ import Loading from "./Pages/Loading";
 import ResetPassword from "./Pages/ResetPassword/ResetPassword";
 import {Toast} from "primereact/toast";
 import socket from "./Socket/socket";
+import NewLanding from "./Pages/NewLanding";
 
 function App(props) {
 	const toast = useRef(null)
@@ -65,7 +66,8 @@ function App(props) {
 			<Route path={'/signup'}  render= {() => <Registration isMobile={isMobile} isTablet={isTablet}/>}/>
 			<Route path={'/cabinet'}  render= {() => <Cabinet isMobile={isMobile} isTablet={isTablet} toast={toast}/>}/>
 			<Route path={'/ref'}  render= {() => <RefMiddleware/> }/>
-			<Redirect to={'/'}/>
+			<Route path={'/test'}  render= {() => <NewLanding/> }/>
+			{/*<Redirect to={'/'}/>*/}
 			<Toast ref={toast} position="bottom-right" className={classes.toast}/>
 		</>
 	);
