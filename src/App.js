@@ -60,13 +60,13 @@ function App(props) {
 			{/*<div style={{color: "black", marginLeft: 0}}
 				 onClick={()=>{toast.current.show({severity: 'info', summary: 'Уведомления', detail: 'Произошло уведомление!', life: 300000})}}
 			>Send message</div>*/}
-			<Route exact path={'/'} render= {() => <Landing isMobile={isMobile} isTablet={isTablet} isAuth={props.isAuth}/>}/>
+			<Route exact path={'/'} render= {() => <NewLanding isMobile={isMobile} isTablet={isTablet} isAuth={props.isAuth}/>}/>
 			<Route path={'/auth'}  render= {() => <Auth isMobile={isMobile} isTablet={isTablet}/>}/>
 			<Route path={'/reset_password'}  render= {() => <ResetPassword isMobile={isMobile} isTablet={isTablet} toast={toast}/>}/>
 			<Route path={'/signup'}  render= {() => <Registration isMobile={isMobile} isTablet={isTablet}/>}/>
 			<Route path={'/cabinet'}  render= {() => <Cabinet isMobile={isMobile} isTablet={isTablet} toast={toast}/>}/>
 			<Route path={'/ref'}  render= {() => <RefMiddleware/> }/>
-			<Route path={'/test'}  render= {() => <NewLanding isMobile={isMobile}/> }/>
+			{/*<Route path={'/test'}  render= {() => <NewLanding isMobile={isMobile}/> }/>*/}
 			{/*<Redirect to={'/'}/>*/}
 			<Toast ref={toast} position="bottom-right" className={classes.toast}/>
 		</>

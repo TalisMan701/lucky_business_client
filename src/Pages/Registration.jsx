@@ -12,6 +12,7 @@ import {registrationAPI} from "../Api/api";
 import {Link, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {login} from "../Store/auth-reducer";
+import NewHeader from "../Components/NewHeader/NewHeader";
 const Registration = (props) => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -43,7 +44,7 @@ const Registration = (props) => {
 	}
 
 	if(props.isAuth){
-		return <Redirect to={'/'}/>
+		return <Redirect to={'/cabinet'}/>
 	}
 
 	if(redirectLogin){
@@ -52,13 +53,14 @@ const Registration = (props) => {
 
 	return (
 		<>
-			{!props.isMobile &&
-				<Header isAuth={props.isAuth} isMobile={props.isMobile} isTablet={props.isTablet}/>
-			}
-			<main className={classes.auth}>
-				<Card className={classes.card}>
-					<div className={classes.title}>Создание аккаунта</div>
-					<div className={classes.inputs}>
+			<div className={classes.body}>
+				{!props.isMobile &&
+				<NewHeader isAuth={props.isAuth} isMobile={props.isMobile} isTablet={props.isTablet}/>
+				}
+				<main className={classes.auth}>
+					<Card className={classes.card}>
+						<div className={classes.title}>Создание аккаунта</div>
+						<div className={classes.inputs}>
 						<span className={clsx("p-float-label", classes.inputInner, classes.inputInnerHalf)}>
 							<InputText
 								className={classes.input}
@@ -68,7 +70,7 @@ const Registration = (props) => {
 							/>
 							<label htmlFor="name" className={classes.label}>Имя</label>
 						</span>
-						<span className={clsx("p-float-label", classes.inputInner, classes.inputInnerHalf)}>
+							<span className={clsx("p-float-label", classes.inputInner, classes.inputInnerHalf)}>
 							<InputText
 								className={classes.input}
 								id="lastname"
@@ -77,8 +79,8 @@ const Registration = (props) => {
 							/>
 							<label htmlFor="lastname" className={classes.label}>Фамилия</label>
 						</span>
-					</div>
-					<span className={clsx("p-float-label", classes.inputInner)}>
+						</div>
+						<span className={clsx("p-float-label", classes.inputInner)}>
 						<InputText
 							className={classes.input}
 							id="email"
@@ -87,7 +89,7 @@ const Registration = (props) => {
 						/>
 						<label htmlFor="email" className={classes.label}>Email</label>
 					</span>
-					<span className={clsx("p-float-label", classes.inputInner)}>
+						<span className={clsx("p-float-label", classes.inputInner)}>
 						<Password
 							className={classes.inputPassword}
 							inputId="password"
@@ -97,7 +99,7 @@ const Registration = (props) => {
 						/>
 						<label htmlFor="password" className={classes.label}>Пароль</label>
 					</span>
-					<span className={clsx("p-float-label", classes.inputInner)}>
+						<span className={clsx("p-float-label", classes.inputInner)}>
 						<Password
 							className={classes.inputPassword}
 							inputId="confirmPassword"
@@ -106,39 +108,35 @@ const Registration = (props) => {
 						/>
 						<label htmlFor="confirmPassword" className={classes.label}>Повторите пароль</label>
 					</span>
-					<div className={classes.checkboxInner}>
-						<Checkbox
-							inputId="confirmPersonalData"
-							checked={confirmPersonalData}
-							onChange={e => setConfirmPersonalData(e.checked)}
-							className={classes.checkbox}
+						<div className={classes.checkboxInner}>
+							<Checkbox
+								inputId="confirmPersonalData"
+								checked={confirmPersonalData}
+								onChange={e => setConfirmPersonalData(e.checked)}
+								className={classes.checkbox}
+							/>
+							<label htmlFor="confirmPersonalData" className={classes.checkboxLabel}><p style={{margin: 0}}>Я согласен с <span style={{color: "#9FA8DA", cursor: "pointer"}}>пользовательским соглашением.</span></p></label>
+						</div>
+						<Button
+							label="Зарегистрироваться"
+							className={classes.btn1}
+							onClick={onClickSignUp}
 						/>
-						<label htmlFor="confirmPersonalData" className={classes.checkboxLabel}><p style={{margin: 0}}>Я согласен с <span style={{color: "#9FA8DA", cursor: "pointer"}}>пользовательским соглашением.</span></p></label>
-					</div>
-					<Button
-						label="Зарегистрироваться"
-						className={classes.btn1}
-						onClick={onClickSignUp}
-					/>
-					{error &&
+						{error &&
 						<div style={{color: "red"}}>{error}</div>
-					}
-					{props.isMobile &&
+						}
+						{props.isMobile &&
 						<Link to={'/'} className={classes.linkBack}>
 							<i className={`pi pi-times ${classes.linkBackIcon}`}/>
 						</Link>
-					}
-					{props.isMobile &&
+						}
 						<div className={classes.goTo}>
 							Есть аккаунт?
 							<Link to={"/auth"}>Войти</Link>
 						</div>
-					}
-				</Card>
-			</main>
-			{!props.isMobile &&
-				<Footer/>
-			}
+					</Card>
+				</main>
+			</div>
 		</>
 	);
 };

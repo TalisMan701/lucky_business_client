@@ -65,7 +65,7 @@ const NewLanding = (props) => {
 	return (
 		<>
 			<div className={classes.body}>
-				<NewHeader isMobile={props.isMobile} />
+				<NewHeader isMobile={props.isMobile} isAuth={props.isAuth}/>
 				<main>
 					<div className={classes.container}>
 						<section className={classes.hero}>
@@ -82,7 +82,7 @@ const NewLanding = (props) => {
 							</div>
 							<div className={classes.heroInfo}>
 								<Pulse>
-									<Link to={'/'} className={classes.btnStart}>
+									<Link to={'/cabinet'} className={classes.btnStart}>
 										Начать
 									</Link>
 								</Pulse>
@@ -272,7 +272,7 @@ const NewLanding = (props) => {
 							</div>
 							<Pulse>
 								<Link
-									to={'/'}
+									to={'/signup'}
 									className={classes.btnContactUs}
 								>Зарегистрироваться</Link>
 							</Pulse>
@@ -301,7 +301,7 @@ const NewLanding = (props) => {
 									</div>
 								</Bounce>
 								<Pulse>
-									<Link to={'/'} className={classes.btnEndSignUp}>
+									<Link to={'/signup'} className={classes.btnEndSignUp}>
 										Зарегистрироваться
 									</Link>
 								</Pulse>
@@ -309,7 +309,7 @@ const NewLanding = (props) => {
 							<section className={classes.end}>
 								<div className={classes.endCol1}>
 									<Pulse>
-										<Link to={'/'} className={classes.btnEndSignUp}>
+										<Link to={'/signup'} className={classes.btnEndSignUp}>
 											Зарегистрироваться
 										</Link>
 									</Pulse>
@@ -350,7 +350,7 @@ const NewLanding = (props) => {
 					<div className={classes.line}/>
 				}
 				<div className={classes.container}>
-					<section className={classes.one}>
+					<section id={"tarifs"} className={classes.one}>
 						<div className={classes.oneCard}>
 							<div className={classes.oneCardContent}>
 								<Fade top cascade>
@@ -689,5 +689,6 @@ const NewLanding = (props) => {
 		</>
 	);
 };
+
 
 export default NewLanding;

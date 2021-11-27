@@ -23,7 +23,7 @@ const Cabinet = (props) => {
 	const [visible, setVisible] = useState(false)
 
 	if(!props.isAuth){
-		return <Redirect to={"/"}/>
+		return <Redirect to={"/auth"}/>
 	}
 	return (
 		<div>

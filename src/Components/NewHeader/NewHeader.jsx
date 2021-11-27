@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './NewHeader.module.css'
 import {Link} from "react-router-dom";
 import clsx from "clsx";
+import {HashLink} from "react-router-hash-link";
 
 const NewHeader = (props) => {
 	return (
@@ -13,7 +14,7 @@ const NewHeader = (props) => {
 				{!props.isMobile &&
 				<div className={classes.nav}>
 					<Link to={'/'} className={classes.navLink}>Главная</Link>
-					<Link to={'/'} className={classes.navLink}>Тарифы</Link>
+					<HashLink smooth to={'/#tarifs'} className={classes.navLink}>Тарифы</HashLink>
 				</div>
 				}
 				<div className={classes.lkInner}>
@@ -26,7 +27,7 @@ const NewHeader = (props) => {
 								Заказать консультацию
 							</Link>
 						</>:
-						<Link to={'/cabinet'}>
+						<Link to={'/cabinet'} className={classes.btnAuth}>
 							Личный кабинет
 						</Link>
 					}

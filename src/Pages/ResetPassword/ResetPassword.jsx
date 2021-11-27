@@ -12,6 +12,7 @@ import {connect} from "react-redux";
 import {Toast} from "primereact/toast";
 import {compose} from "redux";
 import {authAPI} from "../../Api/api";
+import NewHeader from "../../Components/NewHeader/NewHeader";
 const ResetPassword = (props) => {
 	const [confirmPassword, setConfirmPassword] = useState('')
 	const [newPassword, setNewPassword] = useState('')
@@ -46,13 +47,14 @@ const ResetPassword = (props) => {
 
 	return (
 		<>
-			{!props.isMobile &&
-				<Header isAuth={props.isAuth} isMobile={props.isMobile} isTablet={props.isTablet}/>
-			}
-			<main className={classes.auth}>
-				<Card className={classes.card}>
-					<div className={classes.title}>Смена пароля</div>
-					<span className={clsx("p-float-label", classes.inputInner)}>
+			<div className={classes.body}>
+				{!props.isMobile &&
+				<NewHeader isAuth={props.isAuth} isMobile={props.isMobile} isTablet={props.isTablet}/>
+				}
+				<main className={classes.auth}>
+					<Card className={classes.card}>
+						<div className={classes.title}>Смена пароля</div>
+						<span className={clsx("p-float-label", classes.inputInner)}>
 						<Password
 							className={classes.inputPassword}
 							inputId="newPassword"
@@ -62,7 +64,7 @@ const ResetPassword = (props) => {
 						/>
 						<label htmlFor="newPassword" className={classes.label}>Новый пароль</label>
 					</span>
-					<span className={clsx("p-float-label", classes.inputInner)}>
+						<span className={clsx("p-float-label", classes.inputInner)}>
 						<Password
 							className={classes.inputPassword}
 							inputId="confirmPassword"
@@ -71,26 +73,24 @@ const ResetPassword = (props) => {
 						/>
 						<label htmlFor="confirmPassword" className={classes.label}>Повторите пароль</label>
 					</span>
-					<div className={classes.btns}>
-						<Button
-							label={!fetchResetPassword ?
-								<span>Сменить</span>
-								: <i className={`pi pi-spin pi-spinner ${classes.fetch}`}/>
-							}
-							className={classes.btn1}
-							onClick={resetPassword}
-						/>
-					</div>
-					{props.isMobile &&
+						<div className={classes.btns}>
+							<Button
+								label={!fetchResetPassword ?
+									<span>Сменить</span>
+									: <i className={`pi pi-spin pi-spinner ${classes.fetch}`}/>
+								}
+								className={classes.btn1}
+								onClick={resetPassword}
+							/>
+						</div>
+						{props.isMobile &&
 						<Link to={'/'} className={classes.linkBack}>
 							<i className={`pi pi-times ${classes.linkBackIcon}`}/>
 						</Link>
-					}
-				</Card>
-			</main>
-			{!props.isMobile &&
-				<Footer/>
-			}
+						}
+					</Card>
+				</main>
+			</div>
 		</>
 	);
 };

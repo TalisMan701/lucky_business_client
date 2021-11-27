@@ -12,6 +12,7 @@ import {connect} from "react-redux";
 import {login} from "../Store/auth-reducer";
 import {Link, Redirect} from "react-router-dom";
 import {Toast} from "primereact/toast";
+import NewHeader from "../Components/NewHeader/NewHeader";
 
 const Auth = (props) => {
 	const [email, setEmail] = useState('')
@@ -46,13 +47,14 @@ const Auth = (props) => {
 	if(sendLink){
 		return (
 			<>
-				{!props.isMobile &&
-					<Header isAuth={props.isAuth}  isMobile={props.isMobile} isTablet={props.isTablet}/>
-				}
-				<main className={classes.auth}>
-					<Card className={classes.card}>
-						<div className={classes.title}>Смена пароля</div>
-						<span className={clsx("p-float-label", classes.inputInner)}>
+				<div className={classes.body}>
+					{!props.isMobile &&
+					<NewHeader isAuth={props.isAuth}  isMobile={props.isMobile} isTablet={props.isTablet}/>
+					}
+					<main className={classes.auth}>
+						<Card className={classes.card}>
+							<div className={classes.title}>Смена пароля</div>
+							<span className={clsx("p-float-label", classes.inputInner)}>
 							<InputText
 								className={classes.input}
 								id="email" value={email}
@@ -60,31 +62,29 @@ const Auth = (props) => {
 							/>
 							<label htmlFor="email" className={classes.label}>Email</label>
 						</span>
-						<div className={classes.btns}>
-							<Button
-								label={!fetchSendLink ?
-									<span>Отправить письмо</span>
-									: <i className={`pi pi-spin pi-spinner ${classes.fetch}`}/>
-								}
-								className={classes.btn3}
-								onClick={sendLinkEmail}
-							/>
-							<Button
-								label="Вернуться"
-								className={clsx("p-button-outlined", classes.btn4)}
-								onClick={()=>{setSendLink(false)}}
-							/>
-						</div>
-						{props.isMobile &&
+							<div className={classes.btns}>
+								<Button
+									label={!fetchSendLink ?
+										<span>Отправить письмо</span>
+										: <i className={`pi pi-spin pi-spinner ${classes.fetch}`}/>
+									}
+									className={classes.btn3}
+									onClick={sendLinkEmail}
+								/>
+								<Button
+									label="Вернуться"
+									className={clsx("p-button-outlined", classes.btn4)}
+									onClick={()=>{setSendLink(false)}}
+								/>
+							</div>
+							{props.isMobile &&
 							<Link to={'/'} className={classes.linkBack}>
 								<i className={`pi pi-times ${classes.linkBackIcon}`}/>
 							</Link>
-						}
-					</Card>
-				</main>
-				{!props.isMobile &&
-					<Footer/>
-				}
+							}
+						</Card>
+					</main>
+				</div>
 				<Toast ref={toast} position="bottom-right"/>
 			</>
 		)
@@ -92,13 +92,14 @@ const Auth = (props) => {
 
 	return (
 		<>
-			{!props.isMobile &&
-				<Header isAuth={props.isAuth} isMobile={props.isMobile} isTablet={props.isTablet}/>
-			}
-			<main className={classes.auth}>
-				<Card className={classes.card}>
-					<div className={classes.title}>Вход</div>
-					<span className={clsx("p-float-label", classes.inputInner)}>
+			<div className={classes.body}>
+				{!props.isMobile &&
+				<NewHeader isAuth={props.isAuth} isMobile={props.isMobile} isTablet={props.isTablet}/>
+				}
+				<main className={classes.auth}>
+					<Card className={classes.card}>
+						<div className={classes.title}>Вход</div>
+						<span className={clsx("p-float-label", classes.inputInner)}>
 						<InputText
 							className={classes.input}
 							id="email" value={email}
@@ -106,7 +107,7 @@ const Auth = (props) => {
 						/>
 						<label htmlFor="email" className={classes.label}>Email</label>
 					</span>
-					<span className={clsx("p-float-label", classes.inputInner)}>
+						<span className={clsx("p-float-label", classes.inputInner)}>
 						<Password
 							className={classes.inputPassword}
 							inputId="password"
@@ -116,37 +117,34 @@ const Auth = (props) => {
 						/>
 						<label htmlFor="password" className={classes.label}>Пароль</label>
 					</span>
-					<div className={classes.btns}>
-						<Button
-							label={!props.fetchLogin ?
-								<span>Войти</span>
-								: <i className={`pi pi-spin pi-spinner ${classes.fetch}`}/>
-							}
-							className={classes.btn1}
-							onClick={onClickLogin}
-						/>
-						<Button
-							label="Забыли пароль?"
-							className={clsx("p-button-outlined", classes.btn2)}
-							onClick={()=>{setSendLink(true)}}
-						/>
-					</div>
-					{props.isMobile &&
+						<div className={classes.btns}>
+							<Button
+								label={!props.fetchLogin ?
+									<span>Войти</span>
+									: <i className={`pi pi-spin pi-spinner ${classes.fetch}`}/>
+								}
+								className={classes.btn1}
+								onClick={onClickLogin}
+							/>
+							<Button
+								label="Забыли пароль?"
+								className={clsx("p-button-outlined", classes.btn2)}
+								onClick={()=>{setSendLink(true)}}
+							/>
+						</div>
+						{props.isMobile &&
 						<Link to={'/'} className={classes.linkBack}>
 							<i className={`pi pi-times ${classes.linkBackIcon}`}/>
 						</Link>
-					}
-					{props.isMobile &&
+						}
 						<div className={classes.goTo}>
 							Нет аккаунта?
 							<Link to={"/signup"}>Зарегистрироваться</Link>
 						</div>
-					}
-				</Card>
-			</main>
-			{!props.isMobile &&
-				<Footer/>
-			}
+					</Card>
+				</main>
+			</div>
+			<Toast ref={toast} position="bottom-right"/>
 		</>
 	);
 };
