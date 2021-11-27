@@ -65,7 +65,7 @@ const NewLanding = (props) => {
 	return (
 		<>
 			<div className={classes.body}>
-				<NewHeader />
+				<NewHeader isMobile={props.isMobile} />
 				<main>
 					<div className={classes.container}>
 						<section className={classes.hero}>
@@ -89,10 +89,18 @@ const NewLanding = (props) => {
 								<div className={classes.heroInfoDesc}>
 									Первая обучающая платформа, на которой мы делимся, а ты приумножаешь.
 								</div>
-								<Fade bottom cascade>
-									<img src={Hero2Svg} alt="" className={classes.heroInfoCardImg}/>
-									<img src={Hero1Svg} alt="" className={classes.heroInfoCardImg}/>
-								</Fade>
+								{props.isMobile ?
+									<div className={classes.heroRow}>
+										<Fade bottom cascade>
+											<img src={Hero2Svg} alt="" className={classes.heroInfoCardImg}/>
+											<img src={Hero1Svg} alt="" className={classes.heroInfoCardImg}/>
+										</Fade>
+									</div>:
+									<Fade bottom cascade>
+										<img src={Hero2Svg} alt="" className={classes.heroInfoCardImg}/>
+										<img src={Hero1Svg} alt="" className={classes.heroInfoCardImg}/>
+									</Fade>
+								}
 							</div>
 						</section>
 					</div>
@@ -125,7 +133,9 @@ const NewLanding = (props) => {
 										<div className={classes.lineABS}/>
 									</div>
 								</Bounce>
-								<div className={classes.lineA}/>
+								{!props.isMobile &&
+									<div className={classes.lineA}/>
+								}
 							</div>
 							<div className={classes.InfoDesc}>
 								Наш проект - это именно то, что ты давно искал!
@@ -178,7 +188,7 @@ const NewLanding = (props) => {
 									<div className={clsx(classes.clientsCard, classes.clientsCard6)}>
 										<span className={classes.clientsCardNumber}>06</span>
 										<img src={Client6Svg} alt="" className={classes.clientsCardImg6}/>
-										<div className={clsx(classes.clientsCardText, classes.clientsCardText6)}>MLM предприниматель</div>
+										<div className={clsx(classes.clientsCardText, classes.clientsCardText6)}>MLM <br/> предприниматель</div>
 									</div>
 								</div>
 							</Zoom>
@@ -197,15 +207,23 @@ const NewLanding = (props) => {
 										Единственная обучающая платформа, цель которой: дать тебе все необходимые знания для ведения собственного бизнеса, и позволить приумножить свой капитал прямо здесь и сейчас.
 									</div>
 								</div>
-								<div className={classes.aboutContentRow2}>
-									<div className={classes.aboutContentStatus}>Ceo  Lucky Business</div>
-									<div className={classes.aboutContentName}>Дмитрий Вахрушев</div>
-									<div className={classes.line}/>
-								</div>
+								{!props.isMobile &&
+									<div className={classes.aboutContentRow2}>
+										<div className={classes.aboutContentStatus}>Ceo  Lucky Business</div>
+										<div className={classes.aboutContentName}>Дмитрий Вахрушев</div>
+										<div className={classes.line}/>
+									</div>
+								}
 							</div>
 							<Zoom>
 								<img src={About1Jpg} alt="" className={classes.aboutImg}/>
 							</Zoom>
+							{props.isMobile &&
+							<div className={classes.aboutContentRow2}>
+								<div className={classes.aboutContentStatus}>Ceo  Lucky Business</div>
+								<div className={classes.aboutContentName}>Дмитрий Вахрушев</div>
+							</div>
+							}
 						</section>
 					</div>
 					<div className={classes.line}/>
@@ -241,7 +259,7 @@ const NewLanding = (props) => {
 								</Fade>
 								<Fade left>
 									<div className={clsx(classes.ContactUsCard, classes.ContactUsCard3)}>
-										<div className={classes.ContactUsCardText} style={{width: 262, fontSize: 17}}>Базу знаний от экспертов в сфере интернет-маркетинга, MLM маркетинга и организации бизнес-процессов</div>
+										<div className={classes.ContactUsCardText} style={{width: 262}}>Базу знаний от экспертов в сфере интернет-маркетинга, MLM маркетинга и организации бизнес-процессов</div>
 										<img src={ContactUs5Svg} alt="" className={classes.ContactUsCardImg}/>
 									</div>
 								</Fade>
@@ -271,25 +289,41 @@ const NewLanding = (props) => {
 							</Bounce>
 						</section>
 					</div>
-					<div className={classes.line}/>
+					{!props.isMobile &&
+						<div className={classes.line}/>
+					}
 					<div className={classes.container}>
-						<section className={classes.end}>
-							<div className={classes.endCol1}>
-								<Pulse>
-									<Link to={'/'} className={classes.btnEndSignUp}>
-										Зарегистрироваться
-									</Link>
-								</Pulse>
-							</div>
-							<div className={classes.endCol2}>
+						{props.isMobile ?
+							<section className={classes.end}>
 								<Bounce right>
 									<div className={classes.endText}>
 										Ты сможешь вернуть стоимость самого дорогого информационного пакета уже в первую неделю своего обучения
 									</div>
 								</Bounce>
-								<div className={classes.endLogo}>Lucky Business</div>
-							</div>
-						</section>
+								<Pulse>
+									<Link to={'/'} className={classes.btnEndSignUp}>
+										Зарегистрироваться
+									</Link>
+								</Pulse>
+							</section>:
+							<section className={classes.end}>
+								<div className={classes.endCol1}>
+									<Pulse>
+										<Link to={'/'} className={classes.btnEndSignUp}>
+											Зарегистрироваться
+										</Link>
+									</Pulse>
+								</div>
+								<div className={classes.endCol2}>
+									<Bounce right>
+										<div className={classes.endText}>
+											Ты сможешь вернуть стоимость самого дорогого информационного пакета уже в первую неделю своего обучения
+										</div>
+									</Bounce>
+									<div className={classes.endLogo}>Lucky Business</div>
+								</div>
+							</section>
+						}
 					</div>
 					{/*<div className={classes.line}/>*/}
 				</main>
@@ -312,7 +346,9 @@ const NewLanding = (props) => {
 						</Bounce>
 					</section>
 				</div>
-				<div className={classes.line}/>
+				{!props.isMobile &&
+					<div className={classes.line}/>
+				}
 				<div className={classes.container}>
 					<section className={classes.one}>
 						<div className={classes.oneCard}>
@@ -324,39 +360,10 @@ const NewLanding = (props) => {
 									</div>
 									<img src={TestSvg} alt=""/>
 								</Fade>
-								{/*<div className={classes.oneCardBody}>
-									<div className={classes.oneCardSteps}>
-										<div className={classes.oneCardStep}>
-											<div className={classes.oneCardStepNumber}>01</div>
-											<div className={classes.oneCardStepText}>Личный бренд</div>
-										</div>
-										<div className={classes.oneCardStep}>
-											<div className={classes.oneCardStepNumber}>02</div>
-											<div className={classes.oneCardStepText}>Лидерство</div>
-										</div>
-										<div className={classes.oneCardStep}>
-											<div className={classes.oneCardStepNumber}>03</div>
-											<div className={classes.oneCardStepText}>Работа с командой</div>
-										</div>
-										<div className={classes.oneCardStep}>
-											<div className={classes.oneCardStepNumber}>04</div>
-											<div className={classes.oneCardStepText}>Продвижение</div>
-										</div>
-										<div className={classes.oneCardStep}>
-											<div className={classes.oneCardStepNumber}>05</div>
-											<div className={classes.oneCardStepText}>Масштабирование</div>
-										</div>
-										<div className={classes.oneCardStep}>
-											<div className={classes.oneCardStepNumber}>06</div>
-											<div className={classes.oneCardStepText}>Как привлечь первых рефералов</div>
-										</div>
-									</div>
-								</div>*/}
 							</div>
 							<Fade right>
 								<img src={Pack1Svg} alt="" className={classes.oneCardImg}/>
 							</Fade>
-
 						</div>
 						<div className={classes.oneCard}>
 							<div className={classes.oneCardContent}>
@@ -648,24 +655,35 @@ const NewLanding = (props) => {
 						</Fade>
 						<img src={FooterImg} alt="" className={classes.end2BGImg}/>
 					</div>
-					<div className={classes.line} style={{position: "relative", zIndex: 3}}/>
-					<div className={clsx(classes.end, classes.end2footer)}>
+					{props.isMobile ?
 						<div className={classes.endCol1}>
 							<Pulse>
 								<Link to={'/'} className={clsx(classes.btnEndSignUp, classes.btnEndSignUp2)}>
 									Пройти тест сейчас
 								</Link>
 							</Pulse>
-						</div>
-						<div className={classes.endCol2}>
-							<Bounce right>
-								<div className={classes.endText}>
-									Здесь какая-то инфа о квизе, запросить у Владимира
+						</div>:
+						<>
+							<div className={classes.line} style={{position: "relative", zIndex: 3}}/>
+							<div className={clsx(classes.end, classes.end2footer)}>
+								<div className={classes.endCol1}>
+									<Pulse>
+										<Link to={'/'} className={clsx(classes.btnEndSignUp, classes.btnEndSignUp2)}>
+											Пройти тест сейчас
+										</Link>
+									</Pulse>
 								</div>
-							</Bounce>
-							<div className={classes.endLogo}>Lucky Business</div>
-						</div>
-					</div>
+								<div className={classes.endCol2}>
+									<Bounce right>
+										<div className={classes.endText}>
+											Здесь какая-то инфа о квизе, запросить у Владимира
+										</div>
+									</Bounce>
+									<div className={classes.endLogo}>Lucky Business</div>
+								</div>
+							</div>
+						</>
+					}
 				</section>
 			</div>
 		</>

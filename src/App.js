@@ -66,7 +66,7 @@ function App(props) {
 			<Route path={'/signup'}  render= {() => <Registration isMobile={isMobile} isTablet={isTablet}/>}/>
 			<Route path={'/cabinet'}  render= {() => <Cabinet isMobile={isMobile} isTablet={isTablet} toast={toast}/>}/>
 			<Route path={'/ref'}  render= {() => <RefMiddleware/> }/>
-			<Route path={'/test'}  render= {() => <NewLanding/> }/>
+			<Route path={'/test'}  render= {() => <NewLanding isMobile={isMobile}/> }/>
 			{/*<Redirect to={'/'}/>*/}
 			<Toast ref={toast} position="bottom-right" className={classes.toast}/>
 		</>

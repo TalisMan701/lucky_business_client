@@ -16,33 +16,21 @@ const NewHeader = (props) => {
 					<Link to={'/'} className={classes.navLink}>Тарифы</Link>
 				</div>
 				}
-				{!props.isMobile ?
-					<div className={classes.lkInner}>
-						{!props.isAuth ?
-							<>
-								<Link to={'/auth'} className={classes.btnAuth}>
-									Войти
-								</Link>
-								<Link to={'/signup'} className={classes.btnSignUp}>
-									Заказать консультацию
-								</Link>
-							</>:
-							<Link to={'/cabinet'}>
-								Личный кабинет
+				<div className={classes.lkInner}>
+					{!props.isAuth ?
+						<>
+							<Link to={'/auth'} className={classes.btnAuth}>
+								Войти
 							</Link>
-						}
-					</div>:
-					<div className={classes.lkInnerMobile}>
-						{!props.isAuth ?
-							<>
-								<Link to={'/auth'}>Войти</Link>
-							</>:
-							<>
-								<Link to={"cabinet"}>Личный кабинет</Link>
-							</>
-						}
-					</div>
-				}
+							<Link to={'/signup'} className={classes.btnSignUp}>
+								Заказать консультацию
+							</Link>
+						</>:
+						<Link to={'/cabinet'}>
+							Личный кабинет
+						</Link>
+					}
+				</div>
 			</div>
 		</header>
 	);

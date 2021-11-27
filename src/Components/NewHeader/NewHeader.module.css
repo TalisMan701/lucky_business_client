@@ -91,3 +91,14 @@
     color: #000000;
     margin-right: 16px;
 }
+
+@media (max-width: 450px) {
+    .btnAuth{
+        font-size: 12px;
+        width: 100px;
+    }
+
+    .btnSignUp{
+        font-size: 12px;
+    }
+}

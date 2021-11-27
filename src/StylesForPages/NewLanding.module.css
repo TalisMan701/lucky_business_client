@@ -972,3 +972,384 @@
     right: -103px;
     /*filter: brightness(130%) contrast(130%) ;*/
 }
+
+@media (max-width: 450px) {
+    .heroTitle{
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    .heroInfo{
+        width: 100%;
+        flex-flow: column wrap;
+        justify-content: center;
+    }
+
+    .heroInfoDesc{
+        text-align: center;
+        order: -1;
+        margin-right: 0;
+        margin-bottom: 40px;
+    }
+
+    .btnStart{
+        margin-right: 0;
+        margin-bottom: 40px;
+    }
+
+    .heroRow{
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+    }
+
+    .infoTitle{
+        font-size: 24px;
+        width: 100%;
+    }
+
+    .infoCards{
+        flex-flow: column;
+        margin-bottom: 0;
+    }
+
+    .infoCard{
+        margin-bottom: 48px;
+        margin-right: 0;
+    }
+
+    .heroInfoCardImg{
+        width: 45%;
+    }
+
+    .clientsHeaderTitle{
+        font-size: 24px;
+    }
+
+    .clientsCards{
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        grid-template-rows: 90px 160px 160px 160px;
+        justify-items: stretch;
+        grid-column-gap: 12px;
+        grid-row-gap: 12px;
+    }
+
+    .clientsCard img {
+        width: 100%;
+    }
+
+    .clientsCardNumber1{
+        top: 16px;
+    }
+
+    .clientsCardText1{
+        top: auto;
+        left: 4px;
+        bottom: 24px;
+        font-size: 10px;
+    }
+
+    .clientsCard2{
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    .clientsCard2{
+        background-size: cover;
+    }
+
+    .clientsCard3{
+        background-size: cover;
+    }
+
+    .clientsCardText3{
+        top: auto;
+        bottom: 24px;
+    }
+
+    .clientsCard4{
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+
+    .clientsCardImg4{
+        width: 60% !important;
+        right: 16px;
+    }
+
+    .clientsCardText4{
+        top: auto;
+        bottom: 24px;
+        font-size: 16px;
+    }
+
+    .clientsCard5{
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
+
+    .clientsCardImg5{
+        width: 40% !important;
+        height: 100%;
+        right: 0;
+    }
+
+    .clientsCardText5{
+        top: auto;
+        bottom: 24px;
+        font-size: 12px;
+        width: 165px;
+    }
+
+    .clientsCardImg6{
+        width: 50% !important;
+        right: 16px;
+    }
+
+    .clientsCardText6{
+        top: auto;
+        bottom: 24px;
+        font-size: 14px;
+    }
+
+    .about{
+        flex-flow: column;
+        padding: 55px 0 71px 0;
+    }
+
+    .aboutContent{
+        width: 100%;
+    }
+
+    .aboutContentDesc{
+        margin-bottom: 16px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .aboutContentRow2{
+        margin-top: 8px;
+    }
+
+    .aboutContentStatus{
+        color: #FFF;
+    }
+
+    .ContactUsTitle{
+        width: 100%;
+        font-size: 22px;
+    }
+
+    .ContactUsCards{
+        width: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+    }
+
+    .ContactUsCard{
+        padding: 8px;
+        width: 100%;
+    }
+
+    .ContactUsCardText{
+        font-size: 14px;
+        margin-top: 0;
+        margin-right: 4px;
+    }
+
+    .ContactUsCardImg{
+        width: 100px;
+        height: 100px;
+    }
+
+    .endHeader{
+        padding: 42px 0 26px 0;
+    }
+
+    .endHeaderText{
+        font-size: 28px;
+        width: 100%;
+        line-height: 34px;
+    }
+
+    .endHeaderText:last-child{
+        text-align: end;
+        margin-top: 0;
+        margin-left: 0;
+    }
+
+    .end{
+        flex-flow: column;
+        align-items: center;
+    }
+
+    .endText{
+        width: 100%;
+        margin-bottom: 32px;
+        text-align: center;
+    }
+
+    .btnEndSignUp{
+        width: 200px;
+        height: 200px;
+        font-size: 14px;
+        margin: 0;
+        margin-bottom: 32px;
+    }
+
+    .oneHeaderText{
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .oneHeaderTextOut{
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .oneHeader1{
+        width: 100%;
+        margin-left: 32px;
+    }
+
+    .oneHeader2{
+        width: 100%;
+        margin-right: 64px;
+    }
+
+    .oneCard{
+        flex-flow: column;
+        width: 100%;
+        height: auto;
+        padding: 16px;
+    }
+
+    .oneCardContent{
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+
+    .oneCardTitleInner{
+        padding: 8px;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .oneCardTitle{
+        font-size: 14px !important;
+        line-height: 16px;
+    }
+
+    .oneCardTitleImg{
+        width: 80px;
+        height: 20px;
+    }
+
+    .lockRow{
+        flex-flow: column;
+    }
+
+    .lockRow img {
+        width: 100%;
+        margin-right: 0 !important;
+        margin-bottom: 16px;
+    }
+
+    .locksPlatinum{
+        width: 112%;
+        top: -18px;
+        right: 1px;
+    }
+
+    .clientsHeaderTitle{
+        font-size: 28px !important;
+        line-height: 36px !important;
+    }
+
+    .two{
+        flex-flow: row wrap;
+        padding: 32px 0 !important;
+    }
+
+    .twoCard{
+        width: 48%;
+        height: 310px;
+        margin-bottom: 16px;
+    }
+
+    .twoCardImg{
+        width: 70%;
+        top: 32px !important;
+    }
+
+    .twoCardText, .twoCardText2{
+        font-size: 14px !important;
+    }
+
+    .makeTitle{
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .makeText{
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .bonusItem{
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    .bonusItemNumber{
+        font-size: 28px;
+        margin-right: 16px;
+    }
+
+    .bonusItemText{
+        font-size: 12px;
+        width: 200px;
+    }
+
+    .bonusItemImg{
+        width: 30%;
+    }
+
+    .bonus{
+        padding-bottom: 32px;
+    }
+
+    .moneyTitle{
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    .moneyImg{
+        width: 100%;
+    }
+
+    .endCol1{
+        width: 100%;
+        border: none;
+        height: 200px;
+    }
+
+    .end2Title{
+        width: 100%;
+        text-align: center;
+        font-size: 28px;
+        line-height: 34px;
+        margin-bottom: 64px;
+    }
+
+    .end2BGImg{
+        z-index: 0;
+        width: 120%;
+        bottom: -288px;
+        right: -17px;
+    }
+}
