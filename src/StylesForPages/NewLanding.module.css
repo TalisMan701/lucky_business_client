@@ -1352,4 +1352,12 @@
         bottom: -288px;
         right: -17px;
     }
+
+    .body{
+        background-size: contain;
+    }
+
+    .body2{
+        background-size: contain;
+    }
 }
