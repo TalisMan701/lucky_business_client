@@ -2,7 +2,10 @@
     background: #000000;
     background-image: url("../Images/Other/BackgroundNewLanding-min.jpg");
     background-position: center top;
-    background-size: auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     user-select: none;
     overflow: hidden;
 }
@@ -11,7 +14,10 @@
     background: #000000;
     background-image: url("../Images/Other/bg2-min.jpg");
     background-position: center top;
-    background-size: auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     user-select: none;
     overflow: hidden;
 }
@@ -1353,11 +1359,11 @@
         right: -17px;
     }
 
-    .body{
-        background-size: contain;
+    /*.body{
+        background-size: cover;
     }
 
     .body2{
-        background-size: contain;
-    }
+        background-size: cover;
+    }*/
 }
