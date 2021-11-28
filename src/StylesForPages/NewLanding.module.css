@@ -974,8 +974,8 @@
 .end2BGImg{
     position: absolute;
     z-index: 2;
-    bottom: -473px;
-    right: -103px;
+    bottom: -581px;
+    right: -202px;
     /*filter: brightness(130%) contrast(130%) ;*/
 }
 
