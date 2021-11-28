@@ -1,6 +1,6 @@
 .body{
     background: #000000;
-    background-image: url("../Images/Other/BackgroundNewLanding.jpg");
+    background-image: url("../Images/Other/BackgroundNewLanding-min.jpg");
     background-position: center top;
     background-size: auto;
     user-select: none;
@@ -9,7 +9,7 @@
 
 .body2{
     background: #000000;
-    background-image: url("../Images/Other/bg2.jpg");
+    background-image: url("../Images/Other/bg2-min.jpg");
     background-position: center top;
     background-size: auto;
     user-select: none;
