@@ -686,6 +686,54 @@ const NewLanding = (props) => {
 					}
 				</section>
 			</div>
+			<footer className={classes.footer}>
+				<div className={clsx(classes.container, classes.footerInner)}>
+					<div className={classes.footerCol1}>
+						<div className={classes.footerRow1}>
+							<div className={classes.footerTextInner}>
+								<div className={classes.footerTitle}>Получатель</div>
+								<div className={classes.footerText}>ООО "ЛАКИ БИЗНЕС"</div>
+							</div>
+							<div className={classes.footerTextInner}>
+								<div className={classes.footerTitle}>ИНН</div>
+								<div className={classes.footerText}>7325175510</div>
+							</div>
+							<div className={classes.footerTextInner}>
+								<div className={classes.footerTitle}>Расчётный счёт (₽)</div>
+								<div className={classes.footerText}>40702810002500114671</div>
+							</div>
+							<div className={classes.footerTextInner}>
+								<div className={classes.footerTitle}>КПП</div>
+								<div className={classes.footerText}>732501001</div>
+							</div>
+						</div>
+						<div className={classes.footerRow2}>
+							<div className={classes.footerTextInner}>
+								<div className={classes.footerTitle}>Название банка</div>
+								<div className={classes.footerText}>ТОЧКА ПАО БАНКА "ФК ОТКРЫТИЕ"</div>
+							</div>
+							<div className={classes.footerTextInner}>
+								<div className={classes.footerTitle}>Город</div>
+								<div className={classes.footerText}>г. Москва</div>
+							</div>
+							<div className={classes.footerTextInner}>
+								<div className={classes.footerTitle}>Корр. счёт</div>
+								<div className={classes.footerText}>30101810845250000999</div>
+							</div>
+							<div className={classes.footerTextInner}>
+								<div className={classes.footerTitle}>БИК</div>
+								<div className={classes.footerText}>044525999</div>
+							</div>
+						</div>
+					</div>
+					<div className={classes.footerCol2}>
+						<Link to={'/'} className={classes.footerLink}>
+							Договор оферта
+						</Link>
+					</div>
+
+				</div>
+			</footer>
 		</>
 	);
 };
