@@ -2,6 +2,7 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/md-dark-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
+import 'video-react/dist/video-react.css';
 import classes from "./App.module.css";
 import Landing from "./Pages/Landing";
 import {Redirect, Route, Switch} from "react-router-dom";
@@ -18,6 +19,7 @@ import {Toast} from "primereact/toast";
 import socket from "./Socket/socket";
 import NewLanding from "./Pages/NewLanding";
 import Pdf from "./Pages/PDF";
+import Video from "./Components/Video/Video";
 
 function App(props) {
 	const toast = useRef(null)
@@ -68,6 +70,7 @@ function App(props) {
 			<Route path={'/cabinet'}  render= {() => <Cabinet isMobile={isMobile} isTablet={isTablet} toast={toast}/>}/>
 			<Route path={'/ref'}  render= {() => <RefMiddleware/> }/>
 			<Route path={'/pdf'}  render= {() => <Pdf isMobile={isMobile}/> }/>
+			<Route path={'/test'}  render= {() => <Video isMobile={isMobile}/> }/>
 			{/*<Redirect to={'/'}/>*/}
 			<Toast ref={toast} position="bottom-right" className={classes.toast}/>
 		</>

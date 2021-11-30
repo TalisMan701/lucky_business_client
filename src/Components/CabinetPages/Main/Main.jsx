@@ -36,9 +36,9 @@ const Main = (props) => {
 				title={"Lucky Business"}
 				className={classes.cardHeader}
 			>
-				<div>
+				{/*<div>
 					Lucky Business - это Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem modi quis quos.
-				</div>
+				</div>*/}
 			</Card>
 
 		</>

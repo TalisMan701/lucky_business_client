@@ -41,7 +41,7 @@ const Auth = (props) => {
 	}
 
 	if(props.isAuth){
-		return <Redirect to={'/'}/>
+		return <Redirect to={'/cabinet'}/>
 	}
 
 	if(sendLink){

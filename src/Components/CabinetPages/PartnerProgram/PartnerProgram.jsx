@@ -91,10 +91,10 @@ const PartnerProgram = (props) => {
 								<div className={classes.row}>
 									<InputText
 										readOnly
-										value={`https://lucky-business-test.herokuapp.com/ref?uuid=${props.user.refLinkhash}`}
+										value={`https://lucky-business.ru/ref?uuid=${props.user.refLinkhash}`}
 										className={classes.inputRef}
 									/>
-									<CopyToClipboard text={`https://lucky-business-test.herokuapp.com/ref?uuid=${props.user.refLinkhash}`}
+									<CopyToClipboard text={`https://lucky-business.ru/ref?uuid=${props.user.refLinkhash}`}
 													 onCopy={() => props.toast.current.show({severity: 'success', summary: 'Копирование', detail: 'Прошло успешно!'})}>
 										<i className={`pi pi-copy ${classes.copyIcon}`}/>
 									</CopyToClipboard>

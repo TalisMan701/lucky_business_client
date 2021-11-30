@@ -78,7 +78,7 @@ const SidebarMy = (props) => {
 					className={classes.navItem}
 				>
 					<i className="pi pi-wallet"/>
-					<span>Колешёк</span>
+					<span>Кошелёк</span>
 				</NavLink>
 				<NavLink
 					onClick={()=>{props.setVisible(false)}}
