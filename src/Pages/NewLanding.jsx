@@ -727,7 +727,7 @@ const NewLanding = (props) => {
 						</div>
 					</div>
 					<div className={classes.footerCol2}>
-						<Link to={'/'} className={classes.footerLink}>
+						<Link to={'/pdf'} target={'_blank'} className={classes.footerLink}>
 							Договор оферта
 						</Link>
 					</div>
