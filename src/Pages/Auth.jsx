@@ -137,6 +137,11 @@ const Auth = (props) => {
 							<i className={`pi pi-times ${classes.linkBackIcon}`}/>
 						</Link>
 						}
+						{props.errors &&
+							<div className={classes.errors}>
+								{props.errors}
+							</div>
+						}
 						<div className={classes.goTo}>
 							Нет аккаунта?
 							<Link to={"/signup"}>Зарегистрироваться</Link>
@@ -150,7 +155,8 @@ const Auth = (props) => {
 };
 const mapStateToProps = state =>({
 	fetchLogin: state.auth.fetchLogin,
-	isAuth: state.auth.isAuth
+	isAuth: state.auth.isAuth,
+	errors: state.auth.errors
 })
 
 export default connect(mapStateToProps, {login})(Auth);

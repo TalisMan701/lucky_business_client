@@ -17,11 +17,16 @@ const Registration = (props) => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [name, setName] = useState('')
+	const [fetchReg, setFetchReg] = useState(false)
 	const [lastname, setLastname] = useState('')
 	const [confirmPassword, setConfirmPassword] = useState('')
 	const [confirmPersonalData, setConfirmPersonalData] = useState(false)
 	const [error, setError] = useState(null)
 	const [redirectLogin, setRedirectLogin] = useState(false)
+
+	const validateEmail = (email) =>{
+		return !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,10}$/i.test(email)
+	}
 
 
 	useEffect(()=>{
@@ -29,14 +34,31 @@ const Registration = (props) => {
 	}, [email, password, name, lastname, confirmPassword, confirmPersonalData])
 
 	const onClickSignUp = () => {
+		setError(null)
 		if(confirmPersonalData){
-			registrationAPI.signup(name, lastname, email, password)
-				.then(response => {
-					setRedirectLogin(true)
-				})
-				.catch(error => {
-
-				})
+			if(password !== "" && confirmPassword !== "" && email !== "" && name !== "" && lastname !== ""){
+				if(password === confirmPassword){
+					if(!validateEmail(email)){
+						setFetchReg(true)
+						registrationAPI.signup(name, lastname, email, password)
+							.then(response => {
+								setFetchReg(false)
+								setRedirectLogin(true)
+								props.toast.current.show({severity: 'success', summary: 'Регистрация', detail: "Прошла успешно!"})
+							})
+							.catch(error => {
+								setFetchReg(false)
+								setError("Ошибка на сервере")
+							})
+					}else{
+						setError("Некорректный Email!")
+					}
+				}else{
+					setError("Пароли не совпадают!")
+				}
+			}else{
+				setError("Заполните все поля!")
+			}
 		}else{
 			setError("Подтвердите пользовательское соглашение!")
 		}
@@ -118,12 +140,15 @@ const Registration = (props) => {
 							<label htmlFor="confirmPersonalData" className={classes.checkboxLabel}><p style={{margin: 0}}>Я согласен с <span style={{color: "#9FA8DA", cursor: "pointer"}}>пользовательским соглашением.</span></p></label>
 						</div>
 						<Button
-							label="Зарегистрироваться"
+							label={!fetchReg ?
+								<span>Зарегистрироваться</span>
+								: <i className={`pi pi-spin pi-spinner ${classes.fetch}`}/>
+							}
 							className={classes.btn1}
 							onClick={onClickSignUp}
 						/>
 						{error &&
-						<div style={{color: "red"}}>{error}</div>
+						<div className={classes.errors}>{error}</div>
 						}
 						{props.isMobile &&
 						<Link to={'/'} className={classes.linkBack}>

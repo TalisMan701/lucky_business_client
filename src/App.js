@@ -66,7 +66,7 @@ function App(props) {
 			<Route exact path={'/'} render= {() => <NewLanding isMobile={isMobile} isTablet={isTablet} isAuth={props.isAuth}/>}/>
 			<Route path={'/auth'}  render= {() => <Auth isMobile={isMobile} isTablet={isTablet}/>}/>
 			<Route path={'/reset_password'}  render= {() => <ResetPassword isMobile={isMobile} isTablet={isTablet} toast={toast}/>}/>
-			<Route path={'/signup'}  render= {() => <Registration isMobile={isMobile} isTablet={isTablet}/>}/>
+			<Route path={'/signup'}  render= {() => <Registration isMobile={isMobile} isTablet={isTablet} toast={toast}/>}/>
 			<Route path={'/cabinet'}  render= {() => <Cabinet isMobile={isMobile} isTablet={isTablet} toast={toast}/>}/>
 			<Route path={'/ref'}  render= {() => <RefMiddleware/> }/>
 			<Route path={'/pdf'}  render= {() => <Pdf isMobile={isMobile}/> }/>

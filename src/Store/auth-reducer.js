@@ -143,6 +143,7 @@ export const refreshUserData = () => dispatch => {
 
 export const login = (email, password) => (dispatch) =>{
 	dispatch(setFetchLogin(true))
+	dispatch(setErrors(null))
 	authAPI.login(email, password)
 		.then(response => {
 			console.log(response)
@@ -163,7 +164,7 @@ export const login = (email, password) => (dispatch) =>{
 		if(error?.response?.status === 401){
 			dispatch(setErrors("Неправильный логин или пароль!"))
 		}else{
-			dispatch(setErrors(error?.response?.data?.message))
+			dispatch(setErrors("Ошибка на сервере, попробуйте позже!"))
 		}
 		dispatch(setFetchLogin(false))
 	})

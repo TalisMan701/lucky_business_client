@@ -32,3 +32,11 @@
 .cardHeader > div > div:nth-child(2){
     border-top: 1px solid #2f2f2f;
 }
+
+.mi{
+    margin-bottom: 24px;
+}
+
+.miInner{
+    display: flex;
+}
