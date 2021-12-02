@@ -8,6 +8,17 @@ const Product = (props) => {
 				<object type="image/svg+xml" data={props.data.pathIcon} className={classes.img}/>:
 				<img src={props.data?.pathIcon} alt="img" className={classes.img}/>
 			}
+			<div className={classes.overlay}
+				onClick={()=>{
+					props.setShowProductContent({
+						bool: true,
+						content: {
+							name: props.data.name,
+							main: props.urlsForProduct
+						}
+					})
+				}}
+			/>
 		</Card>
 	);
 };

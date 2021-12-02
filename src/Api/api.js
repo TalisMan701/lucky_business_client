@@ -188,3 +188,15 @@ export const notificationsAPI = {
 		return instanceWithToken.get(`users/setStatusRead`)
 	}
 }
+
+export const payAPI = {
+	topUpBalance(sum){
+		return instanceWithToken.post(`users/updateBalance`, {sum})
+	},
+	getWalletDataServer(){
+		return instanceWithToken.get(`users/getWallet`)
+	},
+	updateTranz(){
+		return instanceWithToken.get(`users/getWalletActualInfo`)
+	}
+}

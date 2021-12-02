@@ -20,3 +20,53 @@
     border-radius: 4px;
     padding: 16px;
 }
+
+.inputInner{
+    display: flex;
+}
+
+.input{
+    margin-right: 16px;
+    height: 40px;
+}
+
+.btn{
+    height: 40px;
+    width: 120px;
+}
+
+.fetchInner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tranzInner{
+    margin-top: 16px;
+}
+
+.tranzTitleInner{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 8px;
+}
+
+.tranzTitleBtn{
+    width: 95px;
+    height: 28px;
+    font-size: 14px;
+}
+
+@media (max-width: 450px) {
+    .inputInner{
+        flex-direction: column;
+    }
+
+    .input{
+        margin-bottom: 16px;
+        width: 100%;
+    }
+}

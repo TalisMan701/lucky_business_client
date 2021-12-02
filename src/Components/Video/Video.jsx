@@ -7,21 +7,23 @@ import {
 	CurrentTimeDisplay,
 	TimeDivider,
 	PlaybackRateMenuButton,
-	VolumeMenuButton
+	VolumeMenuButton,
+	BigPlayButton
 } from 'video-react';
 
-const Video = () => {
+const Video = (props) => {
 	return (
 		<div>
-			<Player poster="/assets/poster.png">
-				<source src="https://lucky-business.s3.us-east-2.amazonaws.com/Curse1/%D0%9A%D0%A3%D0%A0%D0%A11+%D1%871.mp4" />
-
+			<Player poster="/assets/poster.png" ref={props.refPlayer}>
+				<source src={props.url} />
+				<BigPlayButton position="center" />
 				<ControlBar>
+					<VolumeMenuButton vertical />
 					<ReplayControl seconds={10} order={1.1} />
 					<ForwardControl seconds={30} order={1.2} />
 					<CurrentTimeDisplay order={4.1} />
 					<TimeDivider order={4.2} />
-					<PlaybackRateMenuButton rates={[5, 2, 1, 0.5, 0.1]} order={7.1} />
+					<PlaybackRateMenuButton rates={[2, 1.5, 1, 0.75, 0.5]} order={7.1} />
 					<VolumeMenuButton disabled />
 				</ControlBar>
 			</Player>

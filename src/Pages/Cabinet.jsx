@@ -133,7 +133,7 @@ const Cabinet = (props) => {
 						<Route path='/cabinet/my_products' render={()=><MyProducts/>}/>
 						<Route path='/cabinet/partner_program' render={()=><PartnerProgram toast={props.toast}/>}/>
 						<Route path='/cabinet/leaders' render={()=><Leaders/>}/>
-						<Route path='/cabinet/wallet' render={()=><Wallet/>}/>
+						<Route path='/cabinet/wallet' render={()=><Wallet user={props.user} toast={props.toast}/>}/>
 						<Route path='/cabinet/notification' render={()=><Notification/>}/>
 						<Route path='/cabinet/materials' render={()=><Materials/>}/>
 						<Route path='/cabinet/settings' render={()=><Settings isMobile={props.isMobile} isTablet={props.isTablet}/>}/>
