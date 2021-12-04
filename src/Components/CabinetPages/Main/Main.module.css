@@ -59,7 +59,7 @@
 .cardInfoCval{
     cursor: pointer;
     transition: all 0.3s ease;
-    animation-duration: 10s;
+    animation-duration: 7s;
     animation-name: showClick;
     animation-iteration-count: infinite;
     animation-delay: 5s;
@@ -218,11 +218,11 @@
         box-shadow: none;
     }
 
-    10% {
+    15% {
         box-shadow: 0 0 10px 0 #9FA8DA;
     }
 
-    20% {
+    30% {
         box-shadow: none;
     }
 

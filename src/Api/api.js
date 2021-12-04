@@ -175,9 +175,9 @@ export const partnerProgramAPI = {
 	activateFastBonus(){
 		return instanceWithToken.get(`users/activeBonusStart`)
 	},
-	/*getSurprise(){
-		return
-	}*/
+	getSurprise(id){
+		return instanceWithToken.post(`users/getSurprise`, {id})
+	}
 }
 
 export const myProductsAPI = {

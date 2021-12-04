@@ -12,11 +12,13 @@ import {partnerProgramAPI} from "../../../Api/api";
 import Countdown, {zeroPad} from "react-countdown";
 import BonusImg from "../../../Images/Other/bonus.png";
 import {TabPanel, TabView} from "primereact/tabview";
+import {refreshUserData} from "../../../Store/auth-reducer";
 const Main = (props) => {
 	const [showCval, setShowCval] = useState(false)
 	const [dateOldFastBonusEnd, setDateOldFastBonusEnd] = useState(null)
 	const [token, setToken] = useState(null)
 	const [fetchActivateFastBonus, setFetchActivateFastBonus] = useState(false)
+	const [fetchGetSurprise, setFetchGetSurprise] = useState([])
 
 	const [activeIndex, setActiveIndex] = useState(0);
 
@@ -39,6 +41,20 @@ const Main = (props) => {
 			.catch(error => {
 				props.toast.current.show({severity: 'error', summary: 'Бонус быстрого старта', detail: 'Ошибка на сервере, попробуйте снова!'})
 				setFetchActivateFastBonus(false)
+			})
+	}
+
+	const getSurprise = (id, index) => {
+		setFetchGetSurprise(prev => [...prev, index])
+		partnerProgramAPI.getSurprise(id)
+			.then(response => {
+				props.refreshUserData()
+				setFetchGetSurprise(prev => prev.filter(indexOld => indexOld !== index))
+				props.toast.current.show({severity: 'success', summary: 'Получение бонуса', detail: 'Бонус успешно получен!'})
+			})
+			.catch(error => {
+				setFetchGetSurprise(prev => prev.filter(indexOld => indexOld !== index))
+				props.toast.current.show({severity: 'error', summary: 'Получение бонуса', detail: 'Ошибка на сервере, попробуйте снова!'})
 			})
 	}
 
@@ -430,24 +446,41 @@ const Main = (props) => {
 				title={"Мои подарки"}
 				className={classes.cardHeader}
 			>
-				{props.user?.surprise.length >= 1 ?
+				{props.fetchRefreshUserData ?
+					<div className={classes.fetch}>
+						<i className={`pi pi-spin pi-spinner`}/>
+					</div>:
 					<>
-						{props.user?.surprise.map(surp => {
-							return(
-								<div className={classes.surpInner}>
-									<div className={classes.surpText}>АЫА</div>
-									<Button
-										label={"Получить"}
-										className={classes.surpBtn}
-									/>
-								</div>
+						{props.user?.surprise.length >= 1 ?
+							<>
+								{props.user?.surprise.map((surp, index) => {
+									return(
+										<div className={classes.surpInner}>
+											<div className={classes.surpText}>{surp?.surprise?.description}</div>
+											{surp.status ?
+												<Button
+													disabled={true}
+													label={<i className="pi pi-check" style={{'fontSize': '24px'}}/>}
+													className={classes.surpBtn}
+												/>:
+												<Button
+													label={fetchGetSurprise.indexOf(index) == -1 ?
+														<span>Получить</span>
+														: <i className={`pi pi-spin pi-spinner ${classes.fetch}`}/>
+													}
+													className={classes.surpBtn}
+													onClick={() => getSurprise(surp?.id, index)}
+												/>
+											}
+										</div>
 
-							)
-						})}
-					</>:
-					<div>У Вас нет подарков :(</div>
+									)
+								})}
+							</>:
+							<div>У Вас нет подарков :(</div>
+						}
+					</>
 				}
-
 			</Card>
 		</>
 	);
@@ -459,4 +492,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps,{})(Main);
+export default connect(mapStateToProps,{refreshUserData})(Main);

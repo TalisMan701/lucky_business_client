@@ -628,10 +628,10 @@ const NewLanding = (props) => {
 				<div className={classes.container} style={{maxWidth: 1000}}>
 					<section className={classes.download}>
 						<Pulse>
-							<div className={classes.downloadBtn}>
+							<a href={'https://lucky-business.s3.us-east-2.amazonaws.com/materials/presentation.pdf'} target={"_blank"} className={classes.downloadBtn}>
 								<span className={classes.downloadBtnText}>Скачать презентацию</span>
 								<img src={DownloadIconSvg} alt="" className={classes.downloadBtnIcon}/>
-							</div>
+							</a>
 						</Pulse>
 					</section>
 				</div>
