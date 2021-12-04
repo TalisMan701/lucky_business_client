@@ -171,7 +171,13 @@ export const arenaLeadersAPI = {
 export const partnerProgramAPI = {
 	getReferals(){
 		return instanceWithToken.get(`users/getAllReferal`)
-	}
+	},
+	activateFastBonus(){
+		return instanceWithToken.get(`users/activeBonusStart`)
+	},
+	/*getSurprise(){
+		return
+	}*/
 }
 
 export const myProductsAPI = {

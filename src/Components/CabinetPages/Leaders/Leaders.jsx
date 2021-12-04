@@ -52,7 +52,6 @@ const Leaders = () => {
 				<Column header="Аватар" body={avatarBodyTemplate}/>
 				<Column field="name" header="Имя"/>
 				<Column field="surname" header="Фамилия"/>
-				<Column field="email" header="Email"/>
 				<Column field="salesAmountReferal" header="Заработано" body={priceBodyTemplate}/>
 				<Column field="level" header="Квалификация"/>
 			</DataTable>

@@ -33,15 +33,18 @@ function App(props) {
 		document.documentElement.style.setProperty('--vh', `${vh}px`);
 	}
 
-	const gg = () => {
+	const gg = (arg) => {
 		props.setNotifications()
+		if(arg?.type === "newRefBuy"){
+			props.refreshUserData()
+		}
 		//props.refreshUserData()
 	}
 
     useEffect(()=>{
     	socket.on("newNotification", (arg) => {
     		console.log(arg)
-			gg()
+			gg(arg)
 			toast.current.show({severity: 'info', summary: 'Уведомления', detail: arg?.description ? arg.description : "Произошло уведомление!"})
 		});
 		props.getAuthUserData()

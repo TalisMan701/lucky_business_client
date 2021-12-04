@@ -17,7 +17,9 @@ const Curse = (props) => {
 						className={classes.arrow}
 						onClick={()=>{
 							refPlayer.current.load()
-							setIndexState(prev => prev - 1)
+							if(indexState >= 1){
+								setIndexState(prev => prev - 1)
+							}
 						}}
 					>Назад</div>
 					<div>{indexState + 1} из {props.data.video.length}</div>
@@ -25,6 +27,7 @@ const Curse = (props) => {
 						className={classes.arrow}
 						onClick={()=>{
 							refPlayer.current.load()
+							if(indexState < props.data.video.length - 1)
 							setIndexState(prev => prev + 1)
 						}}
 					>Дальше</div>
