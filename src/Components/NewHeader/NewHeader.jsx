@@ -24,7 +24,7 @@ const NewHeader = (props) => {
 								Войти
 							</Link>
 							<Link to={'/signup'} className={classes.btnSignUp}>
-								Заказать консультацию
+								Зарегистрироваться
 							</Link>
 						</>:
 						<Link to={'/cabinet'} className={classes.btnAuth}>

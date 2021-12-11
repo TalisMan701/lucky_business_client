@@ -36,7 +36,7 @@ const Leaders = () => {
 	}
 
 	const priceBodyTemplate = (rowData) => {
-		return formatCurrency(rowData.salesAmountReferal);
+		return rowData.salesAmountReferal.toLocaleString() + "₽"
 	}
 
 	return (

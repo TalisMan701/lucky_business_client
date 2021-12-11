@@ -94,11 +94,28 @@ const Main = (props) => {
 									2
 								</div>
 								<div className={classes.CvalItemProgressInner}>
-									<div className={classes.CvalItemProgressText}>₽20тыс. оборот</div>
-									<ProgressBar value={props.user?.salesAmountReferal * 100 / 20000} className={classes.progressBar} style={{width: "100%"}}/>
+									<div className={classes.CvalItemProgressText}>5 партнеров на 1-ой линии:</div>
+									<ProgressBar value={props.user?.countPartnersOfLine1?.all * 100 / 5} className={classes.progressBar} style={{width: "100%"}}/>
 									<div className={classes.progressBarDescInner} style={{marginTop: 2}}>
 										<div style={{fontSize: 12}}>
-											{props.user?.salesAmountReferal}₽
+											{props.user?.countPartnersOfLine1?.all}
+										</div>
+										<div style={{fontSize: 12}}>
+											5
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className={classes.CvalItem}>
+								<div className={classes.CvalItemNumber}>
+									3
+								</div>
+								<div className={classes.CvalItemProgressInner}>
+									<div className={classes.CvalItemProgressText}>₽20тыс. оборот с 1-ой линии:</div>
+									<ProgressBar value={props.user?.totalTurnover?.line1 * 100 / 20000} className={classes.progressBar} style={{width: "100%"}}/>
+									<div className={classes.progressBarDescInner} style={{marginTop: 2}}>
+										<div style={{fontSize: 12}}>
+											{props.user?.totalTurnover?.line1}₽
 										</div>
 										<div style={{fontSize: 12}}>
 											20000₽
@@ -121,11 +138,28 @@ const Main = (props) => {
 									2
 								</div>
 								<div className={classes.CvalItemProgressInner}>
-									<div className={classes.CvalItemProgressText}>₽50тыс. оборот</div>
-									<ProgressBar value={props.user?.salesAmountReferal * 100 / 50000} className={classes.progressBar} style={{width: "100%"}}/>
+									<div className={classes.CvalItemProgressText}>1 партнер с 2-ой квалификацией на 1-ой линии:</div>
+									<ProgressBar value={props.user?.countPartnersOfLine1?.level2 * 100 / 1} className={classes.progressBar} style={{width: "100%"}}/>
 									<div className={classes.progressBarDescInner} style={{marginTop: 2}}>
 										<div style={{fontSize: 12}}>
-											{props.user?.salesAmountReferal}₽
+											{props.user?.countPartnersOfLine1?.level2}
+										</div>
+										<div style={{fontSize: 12}}>
+											1
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className={classes.CvalItem}>
+								<div className={classes.CvalItemNumber}>
+									3
+								</div>
+								<div className={classes.CvalItemProgressInner}>
+									<div className={classes.CvalItemProgressText}>₽50тыс. оборот с 2-х линий:</div>
+									<ProgressBar value={(props.user?.totalTurnover?.line2 + props.user?.totalTurnover?.line1 )* 100 / 50000} className={classes.progressBar} style={{width: "100%"}}/>
+									<div className={classes.progressBarDescInner} style={{marginTop: 2}}>
+										<div style={{fontSize: 12}}>
+											{(props.user?.totalTurnover?.line2 + props.user?.totalTurnover?.line1 )}₽
 										</div>
 										<div style={{fontSize: 12}}>
 											50000₽
@@ -148,11 +182,28 @@ const Main = (props) => {
 									2
 								</div>
 								<div className={classes.CvalItemProgressInner}>
-									<div className={classes.CvalItemProgressText}>₽200тыс. оборот</div>
-									<ProgressBar value={props.user?.salesAmountReferal * 100 / 200000} className={classes.progressBar} style={{width: "100%"}}/>
+									<div className={classes.CvalItemProgressText}>3 партнерa с 2-ой квалификацией на 1-ой линии:</div>
+									<ProgressBar value={props.user?.countPartnersOfLine1?.level2 * 100 / 3} className={classes.progressBar} style={{width: "100%"}}/>
 									<div className={classes.progressBarDescInner} style={{marginTop: 2}}>
 										<div style={{fontSize: 12}}>
-											{props.user?.salesAmountReferal}₽
+											{props.user?.countPartnersOfLine1?.level2}
+										</div>
+										<div style={{fontSize: 12}}>
+											3
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className={classes.CvalItem}>
+								<div className={classes.CvalItemNumber}>
+									3
+								</div>
+								<div className={classes.CvalItemProgressInner}>
+									<div className={classes.CvalItemProgressText}>₽200тыс. оборот с 2-х линий:</div>
+									<ProgressBar value={(props.user?.totalTurnover?.line2 + props.user?.totalTurnover?.line1 ) * 100 / 200000} className={classes.progressBar} style={{width: "100%"}}/>
+									<div className={classes.progressBarDescInner} style={{marginTop: 2}}>
+										<div style={{fontSize: 12}}>
+											{(props.user?.totalTurnover?.line2 + props.user?.totalTurnover?.line1 )}₽
 										</div>
 										<div style={{fontSize: 12}}>
 											200000₽
@@ -175,11 +226,28 @@ const Main = (props) => {
 									2
 								</div>
 								<div className={classes.CvalItemProgressInner}>
-									<div className={classes.CvalItemProgressText}>₽500тыс. оборот</div>
-									<ProgressBar value={props.user?.salesAmountReferal * 100 / 500000} className={classes.progressBar} style={{width: "100%"}}/>
+									<div className={classes.CvalItemProgressText}>1 партнер с 4-ой квалификацией на 1-ой линии:</div>
+									<ProgressBar value={props.user?.countPartnersOfLine1?.level4 * 100 / 1} className={classes.progressBar} style={{width: "100%"}}/>
 									<div className={classes.progressBarDescInner} style={{marginTop: 2}}>
 										<div style={{fontSize: 12}}>
-											{props.user?.salesAmountReferal}₽
+											{props.user?.countPartnersOfLine1?.level4}
+										</div>
+										<div style={{fontSize: 12}}>
+											1
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className={classes.CvalItem}>
+								<div className={classes.CvalItemNumber}>
+									3
+								</div>
+								<div className={classes.CvalItemProgressInner}>
+									<div className={classes.CvalItemProgressText}>₽500тыс. оборот с 3-х линий:</div>
+									<ProgressBar value={(props.user?.totalTurnover?.line3 + props.user?.totalTurnover?.line2 + props.user?.totalTurnover?.line1 ) * 100 / 500000} className={classes.progressBar} style={{width: "100%"}}/>
+									<div className={classes.progressBarDescInner} style={{marginTop: 2}}>
+										<div style={{fontSize: 12}}>
+											{(props.user?.totalTurnover?.line3 + props.user?.totalTurnover?.line2 + props.user?.totalTurnover?.line1 )}₽
 										</div>
 										<div style={{fontSize: 12}}>
 											500000₽
@@ -202,11 +270,28 @@ const Main = (props) => {
 									2
 								</div>
 								<div className={classes.CvalItemProgressInner}>
-									<div className={classes.CvalItemProgressText}>₽1млн. оборот</div>
-									<ProgressBar value={props.user?.salesAmountReferal * 100 / 1000000} className={classes.progressBar} style={{width: "100%"}}/>
+									<div className={classes.CvalItemProgressText}>2 партнерa с 5-ой квалификацией на 1-ой линии:</div>
+									<ProgressBar value={props.user?.countPartnersOfLine1?.level5 * 100 / 2} className={classes.progressBar} style={{width: "100%"}}/>
 									<div className={classes.progressBarDescInner} style={{marginTop: 2}}>
 										<div style={{fontSize: 12}}>
-											{props.user?.salesAmountReferal}₽
+											{props.user?.countPartnersOfLine1?.level5}
+										</div>
+										<div style={{fontSize: 12}}>
+											2
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className={classes.CvalItem}>
+								<div className={classes.CvalItemNumber}>
+									3
+								</div>
+								<div className={classes.CvalItemProgressInner}>
+									<div className={classes.CvalItemProgressText}>₽1млн. оборот с 4-х линий:</div>
+									<ProgressBar value={(props.user?.totalTurnover?.line4 + props.user?.totalTurnover?.line3 + props.user?.totalTurnover?.line2 + props.user?.totalTurnover?.line1 ) * 100 / 1000000} className={classes.progressBar} style={{width: "100%"}}/>
+									<div className={classes.progressBarDescInner} style={{marginTop: 2}}>
+										<div style={{fontSize: 12}}>
+											{(props.user?.totalTurnover?.line4 + props.user?.totalTurnover?.line3 + props.user?.totalTurnover?.line2 + props.user?.totalTurnover?.line1 )}₽
 										</div>
 										<div style={{fontSize: 12}}>
 											1млн ₽
@@ -229,11 +314,28 @@ const Main = (props) => {
 									2
 								</div>
 								<div className={classes.CvalItemProgressInner}>
-									<div className={classes.CvalItemProgressText}>₽5млн. оборот</div>
-									<ProgressBar value={props.user?.salesAmountReferal * 100 / 5000000} className={classes.progressBar} style={{width: "100%"}}/>
+									<div className={classes.CvalItemProgressText}>2 партнерa с 6-ой квалификацией на 1-ой линии:</div>
+									<ProgressBar value={props.user?.countPartnersOfLine1?.level6 * 100 / 2} className={classes.progressBar} style={{width: "100%"}}/>
 									<div className={classes.progressBarDescInner} style={{marginTop: 2}}>
 										<div style={{fontSize: 12}}>
-											{props.user?.salesAmountReferal}₽
+											{props.user?.countPartnersOfLine1?.level6}
+										</div>
+										<div style={{fontSize: 12}}>
+											2
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className={classes.CvalItem}>
+								<div className={classes.CvalItemNumber}>
+									3
+								</div>
+								<div className={classes.CvalItemProgressInner}>
+									<div className={classes.CvalItemProgressText}>₽5млн. оборот с 6 линий:</div>
+									<ProgressBar value={props.user?.totalTurnover?.main * 100 / 5000000} className={classes.progressBar} style={{width: "100%"}}/>
+									<div className={classes.progressBarDescInner} style={{marginTop: 2}}>
+										<div style={{fontSize: 12}}>
+											{props.user?.totalTurnover?.main}₽
 										</div>
 										<div style={{fontSize: 12}}>
 											5млн ₽
@@ -256,11 +358,28 @@ const Main = (props) => {
 									2
 								</div>
 								<div className={classes.CvalItemProgressInner}>
-									<div className={classes.CvalItemProgressText}>₽10млн. оборот</div>
-									<ProgressBar value={props.user?.salesAmountReferal * 100 / 10000000} className={classes.progressBar} style={{width: "100%"}}/>
+									<div className={classes.CvalItemProgressText}>2 партнерa с 7-ой квалификацией на 1-ой линии:</div>
+									<ProgressBar value={props.user?.countPartnersOfLine1?.level7 * 100 / 2} className={classes.progressBar} style={{width: "100%"}}/>
 									<div className={classes.progressBarDescInner} style={{marginTop: 2}}>
 										<div style={{fontSize: 12}}>
-											{props.user?.salesAmountReferal}₽
+											{props.user?.countPartnersOfLine1?.level7}
+										</div>
+										<div style={{fontSize: 12}}>
+											2
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className={classes.CvalItem}>
+								<div className={classes.CvalItemNumber}>
+									3
+								</div>
+								<div className={classes.CvalItemProgressInner}>
+									<div className={classes.CvalItemProgressText}>₽10млн. оборот с 6 линий:</div>
+									<ProgressBar value={props.user?.totalTurnover?.main * 100 / 10000000} className={classes.progressBar} style={{width: "100%"}}/>
+									<div className={classes.progressBarDescInner} style={{marginTop: 2}}>
+										<div style={{fontSize: 12}}>
+											{props.user?.totalTurnover?.main}₽
 										</div>
 										<div style={{fontSize: 12}}>
 											10млн ₽
@@ -292,12 +411,12 @@ const Main = (props) => {
 				<Card
 					className={classes.cardInfo}
 				>
-					<div className={classes.cardInfoTitle}>Общий доход:</div>
+					<div className={classes.cardInfoTitle}>Баланс:</div>
 					{props.fetchRefreshUserData ?
 						<div className={classes.fetch}>
 							<i className={`pi pi-spin pi-spinner`}/>
 						</div>:
-						<div className={classes.cardInfoCount}>₽ {props.user?.salesAmountReferal.toLocaleString()}</div>
+						<div className={classes.cardInfoCount}>₽ {props.user?.balance.toLocaleString()}</div>
 					}
 
 				</Card>
@@ -323,7 +442,32 @@ const Main = (props) => {
 						<i className={`pi pi-info-circle`}/>
 					</div>*/}
 				</div>
+			</div>
+			<div className={classes.info}>
+				<Card
+					className={classes.cardInfo}
+				>
+					<div className={classes.cardInfoTitle}>Общий доход:</div>
+					{props.fetchRefreshUserData ?
+						<div className={classes.fetch}>
+							<i className={`pi pi-spin pi-spinner`}/>
+						</div>:
+						<div className={classes.cardInfoCount}>₽ {props.user?.salesAmountReferal.toLocaleString()}</div>
+					}
 
+				</Card>
+				<Card
+					className={classes.cardInfo}
+				>
+					<div className={classes.cardInfoTitle}>Оборот:</div>
+					{props.fetchRefreshUserData ?
+						<div className={classes.fetch}>
+							<i className={`pi pi-spin pi-spinner`}/>
+						</div>:
+						<div className={classes.cardInfoCount}>₽ {props.user?.totalTurnover?.main.toLocaleString()}</div>
+					}
+
+				</Card>
 			</div>
 			<Card
 				title={"Бонус личного товарооборота"}
@@ -337,6 +481,23 @@ const Main = (props) => {
 					</div>
 					<div>
 						10000₽
+					</div>
+				</div>
+				{/*<img style={{width: "100%"}} src={photoCval} alt=""/>*/}
+			</Card>
+
+			<Card
+				title={"Бонус: каждое 5-ое подключение одноименного пакета"}
+				className={classes.cardHeader}
+				style={{marginBottom: 24}}
+			>
+				<ProgressBar value={props?.user?.countBonuse5x * 100/5} className={classes.progressBar}/>
+				<div className={classes.progressBarDescInner}>
+					<div>
+						{props?.user?.countBonuse5x}
+					</div>
+					<div>
+						5
 					</div>
 				</div>
 				{/*<img style={{width: "100%"}} src={photoCval} alt=""/>*/}
