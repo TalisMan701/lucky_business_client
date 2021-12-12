@@ -13,6 +13,7 @@ import {InputText} from "primereact/inputtext";
 import {Dropdown} from "primereact/dropdown";
 import {Button} from "primereact/button";
 import Product from "../../Components/Products/Product/Product";
+import {InputNumber} from "primereact/inputnumber";
 const AdminPanel = (props) => {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [users, setUsers] = useState([])
@@ -23,6 +24,15 @@ const AdminPanel = (props) => {
 	const [priceProduct, setPriceProduct] = useState('')
 	const [selectRefProduct, setSelectRefProduct] = useState(null)
 	const [fetchCreateProduct, setFetchCreateProduct] = useState(false)
+
+	const [userSelect, setUserSelect] = useState(null)
+	const [addBalance, setAddBalance] = useState(null)
+	const [fetchAddBalance, setFetchAddBalance] = useState(false)
+
+	const [surpriseDesc, setSurpriseDesc] = useState(null)
+	const [surprisePrice, setSurprisePrice] = useState(null)
+	const [surpriseCvalNum, setSurpriseCvalNum] = useState(null)
+	const [fetchAddSurprise, setFetchAddSurprise] = useState(false)
 
 	const uploadRef = useRef(null)
 
@@ -102,9 +112,35 @@ const AdminPanel = (props) => {
 				getProducts()
 			})
 			.catch(error => {
-				props.toast.current.show({severity: 'error', summary: 'Создание продукта', detail: 'Произошла ошибка, попробуйте снова'})
+				props.toast.current.show({severity: 'error', summary: 'Создание продукта', detail: 'Произошла ошибка, попробуйте снова!'})
 				setFetchCreateProduct(false)
 			})
+	}
+
+	const selectedCountryTemplate = (option, props) => {
+		if (option) {
+			return (
+				<div className="country-item country-item-value">
+					<div>{option.name} {option.surname}</div>
+					<div>{option.email}</div>
+				</div>
+			);
+		}
+
+		return (
+			<span>
+            {props.placeholder}
+        </span>
+		);
+	}
+
+	const countryOptionTemplate = (option) => {
+		return (
+			<div className="country-item">
+				<div>{option.name} {option.surname}</div>
+				<div>{option.email}</div>
+			</div>
+		);
 	}
 
 	return (
@@ -187,6 +223,78 @@ const AdminPanel = (props) => {
 									onClick={createProduct}
 								/>
 							</Card>
+						</div>
+					</TabPanel>
+					<TabPanel header="Добавить баланс">
+						<div>
+							<Dropdown value={userSelect} options={users} onChange={(e) => setUserSelect(e.value)} optionLabel="name"
+									  placeholder="Выберите пользователя" itemTemplate={countryOptionTemplate} valueTemplate={selectedCountryTemplate} showClear={true} filter filterBy="email"/>
+							<InputNumber
+								style={{marginLeft: 16}}
+								value={addBalance}
+								onChange={(e)=>{setAddBalance(e.value)}}
+								placeholder={"Введите сумму"}
+							/>
+							<Button
+								style={{marginLeft: 16, height: 52, width: 150}}
+								onClick={()=>{
+									setFetchAddBalance(true)
+									adminAPI.addBalanceUser(userSelect.id, addBalance)
+										.then(response => {
+											setFetchAddBalance(false)
+											setUserSelect(null)
+											setAddBalance(null)
+											props.toast.current.show({severity: 'success', summary: 'Добавление баланса', detail: 'Баланс успешно добавлен!'})
+										})
+										.catch(error => {
+											setFetchAddBalance(false)
+											props.toast.current.show({severity: 'error', summary: 'Добавление баланса', detail: 'Произошла ошибка, попробуйте снова!'})
+										})
+								}}
+								label={fetchAddBalance ? <i className={`pi pi-spin pi-spinner`}/> : <span>Добавить</span>}
+							/>
+						</div>
+
+					</TabPanel>
+					<TabPanel header="Добавить подарок">
+						<div>
+							<InputNumber
+								style={{marginLeft: 16}}
+								value={surprisePrice}
+								onChange={(e)=>{setSurprisePrice(e.value)}}
+								placeholder={"Введите сумму"}
+							/>
+							<InputText
+								style={{marginLeft: 16}}
+								value={surpriseDesc}
+								onChange={(e)=>{setSurpriseDesc(e.target.value)}}
+								placeholder={"Введите описание"}
+							/>
+							<InputNumber
+								style={{marginLeft: 16}}
+								value={surpriseCvalNum}
+								onChange={(e)=>{setSurpriseCvalNum(e.value)}}
+								placeholder={"Введите квалификацию"}
+							/>
+							<Button
+								style={{marginLeft: 16, height: 52, width: 150}}
+								onClick={()=>{
+									setFetchAddSurprise(true)
+									adminAPI.addSurprise(surpriseDesc, surprisePrice, surpriseCvalNum)
+										.then(response => {
+											setFetchAddSurprise(false)
+											setSurpriseCvalNum(null)
+											setSurprisePrice(null)
+											setSurpriseDesc(null)
+											props.toast.current.show({severity: 'success', summary: 'Добавление подарка', detail: 'Подарок успешно добавлен!'})
+										})
+										.catch(error => {
+											setFetchAddSurprise(false)
+											props.toast.current.show({severity: 'error', summary: 'Добавление подарка', detail: 'Произошла ошибка, попробуйте снова!'})
+										})
+								}}
+								label={fetchAddSurprise ? <i className={`pi pi-spin pi-spinner`}/> : <span>Добавить</span>}
+							/>
 						</div>
 					</TabPanel>
 				</TabView>

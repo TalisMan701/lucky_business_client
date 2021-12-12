@@ -48,7 +48,7 @@ const Notification = (props) => {
 									<div className={clsx(classes.notif, notif.read && classes.notifRead)}>
 										{/*<i className="pi pi-bell"/>*/}
 										<div className={classes.notifDesc}>{notif.description}</div>
-										{notif.type === "newRefBuy" &&
+										{(notif.type === "newRefBuy" || notif.type === "adminBalance") &&
 										<div className={classes.notifPrice}>+{notif.getMoney?.toLocaleString()} RUB</div>
 										}
 										<div className={classes.notifDate}>{moment(notif.date).locale("ru").format("LLL")}</div>

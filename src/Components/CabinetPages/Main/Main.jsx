@@ -423,6 +423,7 @@ const Main = (props) => {
 				<div
 					style={{width: "50%", position: "relative"}}
 					onClick={()=>{
+						setActiveIndex(props.user?.level === 8 ? 7 : props.user?.level)
 						setShowCval(true)
 					}}
 				>

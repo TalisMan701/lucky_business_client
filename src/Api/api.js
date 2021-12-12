@@ -159,6 +159,12 @@ export const adminAPI = {
 	},
 	createProduct(formData){
 		return instanceWithTokenFile.post(`users/root/createProduct`, formData)
+	},
+	addBalanceUser(userId, sum){
+		return instanceWithToken.post(`users/root/updateBalance`, {summa: sum, userId})
+	},
+	addSurprise(desc, sum, numCval){
+		return instanceWithToken.post(`users/root/createSurprise`, {summa: sum, description: desc, flag: numCval})
 	}
 }
 
