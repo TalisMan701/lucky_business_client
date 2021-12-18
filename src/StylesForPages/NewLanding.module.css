@@ -391,7 +391,7 @@
 }
 
 .about{
-    padding: 55px 90px 71px 90px;
+    padding: 55px 60px 71px 60px;
     display: flex;
     justify-content: space-between;
 }
@@ -405,6 +405,11 @@
 
 .aboutImg{
     border-radius: 10px;
+    width: 405px;
+    min-width: 405px;
+    height: 405px;
+    background-position: 0% 18%;
+    background-size: cover;
 }
 
 .aboutContentTitle{
@@ -1452,6 +1457,11 @@
 
     .footer{
         overflow: hidden;
+    }
+
+    .aboutImg{
+        min-width: 0;
+        width: 100%;
     }
 
     /*.body{

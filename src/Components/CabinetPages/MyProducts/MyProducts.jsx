@@ -9,8 +9,46 @@ import {Card} from "primereact/card";
 import Curse from "../../Video/Curse";
 
 const urlsForProduct = {
-	"WHITE": [],
-	"YELLOW": [],
+	"WHITE": [
+		{
+			title: "МЛМ",
+			video: [
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/1.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/2.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/3.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/4.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/5.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/6.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/7.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/8.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/9.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/10.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/11.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/12.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/13.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/14.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/15.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/16.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/mlm/17.mp4"
+			]
+		}
+	],
+	"YELLOW": [
+		{
+			title: "Финансовая грамотность",
+			video: [
+				"https://lucky-business.s3.us-east-2.amazonaws.com/finance/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C+1.+%D0%A3%D1%80%D0%BE%D0%BA+1.+%D0%90%D0%BA%D1%82%D0%B8%D0%B2%D1%8B+%D0%B8+%D0%BF%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D1%8B+.mov",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/finance/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C+1.+%D0%A3%D1%80%D0%BE%D0%BA+2+%D0%A2%D0%BE%D1%87%D0%BA%D0%B0+%D0%BE%D1%82%D1%81%D1%87%D0%B5%D1%82%D0%B0.MOV",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/finance/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C+2.+%D0%A3%D1%80%D0%BE%D0%BA+1.+%D0%9F%D0%BE%D0%B4%D1%83%D1%88%D0%BA%D0%B0+%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D0%B8.MOV",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/finance/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C+2.+%D0%A3%D1%80%D0%BE%D0%BA+2.+%D0%A2%D0%B5%D0%BC%D0%B0+%D0%9A%D0%B0%D0%BF%D0%B8%D1%82%D0%B0%D0%BB.MOV",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/finance/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C+2.+%D0%A3%D1%80%D0%BE%D0%BA+3.+%D0%A1%D0%BB%D0%BE%D0%B6%D0%BD%D1%8B%D0%B9+%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D0%BD%D1%82.mov",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/finance/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C+3.+%D0%A3%D1%80%D0%BE%D0%BA+1.+%D0%9F%D1%81%D0%B8%D1%85%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F+%D0%BA%D1%80%D0%B5%D0%B4%D0%B8%D1%82%D0%BE%D0%B2.mov",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/finance/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C+3.+%D0%A3%D1%80%D0%BE%D0%BA+2.+%D0%9A%D1%80%D0%B5%D0%B4%D0%B8%D1%82%D1%8B+%D0%B2+%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5.MOV",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/finance/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C+4.+%D0%A3%D1%80%D0%BE%D0%BA+1.+%D0%98%D0%BD%D1%84%D0%BB%D1%8F%D1%86%D0%B8%D1%8F+%D0%B8+%D0%9A%D0%A1+%D0%A6%D0%91.mov.mov",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/finance/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C+4.+%D0%A3%D1%80%D0%BE%D0%BA+2.+%D0%98%D0%BD%D1%84%D0%BB%D1%8F%D1%86%D0%B8%D1%8F+%D0%B2+%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5.MOV",
+			]
+		}
+	],
 	"GREEN": [
 		{
 			title: "Эмоциональный интеллект",
@@ -48,7 +86,23 @@ const urlsForProduct = {
 		},
 		{
 			title: "ТикТок",
-			video: []
+			video: [
+				"https://lucky-business.s3.us-east-2.amazonaws.com/tiktok/1-1.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/tiktok/1-2.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/tiktok/1-3.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/tiktok/1-4.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/tiktok/2-1.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/tiktok/2-2.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/tiktok/2-3.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/tiktok/3-1.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/tiktok/3-2.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/tiktok/4-1.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/tiktok/4-2.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/tiktok/4-3.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/tiktok/4-4.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/tiktok/6-1.mp4",
+				"https://lucky-business.s3.us-east-2.amazonaws.com/tiktok/6-2.mp4",
+			]
 		}
 	],
 	"PURPLE": [

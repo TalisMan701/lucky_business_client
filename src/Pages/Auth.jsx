@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import classes from '../StylesForPages/Auth.module.css'
 import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
@@ -9,7 +9,7 @@ import {Card} from "primereact/card";
 import {Button} from "primereact/button";
 import {authAPI} from "../Api/api";
 import {connect} from "react-redux";
-import {login} from "../Store/auth-reducer";
+import {login, setErrors} from "../Store/auth-reducer";
 import {Link, Redirect} from "react-router-dom";
 import {Toast} from "primereact/toast";
 import NewHeader from "../Components/NewHeader/NewHeader";
@@ -17,8 +17,33 @@ import NewHeader from "../Components/NewHeader/NewHeader";
 const Auth = (props) => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
-	const [sendLink, setSendLink] = useState(false)
+	const [sendLink, _setSendLink] = useState(false)
 	const [fetchSendLink, setFetchSendLink] = useState(false)
+
+	const sendLinkRef = useRef(sendLink)
+
+	const setSendLink = data => {
+		sendLinkRef.current = data
+		_setSendLink(data)
+	}
+
+	const listener = event => {
+		if (event.code === "Enter" || event.code === "NumpadEnter") {
+			event.preventDefault();
+			if(sendLinkRef.current){
+				sendLinkEmail()
+			}else{
+				onClickLogin()
+			}
+		}
+	};
+
+	useEffect(() => {
+		document.addEventListener("keydown", listener);
+		return () => {
+			document.removeEventListener("keydown", listener);
+		};
+	}, [email, password]);
 
 	const toast = useRef(null)
 
@@ -144,7 +169,7 @@ const Auth = (props) => {
 						}
 						<div className={classes.goTo}>
 							Нет аккаунта?
-							<Link to={"/signup"}>Зарегистрироваться</Link>
+							<Link onClick={()=>{props.setErrors(null)}} to={"/signup"}>Зарегистрироваться</Link>
 						</div>
 					</Card>
 				</main>
@@ -159,4 +184,4 @@ const mapStateToProps = state =>({
 	errors: state.auth.errors
 })
 
-export default connect(mapStateToProps, {login})(Auth);
+export default connect(mapStateToProps, {login, setErrors})(Auth);

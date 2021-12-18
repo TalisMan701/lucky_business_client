@@ -8,7 +8,7 @@ import {Password} from "primereact/password";
 import {Button} from "primereact/button";
 import Footer from "../Components/Footer/Footer";
 import {Checkbox} from "primereact/checkbox";
-import {registrationAPI} from "../Api/api";
+import {authAPI, registrationAPI} from "../Api/api";
 import {Link, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {login} from "../Store/auth-reducer";
@@ -28,9 +28,20 @@ const Registration = (props) => {
 		return !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,10}$/i.test(email)
 	}
 
+	const listener = event => {
+		if (event.code === "Enter" || event.code === "NumpadEnter") {
+			event.preventDefault();
+			onClickSignUp()
+		}
+	};
+
 
 	useEffect(()=>{
 		setError(null)
+		document.addEventListener("keydown", listener);
+		return () => {
+			document.removeEventListener("keydown", listener);
+		};
 	}, [email, password, name, lastname, confirmPassword, confirmPersonalData])
 
 	const onClickSignUp = () => {
@@ -42,13 +53,17 @@ const Registration = (props) => {
 						setFetchReg(true)
 						registrationAPI.signup(name, lastname, email, password)
 							.then(response => {
+								props.login(email,password)
 								setFetchReg(false)
-								setRedirectLogin(true)
-								props.toast.current.show({severity: 'success', summary: 'Регистрация', detail: "Прошла успешно!"})
+								props.toast.current.show({severity: 'success', summary: 'Регистрация', detail: "Прошла успешно! Выполняем вход в систему..."})
 							})
 							.catch(error => {
 								setFetchReg(false)
-								setError("Ошибка на сервере")
+								if(error.response.status === 409){
+									setError("Такой Email уже зарегистрирован!")
+								}else{
+									setError("Ошибка на сервере")
+								}
 							})
 					}else{
 						setError("Некорректный Email!")
@@ -62,7 +77,6 @@ const Registration = (props) => {
 		}else{
 			setError("Подтвердите пользовательское соглашение!")
 		}
-
 	}
 
 	if(props.isAuth){
@@ -140,7 +154,7 @@ const Registration = (props) => {
 							<label htmlFor="confirmPersonalData" className={classes.checkboxLabel}><p style={{margin: 0}}>Я согласен с <span style={{color: "#9FA8DA", cursor: "pointer"}}>пользовательским соглашением.</span></p></label>
 						</div>
 						<Button
-							label={!fetchReg ?
+							label={!fetchReg || props.fetchLogin ?
 								<span>Зарегистрироваться</span>
 								: <i className={`pi pi-spin pi-spinner ${classes.fetch}`}/>
 							}
@@ -167,7 +181,9 @@ const Registration = (props) => {
 };
 
 const mapStateToProps = state =>({
-	isAuth: state.auth.isAuth
+	isAuth: state.auth.isAuth,
+	fetchLogin: state.auth.fetchLogin,
+	errors: state.auth.errors
 })
 
-export default connect(mapStateToProps, {})(Registration);
+export default connect(mapStateToProps, {login})(Registration);

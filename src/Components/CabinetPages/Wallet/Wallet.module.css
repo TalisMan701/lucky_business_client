@@ -25,6 +25,11 @@
     display: flex;
 }
 
+.row{
+    display: flex;
+    margin-bottom: 16px;
+}
+
 .input{
     margin-right: 16px;
     height: 40px;
@@ -58,6 +63,19 @@
     width: 95px;
     height: 28px;
     font-size: 14px;
+}
+
+.inputPayout{
+    width: 230px;
+}
+
+.inputPayoutInner{
+    width: 230px;
+    margin-right: 16px;
+}
+
+.btnPayout{
+    width: 200px;
 }
 
 @media (max-width: 450px) {

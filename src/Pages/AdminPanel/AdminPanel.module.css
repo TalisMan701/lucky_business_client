@@ -29,3 +29,56 @@
     flex-flow: row wrap;
     justify-content: space-around;
 }
+
+.payouts{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.payout{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.payoutFIO{
+    margin-bottom: 8px;
+}
+
+.payoutEmail{
+    margin-bottom: 16px;
+}
+
+.payoutCard{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.payoutDate{
+    font-size: 14px;
+}
+
+.payoutCol2{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+
+.payoutPrice{
+    font-weight: bold;
+}
+
+.payoutBtn{
+    height: 32px;
+    width: 100px;
+}
+
+.payoutBtn:first-child{
+    margin-right: 16px;
+}

@@ -165,6 +165,12 @@ export const adminAPI = {
 	},
 	addSurprise(desc, sum, numCval){
 		return instanceWithToken.post(`users/root/createSurprise`, {summa: sum, description: desc, flag: numCval})
+	},
+	getAllPayouts(status = "all"){
+		return instanceWithToken.get(`users/root/getAllPayoutUser/${status}`)
+	},
+	updateStatusPayout(idPayout, status){
+		return instanceWithToken.post(`users/root/setStatusForPayout`, {payoutId: idPayout, status})
 	}
 }
 
@@ -210,5 +216,11 @@ export const payAPI = {
 	},
 	updateTranz(){
 		return instanceWithToken.get(`users/getWalletActualInfo`)
+	},
+	createPayout(userInfo, summa, numberCard){
+		return instanceWithToken.post(`users/createPayout`,{userInfo, summa, numberCard})
+	},
+	getAllPayout(){
+		return instanceWithToken.get(`users/getAllPayout`)
 	}
 }

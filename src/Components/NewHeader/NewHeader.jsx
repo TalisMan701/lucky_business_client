@@ -3,6 +3,8 @@ import classes from './NewHeader.module.css'
 import {Link} from "react-router-dom";
 import clsx from "clsx";
 import {HashLink} from "react-router-hash-link";
+import {connect} from "react-redux";
+import {logout} from "../../Store/auth-reducer";
 
 const NewHeader = (props) => {
 	return (
@@ -23,7 +25,7 @@ const NewHeader = (props) => {
 							<Link to={'/auth'} className={classes.btnAuth}>
 								Войти
 							</Link>
-							<Link to={'/signup'} className={classes.btnSignUp}>
+							<Link to={'/signup'} onClick={()=>{props.logout()}} className={classes.btnSignUp}>
 								Зарегистрироваться
 							</Link>
 						</>:
@@ -37,4 +39,8 @@ const NewHeader = (props) => {
 	);
 };
 
-export default NewHeader;
+const mapStateToProps = state => ({
+
+})
+
+export default connect(mapStateToProps, {logout})(NewHeader);

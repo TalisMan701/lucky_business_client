@@ -98,7 +98,7 @@ const setFetchGetAuthUserData = (fetchGetAuthUserData) => ({type: SET_FETCH_GET_
 const setFetchRefreshUserData = (fetchRefreshUserData) => ({type: SET_FETCH_REFRESH_USER_DATA, fetchRefreshUserData})
 const setFetchLogin = (fetchLogin) => ({type: SET_FETCH_LOGIN, fetchLogin})
 const setGoLogin = (goLogin) => ({type: SET_GO_LOGIN, goLogin})
-const setErrors = (errors) => ({type: SET_ERRORS, errors})
+export const setErrors = (errors) => ({type: SET_ERRORS, errors})
 export const logoutAction = () => ({type: LOGOUT})
 
 export const updatePriceUser = (buyPrice) => ({type: UPDATE_PRICE_USER, buyPrice})

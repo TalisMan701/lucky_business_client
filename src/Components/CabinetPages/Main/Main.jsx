@@ -408,7 +408,7 @@ const Main = (props) => {
 				</div>
 			</Card>
 			<div className={classes.info}>
-				<Card
+				<div
 					className={classes.cardInfo}
 				>
 					<div className={classes.cardInfoTitle}>Баланс:</div>
@@ -419,33 +419,25 @@ const Main = (props) => {
 						<div className={classes.cardInfoCount}>₽ {props.user?.balance.toLocaleString()}</div>
 					}
 
-				</Card>
+				</div>
 				<div
-					style={{width: "50%", position: "relative"}}
+					className={clsx(classes.cardInfo, classes.cardInfoCval)}
 					onClick={()=>{
 						setActiveIndex(props.user?.level === 8 ? 7 : props.user?.level)
 						setShowCval(true)
 					}}
 				>
-					<Card
-						className={clsx(classes.cardInfo, classes.cardInfoCval)}
-						style={{width: "100%"}}
-					>
-						<div className={classes.cardInfoTitle}>Квалификация:</div>
-						{props.fetchRefreshUserData ?
-							<div className={classes.fetch}>
-								<i className={`pi pi-spin pi-spinner`}/>
-							</div>:
-							<div className={classes.cardInfoCount}>{props.user?.level}</div>
-						}
-					</Card>
-					{/*<div className={classes.cardInfoCvalIcon}>
-						<i className={`pi pi-info-circle`}/>
-					</div>*/}
+					<div className={classes.cardInfoTitle}>Квалификация:</div>
+					{props.fetchRefreshUserData ?
+						<div className={classes.fetch}>
+							<i className={`pi pi-spin pi-spinner`}/>
+						</div>:
+						<div className={classes.cardInfoCount}>{props.user?.level}</div>
+					}
 				</div>
 			</div>
 			<div className={classes.info}>
-				<Card
+				<div
 					className={classes.cardInfo}
 				>
 					<div className={classes.cardInfoTitle}>Общий доход:</div>
@@ -456,8 +448,8 @@ const Main = (props) => {
 						<div className={classes.cardInfoCount}>₽ {props.user?.salesAmountReferal.toLocaleString()}</div>
 					}
 
-				</Card>
-				<Card
+				</div>
+				<div
 					className={classes.cardInfo}
 				>
 					<div className={classes.cardInfoTitle}>Оборот:</div>
@@ -468,7 +460,7 @@ const Main = (props) => {
 						<div className={classes.cardInfoCount}>₽ {props.user?.totalTurnover?.main.toLocaleString()}</div>
 					}
 
-				</Card>
+				</div>
 			</div>
 			<Card
 				title={"Бонус личного товарооборота"}

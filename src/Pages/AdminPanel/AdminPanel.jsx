@@ -14,6 +14,7 @@ import {Dropdown} from "primereact/dropdown";
 import {Button} from "primereact/button";
 import Product from "../../Components/Products/Product/Product";
 import {InputNumber} from "primereact/inputnumber";
+import moment from "moment";
 const AdminPanel = (props) => {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [users, setUsers] = useState([])
@@ -34,6 +35,13 @@ const AdminPanel = (props) => {
 	const [surpriseCvalNum, setSurpriseCvalNum] = useState(null)
 	const [fetchAddSurprise, setFetchAddSurprise] = useState(false)
 
+	const [fetchGetAllPayouts, setFetchGetAllPayouts] = useState(false)
+	const [payouts, setPayouts] = useState([])
+	const [fetchSuccessPayout, setFetchSuccessPayout] = useState([])
+	const [fetchClosePayout, setFetchClosePayout] = useState([])
+	const [activeIndexPayouts, setActiveIndexPayouts] = useState(0)
+
+
 	const uploadRef = useRef(null)
 
 	useEffect(()=>{
@@ -43,7 +51,66 @@ const AdminPanel = (props) => {
 		if(activeIndex === 1){
 			getProducts()
 		}
-	},[activeIndex])
+		if(activeIndex === 2){
+			getAllProductInTable()
+		}
+	},[activeIndex, activeIndexPayouts])
+
+	const getAllProductInTable = () => {
+		switch (activeIndexPayouts){
+			case 1:
+				getAllPayout("pending")
+				break
+			case 2:
+				getAllPayout("sussces")
+				break
+			case 3:
+				getAllPayout("cancel")
+				break
+			default:
+				getAllPayout()
+		}
+	}
+
+	const updateStatusPayout = (idPayout, status) => {
+		if(status === "cancel"){
+			setFetchClosePayout(prev => ([...prev, idPayout]))
+		}else{
+			setFetchSuccessPayout(prev => ([...prev, idPayout]))
+		}
+		adminAPI.updateStatusPayout(idPayout, status)
+			.then(response => {
+				getAllProductInTable()
+				if(status === "cancel"){
+					props.toast.current.show({severity: 'success', summary: 'Отмена заявки', detail: 'Отмена прошла успешно!'})
+					setFetchClosePayout(prev => (prev.filter(item => item !== idPayout)))
+				}else{
+					props.toast.current.show({severity: 'success', summary: 'Подтверждение заявки', detail: 'Подтверждение прошло успешно!'})
+					setFetchSuccessPayout(prev => (prev.filter(item => item !== idPayout)))
+				}
+			})
+			.catch(error => {
+				if(status === "cancel"){
+					props.toast.current.show({severity: 'error', summary: 'Отмена заявки', detail: 'Ошибка на сервере, попробуйте снова!'})
+					setFetchClosePayout(prev => (prev.filter(item => item !== idPayout)))
+				}else{
+					props.toast.current.show({severity: 'error', summary: 'Подтверждение заявки', detail: 'Ошибка на сервере, попробуйте снова!'})
+					setFetchSuccessPayout(prev => (prev.filter(item => item !== idPayout)))
+				}
+			})
+	}
+
+	const getAllPayout = (status = "all") => {
+		setFetchGetAllPayouts(true)
+		adminAPI.getAllPayouts(status)
+			.then(response => {
+				setPayouts(response.data.payouts)
+				setFetchGetAllPayouts(false)
+			})
+			.catch(error => {
+				setFetchGetAllPayouts(false)
+			})
+	}
 
 	const getUsers = () => {
 		setFetchGetUsers(true)
@@ -143,6 +210,72 @@ const AdminPanel = (props) => {
 		);
 	}
 
+	const PayoutItems = () => {
+		return(
+			<div className={classes.payouts}>
+				{fetchGetAllPayouts ?
+					<i className={`pi pi-spin pi-spinner`}/>:
+					<>
+						{payouts.length === 0 ?
+							<div>
+								Заявок нет!
+							</div>:
+							<>
+								{payouts.map((payout, index) => {
+									return (
+										<div className={classes.payout}>
+											<div className={classes.payoutCol1}>
+												<div className={classes.payoutFIO}>{payout.userFIO}</div>
+												<div className={classes.payoutEmail}>{payout.email}</div>
+												<div className={classes.payoutCard}>{payout.card}</div>
+											</div>
+											<div className={classes.payoutCol2}>
+												<div className={classes.payoutDate}>{moment(payout?.date ?? "Даты нет").locale("ru").format("LLL")}</div>
+												<div className={classes.payoutPrice}>{payout?.amount?.value.toLocaleString()}₽</div>
+												{payout.status === "pending" ?
+													<div>
+														<Button
+															disabled={fetchSuccessPayout.indexOf(payout.id) !== -1}
+															label={fetchClosePayout.indexOf(payout.id) !== -1 ?
+																<i className={`pi pi-spin pi-spinner`}/>:
+																<span>Отказать</span>
+															}
+															className={clsx(classes.payoutBtn, "p-button-danger")}
+															onClick={()=> {
+																updateStatusPayout(payout.id, "cancel")
+															}}
+														/>
+														<Button
+															disabled={fetchClosePayout.indexOf(payout.id) !== -1}
+															label={fetchSuccessPayout.indexOf(payout.id) !== -1 ?
+																<i className={`pi pi-spin pi-spinner`}/>:
+																<span>Принять</span>
+															}
+															className={clsx(classes.payoutBtn, "p-button-success")}
+															onClick={()=> {
+																updateStatusPayout(payout.id, "sussces")
+															}}
+														/>
+													</div>:
+													<div>
+														{payout.status === "sussces" ?
+															<span>Успешно</span>:
+															<span>Отказано</span>
+														}
+													</div>
+												}
+											</div>
+										</div>
+									)
+								})}
+							</>
+						}
+					</>
+				}
+			</div>
+		)
+	}
+
 	return (
 		<>
 			<MainTitle>Админ панель</MainTitle>
@@ -224,6 +357,22 @@ const AdminPanel = (props) => {
 								/>
 							</Card>
 						</div>
+					</TabPanel>
+					<TabPanel header="Заявки на вывод">
+						<TabView activeIndex={activeIndexPayouts} onTabChange={(e) => setActiveIndexPayouts(e.index)}>
+							<TabPanel header="Все">
+								<PayoutItems/>
+							</TabPanel>
+							<TabPanel header="В ожидании">
+								<PayoutItems/>
+							</TabPanel>
+							<TabPanel header="Успешные">
+								<PayoutItems/>
+							</TabPanel>
+							<TabPanel header="Отказанные">
+								<PayoutItems/>
+							</TabPanel>
+						</TabView>
 					</TabPanel>
 					<TabPanel header="Добавить баланс">
 						<div>

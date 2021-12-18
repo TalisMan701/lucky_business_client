@@ -17,14 +17,20 @@ import Chat from "../Components/CabinetPages/Chat/Chat";
 import AdminPanel from "./AdminPanel/AdminPanel";
 import SidebarMy from "../Components/Sidebar/Sidebar";
 import {Sidebar} from "primereact/sidebar";
+import ConfirmEmail from "./ConfirmEmail/ConfirmEmail";
 
 const Cabinet = (props) => {
 
 	const [visible, setVisible] = useState(false)
 
+	if(props.isAuth && !props?.user?.confirmedEmail){
+		return <ConfirmEmail isMobile={props.isMobile} toast={props.toast}/>
+	}
+
 	if(!props.isAuth){
 		return <Redirect to={"/auth"}/>
 	}
+
 	return (
 		<div>
 			{props.isMobile ?
@@ -128,7 +134,7 @@ const Cabinet = (props) => {
 				/>
 				<div className={classes.main}>
 					<Switch>
-						<Route exact path='/cabinet' render={()=><Main toast={props.toast}/>}/>
+						<Route exact path='/cabinet' render={()=><Main toast={props.toast} isMobile={props.isMobile}/>}/>
 						<Route path='/cabinet/products' render={()=><Products toast={props.toast} user={props.user}/>}/>
 						<Route path='/cabinet/my_products' render={()=><MyProducts/>}/>
 						<Route path='/cabinet/partner_program' render={()=><PartnerProgram toast={props.toast}/>}/>

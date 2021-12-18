@@ -4,6 +4,7 @@ import NewHeader from "../Components/NewHeader/NewHeader";
 import Footer from "../Components/Footer/Footer";
 import {Link} from "react-router-dom";
 import Hero1Svg from "../Images/SVG/Hero1.svg"
+import Hero1TestSvg from "../Images/SVG/Hero1Test.svg"
 import Hero2Svg from "../Images/SVG/Hero2.svg"
 import Info1Svg from "../Images/SVG/Info1.svg"
 import Info2Svg from "../Images/SVG/Info2.svg"
@@ -40,7 +41,7 @@ import Client1Svg from "../Images/SVG/Client1.svg"
 import Client4Svg from "../Images/SVG/Clinet4.svg"
 import Client5Svg from "../Images/SVG/Clinet5.svg"
 import Client6Svg from "../Images/SVG/Client6.svg"
-import About1Jpg from "../Images/Other/About1.png"
+import About1Jpg from "../Images/Other/aboutImg.jpg"
 import TestSvg from "../Images/SVG/TestSVG.svg"
 import PackCont2Svg from "../Images/SVG/packCont2.svg"
 import PackCont3Svg from "../Images/SVG/packCont3.svg"
@@ -93,12 +94,12 @@ const NewLanding = (props) => {
 									<div className={classes.heroRow}>
 										<Fade bottom cascade>
 											<img src={Hero2Svg} alt="" className={classes.heroInfoCardImg}/>
-											<img src={Hero1Svg} alt="" className={classes.heroInfoCardImg}/>
+											<img src={Hero1TestSvg} alt="" className={classes.heroInfoCardImg}/>
 										</Fade>
 									</div>:
 									<Fade bottom cascade>
 										<img src={Hero2Svg} alt="" className={classes.heroInfoCardImg}/>
-										<img src={Hero1Svg} alt="" className={classes.heroInfoCardImg}/>
+										<img src={Hero1TestSvg} alt="" className={classes.heroInfoCardImg}/>
 									</Fade>
 								}
 							</div>
@@ -216,7 +217,7 @@ const NewLanding = (props) => {
 								}
 							</div>
 							<Zoom>
-								<img src={About1Jpg} alt="" className={classes.aboutImg}/>
+								<div className={classes.aboutImg} style={{backgroundImage: `url('${About1Jpg}')`}}/>
 							</Zoom>
 							{props.isMobile &&
 							<div className={classes.aboutContentRow2}>
@@ -628,7 +629,7 @@ const NewLanding = (props) => {
 				<div className={classes.container} style={{maxWidth: 1000}}>
 					<section className={classes.download}>
 						<Pulse>
-							<a href={'https://lucky-business.s3.us-east-2.amazonaws.com/materials/presentation.pdf'} target={"_blank"} className={classes.downloadBtn}>
+							<a href={'https://lucky-business.s3.us-east-2.amazonaws.com/materials/presentation_compressedV2.pdf'} target={"_blank"} className={classes.downloadBtn}>
 								<span className={classes.downloadBtnText}>Скачать презентацию</span>
 								<img src={DownloadIconSvg} alt="" className={classes.downloadBtnIcon}/>
 							</a>

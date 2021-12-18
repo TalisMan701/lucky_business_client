@@ -10,7 +10,7 @@ const RefMiddleware = (props) => {
 		setRedirect(true)
 	},[])
 	if(redirect){
-		return <Redirect to={'/'}/>
+		return <Redirect to={'/signup'}/>
 	}
 	return (
 		<Loading/>

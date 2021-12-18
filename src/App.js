@@ -73,7 +73,7 @@ function App(props) {
 			<Route path={'/cabinet'}  render= {() => <Cabinet isMobile={isMobile} isTablet={isTablet} toast={toast}/>}/>
 			<Route path={'/ref'}  render= {() => <RefMiddleware/> }/>
 			<Route path={'/pdf'}  render= {() => <Pdf isMobile={isMobile}/> }/>
-			<Route path={'/test'}  render= {() => <Video isMobile={isMobile}/> }/>
+			{/*<Route path={'/test'}  render= {() => <Video isMobile={isMobile}/> }/>*/}
 			{/*<Redirect to={'/'}/>*/}
 			<Toast ref={toast} position="bottom-right" className={classes.toast}/>
 		</>
