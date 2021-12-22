@@ -6,12 +6,12 @@ import socket from "../Socket/socket";
 
 const instanceWithToken = axios.create({
 	withCredentials: true,
-	baseURL: `https://luckly-bus.herokuapp.com/api/v1/`
+	baseURL: `https://lucky-business.ru/api/v1/`
 });
 
 const instanceWithTokenFile = axios.create({
 	withCredentials: true,
-	baseURL: `https://luckly-bus.herokuapp.com/api/v1/`,
+	baseURL: `https://lucky-business.ru/api/v1/`,
 	headers: {
 		'Content-Type': 'multipart/form-data'
 	}
@@ -19,7 +19,7 @@ const instanceWithTokenFile = axios.create({
 
 const instance = axios.create({
 	withCredentials: true,
-	baseURL: `https://luckly-bus.herokuapp.com/api/v1/`,
+	baseURL: `https://lucky-business.ru/api/v1/`,
 });
 
 instanceWithToken.interceptors.request.use(config => {

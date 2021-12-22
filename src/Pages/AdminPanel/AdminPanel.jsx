@@ -434,7 +434,7 @@ const AdminPanel = (props) => {
 											setFetchAddSurprise(false)
 											setSurpriseCvalNum(null)
 											setSurprisePrice(null)
-											setSurpriseDesc(null)
+											setSurpriseDesc("")
 											props.toast.current.show({severity: 'success', summary: 'Добавление подарка', detail: 'Подарок успешно добавлен!'})
 										})
 										.catch(error => {
