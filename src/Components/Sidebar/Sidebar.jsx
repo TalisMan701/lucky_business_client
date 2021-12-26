@@ -113,15 +113,14 @@ const SidebarMy = (props) => {
 					<i className="pi pi-cog"/>
 					<span>Настройки</span>
 				</NavLink>
-				<NavLink
-					onClick={()=>{props.setVisible(false)}}
-					activeClassName={classes.activeNav}
-					to={'/cabinet/chat'}
+				<a
+					href={'https://t.me/Luckybsupport'}
+					target={"_blank"}
 					className={classes.navItem}
 				>
 					<i className="pi pi-send"/>
 					<span>Чат с поддержкой</span>
-				</NavLink>
+				</a>
 				{props.user.role === "admin" &&
 					<NavLink
 						onClick={()=>{props.setVisible(false)}}
