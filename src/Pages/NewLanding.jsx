@@ -677,7 +677,7 @@ const NewLanding = (props) => {
 								<div className={classes.endCol2}>
 									<Bounce right>
 										<div className={classes.endText}>
-											Здесь какая-то инфа о квизе, запросить у Владимира
+
 										</div>
 									</Bounce>
 									<div className={classes.endLogo}>Lucky Business</div>
