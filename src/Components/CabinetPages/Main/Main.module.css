@@ -243,6 +243,18 @@
     }
 }
 
+@media (max-width: 450px) {
+    .card{
+        margin-top: 32px;
+    }
+
+    .back{
+        position: absolute;
+        top: 38px;
+        right: 0;
+    }
+}
+
 @media (max-width: 342px) {
     .cardInfoTitle{
         font-size: 14px;

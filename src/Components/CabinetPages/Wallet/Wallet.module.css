@@ -87,4 +87,22 @@
         margin-bottom: 16px;
         width: 100%;
     }
+
+    .inputPayoutInner{
+        width: 100%;
+        margin-bottom: 16px;
+    }
+
+    .inputPayout{
+        width: 100%;
+    }
+
+    .btnPayout{
+        width: 100%;
+    }
+
+    .row{
+        margin-bottom: 0;
+        flex-flow: column nowrap;
+    }
 }
